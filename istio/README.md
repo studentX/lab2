@@ -2,13 +2,32 @@
 
 > Let's play Hangman! Deploy a Hangman service to an Istio Cluster
 
-1. Download and provision your minikube cluster using the lesson instructions
-1. Define a manifest for a hangman v1 service in a manifest call hangman_v1.yml
-   1. Image: k8sland/hangman_svc_go:0.0.1
-2. Deploy the hangman v1 service
-3. Define a manifest for a hangman v2 service
+> The hangman game is composed of 2 k8s services: dictionary and hangman. The hangman
+> service fetches a list of words from the dictionary service and pick a random word to
+> initialize the guessing game.
+
+1. Download and provision your minikube cluster using the lesson instructions.
+1. Ensure all the Istio components are up and running in the *istio-system* namespace.
+1. Deploy your istio gateway, routes and subsets manifests
+1. Enable Sidecar injection in your default namespace:
+
+    ```shell
+    kubectl label ns default istio-injection=enabled
+    ```
+
+1. Define a manifest for a dictionaryV1 deployment in a manifest call dictionary_v1.yml
+   1. Image: k8sland/dictionary_svc_go:0.0.2
+   1. Change the command to read /app/dictionary -d words.txt
+   1. Deploy your dictionaryV1 manifest
+2. Define a manifest for the hangman service in a manifest called hangman.yml
+   1. Image: k8sland/hangman_svc_go:0.0.2
+   1. Change the command to read /app/hangman --url dictionary:4000
+   1. Define a K8s service for hangman to be exposed on nodeport: 30500
+   1. Deploy the hangman manifest
+3. Deploy the dictionary V1 service
+4. Define a manifest for a dictionaryV2 deployment in a manifest call
    1. Same image as above
-   2. Change the command to read /app/hangam --file trump
+   2. Change the command to read /app/dictionary -d trump.txt
 
 
 ## <img src="../assets/sol.png" width="32" height="auto"/> Solution
@@ -51,7 +70,7 @@
 1. Enable Istio Sidecar injection in your default namespace
 
     ```shell
-    ku label namespace default istio-injection=enabled
+    kubectl label namespace default istio-injection=enabled
     ```
 
 ---
