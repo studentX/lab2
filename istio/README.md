@@ -61,6 +61,10 @@
    3. Tail both v1 and v2 logs and make sure all traffic destined to v1 also hits the v2 version.
 
 
+<br/>
+<br/>
+
+---
 ## <img src="../assets/sol.png" width="32" height="auto"/> Solution
 
 1. Download Istio
