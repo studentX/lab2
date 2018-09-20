@@ -1,20 +1,20 @@
 apiVersion: networking.istio.io/v1alpha3
 kind:       VirtualService
 metadata:
-  name: dictionary
+  name: CHANGE_ME!
 spec:
   hosts:
-  - dictionary
+  - CHANGE_ME!
   http:
   - match:
     - sourceLabels:
-        app: hangman
+        CHANGE_ME!
     route:
     - destination:
-        host:   dictionary
-        subset: v1
-      weight: 20
+        host:   CHANGE_ME!
+        subset: CHANGE_ME!
+      weight: CHANGE_ME!
     - destination:
-        host:   dictionary
-        subset: v2
-      weight: 80
+        host:   CHANGE_ME!
+        subset: CHANGE_ME!
+      weight: CHANGE_ME!
