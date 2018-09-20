@@ -13,6 +13,6 @@ spec:
         prefix: /
     route:
     - destination:
-        host: hangman
+        host: CHANGE_ME!
         port:
-          number: 5000
+          number: CHANGE_ME!

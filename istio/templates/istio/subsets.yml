@@ -1,15 +1,15 @@
 apiVersion: networking.istio.io/v1alpha3
 kind:       DestinationRule
 metadata:
-  name: dictionary
+  name: CHANGE_ME!
 spec:
-  host: dictionary
+  host: CHANGE_ME!
   subsets:
-  - name: v1
+  - name: CHANGE_ME!
     labels:
-      app: dictionary
-      rev: v1
-  - name: v2
+      app: CHANGE_ME!
+      rev: CHANGE_ME!
+  - name: CHANGE_ME!
     labels:
-      app: dictionary
-      rev: v2
+      app: CHANGE_ME!
+      rev: CHANGE_ME!
