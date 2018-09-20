@@ -1,7 +1,8 @@
 # <img src="../assets/lab.png" width="32" height="auto"/> Istio Lab
 
-> Deploy a hangman game app in an Istio Cluster
+> Let's play Hangman! Deploy a Hangman service to an Istio Cluster
 
+1. Download and provision your minikube cluster using the lesson instructions
 1. Define a manifest for a hangman v1 service in a manifest call hangman_v1.yml
    1. Image: k8sland/hangman_svc_go:0.0.1
 2. Deploy the hangman v1 service
