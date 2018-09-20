@@ -15,7 +15,7 @@ spec:
         rev: v1
     spec:
       containers:
-      - name:            dictionary-v1
+      - name:            dictionary
         image:           k8sland/dictionary-svc-go:0.0.2
         imagePullPolicy: IfNotPresent
         args:            ["/app/dictionary", "-d", "list1.txt"]
