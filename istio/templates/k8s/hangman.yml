@@ -18,7 +18,7 @@ spec:
       - name:            hangman
         image:           k8sland/hangman-svc-go:0.0.2
         imagePullPolicy: IfNotPresent
-        args:            ["/app/hangman", "-url", "dictionary:4000"]
+        args:            [CHANGE_ME!]
         resources:
           requests:
             cpu:    100m
@@ -44,5 +44,5 @@ spec:
   ports:
     - name:       http
       protocol:   TCP
-      nodePort:   30500
+      nodePort:   CHANGE_ME!
       port:       5000

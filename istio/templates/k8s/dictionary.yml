@@ -10,5 +10,5 @@ spec:
   ports:
     - name:       http
       protocol:   TCP
-      nodePort:   30400
+      nodePort:   CHANGE_ME!
       port:       4000
