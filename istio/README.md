@@ -25,34 +25,34 @@
 
 1. Provision Istio in your minikube cluster
 
-  ```shell
-  cd ~/istio/istio-1.0.2/install/kubernetes
-  kubectl apply -f istio-demo.yaml
-  ```
+    ```shell
+    cd ~/istio/istio-1.0.2/install/kubernetes
+    kubectl apply -f istio-demo.yaml
+    ```
 
 1. Deploy Hangman V1
 
-   ```shell
-   kubectl apply -f k8s/hangman_v1.yml
-   ```
+    ```shell
+    kubectl apply -f k8s/hangman_v1.yml
+    ```
 
 1. Play the game!
 
-  ```shell
-  kubectl run -i --tty --rm hm --image k8sland/hangman-cli-go:0.0.1 --command -- /app/hangman_cli --url hangman:5000
-  ```
+    ```shell
+    kubectl run -i --tty --rm hm --image k8sland/hangman-cli-go:0.0.1 --command -- /app/hangman_cli --url hangman:5000
+    ```
 
 1. Configure your edge controller and routes
 
-  ```shell
-  kubectl apply -f istio/gateway.yml -f istio1/routes.yml -f istio1/subsets.yml
-  ```
+    ```shell
+    kubectl apply -f istio/gateway.yml -f istio1/routes.yml -f istio1/subsets.yml
+    ```
 
 1. Enable Istio Sidecar injection in your default namespace
 
-  ```shell
-  ku label namespace default istio-injection=enabled
-  ```
+    ```shell
+    ku label namespace default istio-injection=enabled
+    ```
 
 ---
 <img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2018 Imhotep Software LLC.
