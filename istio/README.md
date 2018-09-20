@@ -2,13 +2,13 @@
 
 > Let's play Hangman! Deploy a Hangman service to an Istio Cluster
 
-> The hangman game is composed of 2 k8s services: dictionary and hangman. The hangman
+> The hangman game is composed of 2 K8s services: dictionary and hangman. The hangman
 > service fetches a list of words from the dictionary service and pick a random word to
 > initialize the guessing game.
 
 1. Download and provision your minikube cluster using the lesson instructions.
 1. Ensure all the Istio components are up and running in the *istio-system* namespace.
-1. Deploy your istio gateway, routes and subsets manifests
+1. Deploy your Istio gateway, routes and subsets manifests
 1. Enable Sidecar injection in your default namespace:
 
     ```shell
@@ -19,11 +19,13 @@
    1. Image: k8sland/dictionary_svc_go:0.0.2
    1. Change the command to read /app/dictionary -d words.txt
    1. Deploy your dictionaryV1 manifest
+1. Define a dictionary service to watch to label app: dictionary in a file named dictionary.yml
+   1. Deploy your dictionary service
 2. Define a manifest for the hangman service in a manifest called hangman.yml
    1. Image: k8sland/hangman_svc_go:0.0.2
-   1. Change the command to read /app/hangman --url dictionary:4000
-   1. Define a K8s service for hangman to be exposed on nodeport: 30500
-   1. Deploy the hangman manifest
+   2. Change the command to read /app/hangman --url dictionary:4000
+   3. Define a K8s service for hangman to be exposed on nodeport: 30500
+   4. Deploy the hangman manifest
 3. Deploy the dictionary V1 service
 4. Define a manifest for a dictionaryV2 deployment in a manifest call
    1. Same image as above
