@@ -45,9 +45,10 @@
    4. Ensure the dictionary is up and running
 6. Using the picker.sh script check the current hangman behavior
 
-  ```shell
-  ./picker.sh
-  ```
+    ```shell
+    ./picker.sh
+    ```
+
 7. Create a new Istio policy to route traffic 80% to v2 and 20% to v1 of the dictionary
    1. Define an istio virtualservice policy to apply weighted routing when traffic is origination from hangman
    2. Provision your new policy
