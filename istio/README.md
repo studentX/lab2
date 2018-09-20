@@ -31,10 +31,34 @@
    3. Define a K8s service for hangman to be exposed on nodeport: 30500
    4. Deploy the hangman service
    5. Verify the hangman pod and service are correctly configured!
-4. Deploy the dictionary V1 service
+4. Play the game!
+
+    ```shell
+    # NOTE! Press enter once the pod is initialized!
+    kubectl run -i --tty --rm hm --image k8sland/hangman-cli-go:0.0.1 --command -- /app/hangman_cli --url hangman:5000
+    ```
+
 5. Define a manifest for a dictionaryV2 deployment in a manifest call
    1. Same image as above
    2. Change the command to read /app/dictionary -d trump.txt
+   3. Deploy your dictionaryV2
+   4. Ensure the dictionary is up and running
+6. Using the picker.sh script check the current hangman behavior
+
+  ```shell
+  ./picker.sh
+  ```
+7. Create a new Istio policy to route traffic 80% to v2 and 20% to v1 of the dictionary
+   1. Define an istio virtualservice policy to apply weighted routing when traffic is origination from hangman
+   2. Provision your new policy
+   3. Ensure the virtualservice was created correctly
+   4. Check the picker and make sure it produced more v2 words
+8. Delete your weighted traffic policy!
+   1. Ensure the picker just shows regular dictionary words
+9. Next create a new virtual service policy to mirror all traffic coming to v1 to v2
+   1. Create a new policy and setup your mirror
+   2. Deploy your new policy
+   3. Tail both v1 and v2 logs and make sure all traffic destined to v1 also hits the v2 version.
 
 
 ## <img src="../assets/sol.png" width="32" height="auto"/> Solution
@@ -49,32 +73,52 @@
     export PATH=$PWD/bin:$PATH
     ```
 
-1. Provision Istio in your minikube cluster
+2. Provision Istio in your minikube cluster
 
     ```shell
     cd ~/istio/istio-1.0.2/install/kubernetes
     kubectl apply -f istio-demo.yaml
     ```
 
-1. Deploy Hangman V1
+1. Deploy your Istio gateway and routes
+
+    ```shell
+    ku apply -f istio/gateway.yml -f istio/routes.yml -f istio/subsets.yml
+    ```
+
+1. Deploy DictionaryV1
+
+    ```shell
+    kubectl apply -f k8s/dictionary_v1.yml
+    kubectl get deploy,rs,po
+    ```
+
+1. Deploy the dictionary service
+
+    ```shell
+    kubectl apply -f k8s/dictionary.yml
+    ```
+
+3. Deploy Hangman V1
 
     ```shell
     kubectl apply -f k8s/hangman_v1.yml
+    kubectl get deploy,rs,po
     ```
 
-1. Play the game!
+4. Play the game!
 
     ```shell
     kubectl run -i --tty --rm hm --image k8sland/hangman-cli-go:0.0.1 --command -- /app/hangman_cli --url hangman:5000
     ```
 
-1. Configure your edge controller and routes
+5. Configure your edge controller and routes
 
     ```shell
     kubectl apply -f istio/gateway.yml -f istio1/routes.yml -f istio1/subsets.yml
     ```
 
-1. Enable Istio Sidecar injection in your default namespace
+6. Enable Istio Sidecar injection in your default namespace
 
     ```shell
     kubectl label namespace default istio-injection=enabled
