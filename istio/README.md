@@ -19,15 +19,18 @@
    1. Image: k8sland/dictionary_svc_go:0.0.2
    1. Change the command to read /app/dictionary -d words.txt
    1. Deploy your dictionaryV1 manifest
-1. Define a dictionary service to watch to label app: dictionary in a file named dictionary.yml
-   1. Deploy your dictionary service
-2. Define a manifest for the hangman service in a manifest called hangman.yml
+   1. Ensure your dictionary deployment is up, running and side-cared! ie Ready=[2/2]
+2. Define a dictionary service
+   1. The service must watch for pods with label app=dictionary
+   2. Make sure the dictionary service is accessible on your node using port 30400
+   3. Deploy your dictionary service
+3. Define a manifest for the hangman service in a manifest called hangman.yml
    1. Image: k8sland/hangman_svc_go:0.0.2
    2. Change the command to read /app/hangman --url dictionary:4000
    3. Define a K8s service for hangman to be exposed on nodeport: 30500
    4. Deploy the hangman manifest
-3. Deploy the dictionary V1 service
-4. Define a manifest for a dictionaryV2 deployment in a manifest call
+4. Deploy the dictionary V1 service
+5. Define a manifest for a dictionaryV2 deployment in a manifest call
    1. Same image as above
    2. Change the command to read /app/dictionary -d trump.txt
 
