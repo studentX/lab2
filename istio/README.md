@@ -97,13 +97,14 @@
 
     ```shell
     kubectl apply -f k8s/dictionary.yml
+    kubectl get svc,ep
     ```
 
 3. Deploy Hangman V1
 
     ```shell
     kubectl apply -f k8s/hangman_v1.yml
-    kubectl get deploy,rs,po
+    kubectl get deploy,rs,po,svc
     ```
 
 4. Play the game!
@@ -112,16 +113,37 @@
     kubectl run -i --tty --rm hm --image k8sland/hangman-cli-go:0.0.1 --command -- /app/hangman_cli --url hangman:5000
     ```
 
-5. Configure your edge controller and routes
+5. Deploy dictionary V2
 
     ```shell
-    kubectl apply -f istio/gateway.yml -f istio1/routes.yml -f istio1/subsets.yml
+    kubectl apply -f k8s/dictionary_v2.yml
+    kubectl get deploy,rs,po
     ```
 
-6. Enable Istio Sidecar injection in your default namespace
+6. Run the picker
 
     ```shell
-    kubectl label namespace default istio-injection=enabled
+    ./picker.sh
+    ```
+
+1. Deploy dictionary weighted traffic policy
+
+    ```shell
+    kubectl apply -f istio/dictionary-80-20.yml
+    kubectl get virtualservice
+    ```
+
+1. Delete your traffic policy
+
+    ```shell
+    kubectl delete -f istio/dictionary-80-20.yml
+    ```
+
+2. Deploy dictionary mirror traffic policy
+
+    ```shell
+    kubectl apply -f istio/mirror.yml
+    kubectl get virtualservice
     ```
 
 ---
