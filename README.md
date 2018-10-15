@@ -2,7 +2,7 @@
   <img src="assets/lab.png" width="128" height="auto"/>
 </div>
 
-# K8sLand Labs (II)
+# K8sLand Labs II
 
 This repo contains all the labs from the K8sLand Level II training.
 
