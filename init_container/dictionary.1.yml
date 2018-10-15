@@ -1,0 +1,25 @@
+apiVersion: v1
+kind:       Pod
+metadata:
+  name: dictionary
+  labels:
+    app: dictionary
+spec:
+  containers:
+  - name: dictionary
+    image: k8sland/dictionary-svc-go:0.0.2
+    command: ['/app/dictionary', '-a', '/var/dictionary/words', '-d', 'list1.txt']
+    volumeMounts:
+    - mountPath: /var/dictionary
+      name: dictionary
+  initContainers:
+  - name: clone
+    image: luzhzh/git-client
+    command: ['sh', '-c', 'rm -rf /var/dictionary/words && git clone https://github.com/k8sland/dictionaries.git /var/dictionary/words']
+    volumeMounts:
+    - mountPath: /var/dictionary
+      name: dictionary
+  volumes:
+  - name: dictionary
+    hostPath:
+      path: /home/docker/dictionary
