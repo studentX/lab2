@@ -2,9 +2,9 @@
   <img src="assets/lab.png" width="128" height="auto"/>
 </div>
 
-# K8sLand Level II Labs
+# K8sLand Labs (II)
 
-This repo contains all the labs for K8sland Level II training.
+This repo contains all the labs from the K8sLand Level II training.
 
 ---
 <img src="assets/imhotep_logo.png" width="32" height="auto"/> © 2018 Imhotep Software LLC.
