@@ -1,6 +1,6 @@
 <img src="assets/lab.png" styles="float:right" width="128" height="auto"/>
 
-# K8sLand Level II
+# K8sLand Level II Labs
 
 This repo contains all the labs for K8sland Level II training.
 
