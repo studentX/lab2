@@ -1,4 +1,4 @@
-<div style="float:right">
+<div align="right" style="margin-top:10px">
   <img src="assets/lab.png" width="128" height="auto"/>
 </div>
 
