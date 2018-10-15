@@ -1,4 +1,6 @@
-<img src="assets/lab.png" styles="float:right" width="128" height="auto"/>
+<div styles="float:right">
+  <img src="assets/lab.png" width="128" height="auto"/>
+</div>
 
 # K8sLand Level II Labs
 
