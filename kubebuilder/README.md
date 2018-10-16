@@ -16,7 +16,7 @@ defining a CRD with a Docker image name and a replica count.
 
 1. Install GO
 
-The official instructions are [Here](https://golang.org/doc/install)
+    The official instructions are [Here](https://golang.org/doc/install)
 
 1. Install Kubebuilder
 
