@@ -19,7 +19,7 @@ defining a CRD with a Docker image name and a replica count.
     If you don't already have go running on your machine, install GO per
     [these instructions](https://golang.org/doc/install)
 
-1. Install Kubebuilder
+1. Install KubeBuilder
 
     ```shell
     export KB_ARCH=amd64
