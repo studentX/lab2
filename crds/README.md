@@ -2,16 +2,17 @@
 
 > Leveraging Kubebuilder, define a painter CRD to color all pods in a given namespace.
 
-1. *Coloring a pod* is defined as setting a color label equaling the CRD color on that pod.
-1. Define a CR that specifies the color property. The only valid colors are: Red, Blue, Green
+1. *Coloring a pod* is defined as setting a color label on a pod equaling the CRD color
+1. Define a CR to include a color property. Leverage the built-in enum validator
+   to only include: Red, Blue and Green
 1. Implement a painter controller to monitor your painter CRD and pods as follows:
   1. When a painter CRD is created or updated, all pods in that namespace
      must be painted the CRD specified color.
-  1. When a painter CRD is deleted, all pods color labels in that namespace must be deleted
+  1. When a painter CRD is deleted, all pods color labels in that namespace must be removed!
   1. When a new pod is added or updated, its color label must be updated accordingly
 1. Write tests to ensure your controller is operating nominally
 1. In your local cluster, deploy your painter controller and ensure it exhibits the
-   correct behavior
+   correct behaviors
 
 ## Commands
 
