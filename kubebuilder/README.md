@@ -60,9 +60,10 @@ defining a CRD with a Docker image name and a replica count.
     export PATH=$PATH:$GOBIN
     ```
 
-1. Install Dep for GO dependency management
+1. Install Dep
 
-  Please follow the installation recipes [Here](https://github.com/golang/dep)
+    KubeBuilder currently leverages dep for dependency management. Please install
+    Dep per these [installation instructions](https://github.com/golang/dep)
 
 1. Initialize KubeBuilder and install dependencies
 
@@ -104,8 +105,10 @@ defining a CRD with a Docker image name and a replica count.
    ```shell
    kubectl apply -f config/
    # In your watch window you should see a new containerset-sample-deployment pod
-   # and associated deployment
+   # and associated container-set deployment
    ```
+
+1. How cool was that?
 
 ---
 <img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2018 Imhotep Software LLC.
