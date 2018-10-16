@@ -1,3 +1,5 @@
 /pkg
-vendor
+.envrc
+
 notes.md
+notes1.md
