@@ -21,19 +21,8 @@ spec:
         metadata:
           type: object
         spec:
-          properties:
-            color:
-              enum:
-              - Red
-              - Blue
-              - Green
-              type: string
-          type: object
+          # CHANGE_ME!
         status:
-          properties:
-            paintedPods:
-              format: int32
-              type: integer
           type: object
   version: v1alpha1
 status:

@@ -13,10 +13,8 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/controller"
-	"sigs.k8s.io/controller-runtime/pkg/handler"
 	"sigs.k8s.io/controller-runtime/pkg/manager"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
-	"sigs.k8s.io/controller-runtime/pkg/source"
 )
 
 // Add creates a new Painter Controller and adds it to the Manager with default RBAC. The Manager will set fields on the Controller
@@ -33,15 +31,12 @@ func add(mgr manager.Manager, r reconcile.Reconciler) error {
 		return err
 	}
 
-	// Watch for changes to Painter
-	if err = c.Watch(&source.Kind{Type: &workloadv1alpha1.Painter{}}, &handler.EnqueueRequestForObject{}); err != nil {
-		return err
-	}
+	// Watch for changes to Painter CRD
+	// CHANGE_ME!
 
-	// Watch for pods changes
-	if err = c.Watch(&source.Kind{Type: &corev1.Pod{}}, &handler.EnqueueRequestForObject{}); err != nil {
-		return err
-	}
+	// Watch for pods changes aka create/updates
+	// CHANGE_ME!
+
 	return nil
 }
 
@@ -49,6 +44,7 @@ func add(mgr manager.Manager, r reconcile.Reconciler) error {
 type ReconcilePainter struct {
 	client.Client
 	scheme *runtime.Scheme
+	// Cache Painter CRD colors. Key is the namespace, value is the color name
 	colors map[string]string
 }
 
@@ -88,22 +84,14 @@ func (r *ReconcilePainter) Reconcile(request reconcile.Request) (reconcile.Resul
 
 	log.Println("Reconciling", request.NamespacedName)
 
-	p, err := r.findCRD(request)
-	if err == nil {
-		r.colors[ns] = p.Spec.Color
-		return res, r.colorPods(ns, r.colors[ns])
-	}
+	// Check for Painter CRD Event if found then update color map for the given
+	// namespace and paint all existing pods
+	// CHANGE_ME!
 
-	po, e := r.findPod(request)
-	if e != nil {
-		if errors.IsNotFound(e) {
-			log.Println("Resetting pods color")
-			delete(r.colors, ns)
-			return res, r.colorPods(ns, r.colors[ns])
-		}
-		return res, e
-	}
-	return res, r.colorPod(po, r.colors[ns])
+	// Next check if this is a pod event and if so paint the given pod
+	// If not we must reset the namespace color to "" so that pod color labels
+	// are deleted and repaint all existing pods as the painter CRD got deleted.
+	// CHANGE_ME!
 }
 
 // Check if this is a pod event. Returns a pod or error out otherwise.
