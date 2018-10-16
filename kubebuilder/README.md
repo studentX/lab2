@@ -17,7 +17,7 @@ defining a CRD with a Docker image name and a replica count.
 1. Install GO
 
     If you don't already have go running on your machine, install GO per
-    [these instructions](https://golang.org/doc/install)
+    [these instructions](https://golang.org/doc/install).
 
 1. Install KubeBuilder
 
@@ -41,8 +41,8 @@ defining a CRD with a Docker image name and a replica count.
 
 1. Install Kustomize
 
-  Kubebuilder requires [Kustomize](https://github.com/kubernetes-sigs/kustomize)
-  to manipulate your deployment artifacts. Kustomize version must be > 1.0.4
+    Kubebuilder requires [Kustomize](https://github.com/kubernetes-sigs/kustomize)
+    to manipulate your deployment artifacts. Kustomize version must be > 1.0.4
 
     ```shell
     # For OSX install use homebrew
