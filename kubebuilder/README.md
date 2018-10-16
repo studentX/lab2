@@ -5,13 +5,13 @@
 In this lab you are going to install and setup kubebuilder in your local dev
 environment on minikube. You are going to define and provision a sample CRD
 called containerset. A containerset allows you to define a deployment by merely
-specifying an image and a replica count.
+defining a CRD with a Docker image name and a replica count.
 
 > NOTE! The current version of kubebuilder cans the image and replicaCount to be
 > nginx and 1 which is ok for this initial lab.
 
 > NOTE! Sadly, as of this writing, kubebuilder does not leverage GO modules.
-> So if you are running GO >= 1.11, we will need to turn modules off as
+> So if you are running GO >= 1.11, you will need to turn modules off as
 > kubebuilder currently leverages dep for package management
 
 1. Install GO
