@@ -12,7 +12,7 @@ defining a CRD with a Docker image name and a replica count.
 
 > NOTE! Sadly, as of this writing, kubebuilder does not leverage GO modules.
 > So if you are running GO >= 1.11, you will need to turn modules off as
-> kubebuilder currently leverages dep for package management
+> kubebuilder currently leverages dep for package management.
 
 1. Install GO
 
