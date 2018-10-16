@@ -73,7 +73,7 @@ func skipSystemNS(ns string) bool {
 // Reconcile reads that state of the cluster for a Painter object and makes changes based on the state read
 // and what is in the Painter.Spec
 // Automatically generate RBAC rules to allow the Controller to read and write Pods
-// +kubebuilder:rbac:groups=apps,resources=pods,verbs=get;list;watch;create;update;patch;
+// +kubebuilder:rbac:groups=,resources=pods,verbs=get;list;watch;update;patch
 // +kubebuilder:rbac:groups=workload.k8sland.io,resources=painters,verbs=get;list;watch;create;update;patch;delete
 func (r *ReconcilePainter) Reconcile(request reconcile.Request) (reconcile.Result, error) {
 	var (
