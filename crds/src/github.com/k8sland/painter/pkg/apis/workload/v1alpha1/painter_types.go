@@ -15,6 +15,7 @@ type PainterSpec struct {
 	// Important: Run "make" to regenerate code after modifying this file
 
 	// CHANGE_ME! Define color property and annotation
+	// +kubebuilder:validation:<CHANGE_ME!>
 }
 
 // PainterStatus defines the observed state of Painter
