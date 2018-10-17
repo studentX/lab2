@@ -6,23 +6,23 @@ metadata:
     app: dictionary
 spec:
   containers:
-  - name: dictionary
-    image: k8sland/dictionary-svc-go:0.0.2
-    command: ['/app/dictionary', '-a', '/var/dictionary/words', '-d', 'trump.txt']
+  - name:    dictionary
+    image:   CHANGE_ME!
+    command: CHANGE_ME!
     ports:
-    - name: http
+    - name:          http
       containerPort: 4000
     volumeMounts:
-    - mountPath: /var/dictionary
-      name: dictionary
+    - name:      CHANGE_ME!
+      mountPath: CHANGE_ME!
   initContainers:
-  - name: clone
-    image: luzhzh/git-client
-    command: ['sh', '-c', 'rm -rf /var/dictionary/words && git clone https://github.com/k8sland/dictionaries.git /var/dictionary/words']
+  - name:    git
+    image:   luzhzh/git-client
+    command: CHANGE_ME!
     volumeMounts:
-    - mountPath: /var/dictionary
-      name: dictionary
+    - name:      CHANGE_ME!
+      mountPath: CHANGE_ME!
   volumes:
-  - name: dictionary
+  - name: CHANGE_ME!
     hostPath:
-      path: /home/docker/dictionary
+      path: CHANGE_ME!
