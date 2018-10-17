@@ -8,17 +8,21 @@ spec:
   containers:
   - name: dictionary
     image: k8sland/dictionary-svc-go:0.0.2
-    command: ['/app/dictionary', '-a', '/var/dictionary/words', '-d', 'list2.txt']
+    command: ['/app/dictionary', '-a', '/var/dictionary/words', '-d', 'trump.txt']
+    ports:
+    - name: http
+      containerPort: 4000
     volumeMounts:
     - mountPath: /var/dictionary
       name: dictionary
   initContainers:
   - name: clone
     image: luzhzh/git-client
-    command: ['sh', '-c', 'git clone https://github.com/k8sland/dictionaries.git /var/dictionary/words']
+    command: ['sh', '-c', 'rm -rf /var/dictionary/words && git clone https://github.com/k8sland/dictionaries.git /var/dictionary/words']
     volumeMounts:
     - mountPath: /var/dictionary
       name: dictionary
   volumes:
   - name: dictionary
-    emptyDir: {}
+    hostPath:
+      path: /home/docker/dictionary
