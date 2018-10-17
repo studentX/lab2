@@ -13,15 +13,15 @@ spec:
     - name: http
       containerPort: 4000
     volumeMounts:
-    - mountPath: /var/dictionary
-      name: dictionary
+    - name:      dictionary
+      mountPath: /var/dictionary
   initContainers:
-  - name: clone
-    image: luzhzh/git-client
-    command: ['sh', '-c', 'rm -rf /var/dictionary/words && git clone https://github.com/k8sland/dictionaries.git /var/dictionary/words']
+  - name:    git
+    image:   luzhzh/git-client
+    command: ['sh', '-c', 'rm -rf /var/dictionary/words && git clone https://github.com/k8sland/dictionaries1.git /var/dictionary/words']
     volumeMounts:
-    - mountPath: /var/dictionary
-      name: dictionary
+    - name:      dictionary
+      mountPath: /var/dictionary
   volumes:
   - name: dictionary
     hostPath:

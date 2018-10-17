@@ -12,7 +12,8 @@
 4. Define an init container to prepopulate a volume to be used by the dictionary
    service
 5. Your init container will need to clone this repo [Dictionaries](https://github.com/k8sland/dictionaries.git) in order to provision the volume
-
+6. Edit the pod and change the init container command to cause the pod to fail
+7. What's happening with your dictionary pod?
 
 ## Commands
 
@@ -27,6 +28,11 @@
 1. Verify the volume was provisioned correctly
     ```shell
     kubectl exec -it dictionary -- wget -q -O - http://localhost:4000/words
+    ```
+1. Change git url so that it does not resolve
+    ```
+    kubectl delete -f dictionary.yml --force --grace-period=0
+    kubectl apply -f dictionary.yml
     ```
 
 <br/>
