@@ -12,7 +12,7 @@ CastleBlack but not the NightKing. But no one can `melt CastleBlack like a Night
    castleblack, north and nightking.
 1. Each service provide endpoints to enter or melt CastleBlack via /v1/enter, /v1/melt
 1. Using a Cilium network policy configure your network to allow a North to enter
-   CastleBlack and a NightKing to melt it.
+   CastleBlack and a NightKing to melt it (Edit k8s/policies.yml).
 1. Ensure a NightKing can not simply enter CastleBlack
 1. Ensure a North can't simply melt CastleBack
 
@@ -21,7 +21,16 @@ CastleBlack but not the NightKing. But no one can `melt CastleBlack like a Night
 1. Configure minikube to enable CNI
 
     ```shell
-    minikube start <YOUR_CONFIG> --network-plugin=cni --extra-config=kubelet.network-plugin=cni
+    # Stop
+    minikube stop
+    # Delete
+    minikube delete
+    # Start with new configs
+    minikube start --cpus=4 --memory==8192 \
+      --vm-driver=hyperkit \
+      --kubernetes-version=v1.12.1 \
+      --network-plugin=cni \
+      --extra-config=kubelet.network-plugin=cni
     ```
 
 1. Install Cilium on your cluster
@@ -45,7 +54,7 @@ CastleBlack but not the NightKing. But no one can `melt CastleBlack like a Night
 1. Deploy your Cilium policy
 
     ```shell
-    kubectl apply -f k8s/entry.yml
+    kubectl apply -f k8s/policies.yml
     ```
 
 1. Validate your policy is setup correctly
