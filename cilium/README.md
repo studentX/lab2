@@ -13,8 +13,8 @@ CastleBlack but not the NightKing. But no one can `melt CastleBlack like a Night
 1. Each service provide endpoints to enter or melt CastleBlack via /v1/enter, /v1/melt
 1. Using a Cilium network policy configure your network to allow a North to enter
    CastleBlack and a NightKing to melt it (Edit k8s/policies.yml).
-1. Ensure a NightKing can not simply enter CastleBlack
-1. Ensure a North can't simply melt CastleBack
+1. Ensure a NightKing can not just `simply *Enter* CastleBlack.
+1. Likewise ensure a North can't `simply *Melt* CastleBack.
 
 ## Setup
 
