@@ -3,11 +3,11 @@
 > Let's play Game of Thrones by leveraging Cilium CNI
 
 If you follow G.O.T you might be aware that Winter has come and CastleBlack is under attack!
-In this game we will be dealing with North men and the NightKing. A North can enter
-CastleBlack but not the NightKing. But no one can `melt CastleBlack like a NightKing!
+In this game, we will be dealing with North men and the NightKing. A North can enter
+CastleBlack but not the NightKing. However no one can `melt CastleBlack like a NightKing can!
 
 1. For this lab, you will need to configure minikube for CNI and provision Cilium
-   per the commands below
+   per the commands below...
 1. Using the provided K8s manifests deploy into your cluster 3 services. Namely
    castleblack, north and nightking.
 1. Each service provide endpoints to enter or melt CastleBlack via /v1/enter, /v1/melt
