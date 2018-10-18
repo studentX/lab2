@@ -62,8 +62,7 @@ CastleBlack but not the NightKing. But no one can `melt CastleBlack like a Night
     ```shell
     kubectl exec -it -n kube-system \
     $(kubectl get po -n kube-system -l k8s-app=cilium -o jsonpath='{.items[*].metadata.name}') \
-    -- \
-    cilium policy get
+    -- cilium policy get
     ```
 
 1. Check Cilium policy is active
@@ -71,8 +70,7 @@ CastleBlack but not the NightKing. But no one can `melt CastleBlack like a Night
     ```shell
     kubectl exec -it -n kube-system \
     $(kubectl get po -n kube-system -l k8s-app=cilium -o jsonpath='{.items[*].metadata.name}') \
-    -- \
-    cilium endpoint list
+    -- cilium endpoint list
     ```
 
 1. Monitor Cilium Requests
@@ -80,8 +78,7 @@ CastleBlack but not the NightKing. But no one can `melt CastleBlack like a Night
     ```shell
     kubectl exec -it -n kube-system \
     $(kubectl get po -n kube-system -l k8s-app=cilium -o jsonpath='{.items[*].metadata.name}') \
-    -- \
-    cilium monitor
+    -- cilium monitor
     ```
 
 1. Check NorthMan endpoints
