@@ -1,7 +1,7 @@
 apiVersion: cilium.io/v2
 kind:       CiliumNetworkPolicy
 metadata:
-  name: l7
+  name: enterormelt
 spec:
   endpointSelector:
     matchLabels:
