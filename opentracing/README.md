@@ -8,8 +8,8 @@
 
 In this lab, you are going to decorate a web server using the *OpenTracing* API to
 decorate your requests. There are 2 services involved: *Castle* and *Knight*. The
-Knight will attempt to melt the castle, but if you're a G.O.T fan, you already
-know that only the nightking can melt a castle using his undead dragon.
+Knights want to melt a Castle, but if you're a G.O.T fan, you already
+know that only the NightKing can melt a Castle using his undead dragon ;)
 
 1. Instrument the castle code base to add tracing upon receiving a melt request
 1. If the given night is not the nightking, then the trace should report a failure
