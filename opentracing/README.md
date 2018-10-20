@@ -22,11 +22,11 @@ know that only the NightKing can melt a Castle using his undead dragon ;)
 1. If the given Knight is *NightKing* add a log to the castle span to indicate
    `the castle is melted`.
 1. All other knights should produce a span error.
-1. Span errors are indicated by:
+1. Span errors are indicated by
    1. Setting a span tag error=true
-   2. Adding a structured log on the span using:
-    1. event=error
-    2. message=only the nightking can melt
+   1. Adding a structured log on the span using
+      1. event=error
+      2. message=only the nightking can melt
 1. Edit the provided makefile to use your own docker **registry**
 1. Build and push new docker images using the Makefile (commands below!)
 1. Deploy jaeger, castle and knight service to your local cluster.
