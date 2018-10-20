@@ -86,7 +86,8 @@ func meltHandler(w http.ResponseWriter, r *http.Request) {
 
 	if meltAuth(q.Knight) {
 		if err := writeResponse(sx, w); err == nil {
-			s.LogKV("message", fmt.Sprintf("castle successfully melted"))
+			// Add span log to indicate castle is melted
+			!!YOUR_CODE!!
 		}
 	} else {
 		internal.WriteErrOut(sx, w, fmt.Errorf("only the NightKing can melt"))
@@ -148,8 +149,7 @@ func startSpan(r *http.Request) (opentracing.Span, error) {
 	if err != nil {
 		return s, err
 	}
-	s.SetTag("component", "castle")
-	s.SetTag("http.method", r.Method)
-	s.SetTag("http.url", r.URL)
+	// Add span tags for component, http.method, http.url
+	!!YOUR_CODE!!
 	return s, nil
 }
