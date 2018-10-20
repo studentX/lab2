@@ -2,24 +2,24 @@
 kind:       Deployment
 apiVersion: apps/v1
 metadata:
-  name: nightking
+  name: castle
 spec:
   replicas: 1
   selector:
     matchLabels:
       org:  g.o.t
-      clan: nightking
+      role: castle
   template:
     metadata:
       labels:
         org:  g.o.t
-        clan: nightking
+        role: castle
     spec:
       containers:
-      - name:            nightking
-        image:           k8sland/nightking-svc-go:0.0.1
+      - name:            castle
+        image:           k8sland/ot-castle-svc-go:0.0.1
         imagePullPolicy: IfNotPresent
-        args:            ["/app/nightking", "--url", "castleblack:4000"]
+        args:            ["/app/castle", "-j", "jaeger:6831"]
         resources:
           requests:
             cpu:    100m
@@ -29,20 +29,20 @@ spec:
             memory: 50Mi
         ports:
         - name:          http
-          containerPort: 4006
+          containerPort: 4000
 
 ---
 kind:       Service
 apiVersion: v1
 metadata:
-  name: nightking
+  name: castle
 spec:
   type: NodePort
   selector:
     org:  g.o.t
-    clan: nightking
+    role: castle
   ports:
     - name:       http
       protocol:   TCP
-      nodePort:   30502
-      port:       4006
+      nodePort:   30500
+      port:       4000

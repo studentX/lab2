@@ -2,24 +2,24 @@
 kind:       Deployment
 apiVersion: apps/v1
 metadata:
-  name: castleblack
+  name: knight
 spec:
   replicas: 1
   selector:
     matchLabels:
-      org:    g.o.t
-      castle: castleblack
+      org:  g.o.t
+      clan: knight
   template:
     metadata:
       labels:
-        org:    g.o.t
-        castle: castleblack
+        org:  g.o.t
+        clan: knight
     spec:
       containers:
-      - name:            castle
-        image:           k8sland/castle-svc-go:0.0.2
+      - name:            knight
+        image:           k8sland/ot-knight-svc-go:0.0.1
         imagePullPolicy: IfNotPresent
-        args:            ["/app/castle"]
+        args:            ["/app/knight", "-j", "jaeger:6831", "-c", "castle:4000"]
         resources:
           requests:
             cpu:    100m
@@ -29,20 +29,19 @@ spec:
             memory: 50Mi
         ports:
         - name:          http
-          containerPort: 4000
-
+          containerPort: 4005
 ---
 kind:       Service
 apiVersion: v1
 metadata:
-  name: castleblack
+  name: knight
 spec:
   type: NodePort
   selector:
-    org:    g.o.t
-    castle: castleblack
+    org:  g.o.t
+    clan: knight
   ports:
     - name:       http
       protocol:   TCP
-      nodePort:   30500
-      port:       4000
+      nodePort:   30501
+      port:       4005

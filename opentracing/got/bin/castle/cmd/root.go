@@ -82,12 +82,14 @@ func meltHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	s.SetTag("knight", q.Knight)
 
+	log.Printf("Got melt request from %s", q.Knight)
+
 	if meltAuth(q.Knight) {
 		if err := writeResponse(sx, w); err == nil {
 			s.LogKV("message", fmt.Sprintf("castle successfully melted"))
 		}
 	} else {
-		internal.WriteErrOut(sx, w, fmt.Errorf("only the nightking can melt"))
+		internal.WriteErrOut(sx, w, fmt.Errorf("only the NightKing can melt"))
 		return
 	}
 }
@@ -117,7 +119,8 @@ func writeResponse(ctx context.Context, w http.ResponseWriter) error {
 	defer s.Finish()
 
 	resp := internal.Response{Status: "💀  Castle Melted!!"}
-	if raw, err := json.Marshal(resp); err != nil {
+	raw, err := json.Marshal(resp)
+	if err != nil {
 		sx := opentracing.ContextWithSpan(ctx, s)
 		internal.WriteErrOut(sx, w, err)
 		return err
@@ -145,7 +148,8 @@ func startSpan(r *http.Request) (opentracing.Span, error) {
 	if err != nil {
 		return s, err
 	}
-	// Tag the span the following tags component, http.method, http.url
-	// YOUR_CODE!!
+	s.SetTag("component", "castle")
+	s.SetTag("http.method", r.Method)
+	s.SetTag("http.url", r.URL)
 	return s, nil
 }
