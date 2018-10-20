@@ -1,0 +1,6 @@
+cov.out
+Makefile
+*_test.go
+k8s
+go.sum
+README.md
