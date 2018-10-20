@@ -56,11 +56,13 @@ know that only the NightKing can melt a Castle using his undead dragon ;)
 
 1. Deploy your services
 
+   > NOTE! Edit the manifest and update the Docker image names
+
     ```shell
     kubectl deploy -f k8s/got
     ```
 
-1. Test your endpoints and traces
+2. Test your endpoints and traces
 
    ```shell
    http $(minikube ip):30501/v1/melt knight=fred
