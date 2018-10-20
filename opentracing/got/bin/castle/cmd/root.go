@@ -83,7 +83,9 @@ func meltHandler(w http.ResponseWriter, r *http.Request) {
 	s.SetTag("knight", q.Knight)
 
 	if meltAuth(q.Knight) {
-		writeResponse(sx, w)
+		if err := writeResponse(sx, w); err == nil {
+			s.LogKV("message", fmt.Sprintf("castle successfully melted"))
+		}
 	} else {
 		internal.WriteErrOut(sx, w, fmt.Errorf("only the nightking can melt"))
 		return
@@ -107,7 +109,7 @@ func readQuest(ctx context.Context, w http.ResponseWriter, r *http.Request) (int
 	return q, nil
 }
 
-func writeResponse(ctx context.Context, w http.ResponseWriter) {
+func writeResponse(ctx context.Context, w http.ResponseWriter) error {
 	s := opentracing.StartSpan(
 		internal.FuncName(0),
 		opentracing.ChildOf(opentracing.SpanFromContext(ctx).Context()),
@@ -118,12 +120,12 @@ func writeResponse(ctx context.Context, w http.ResponseWriter) {
 	if raw, err := json.Marshal(resp); err != nil {
 		sx := opentracing.ContextWithSpan(ctx, s)
 		internal.WriteErrOut(sx, w, err)
-	} else {
-		s.SetTag("action", "castle.melted")
-		s.LogKV("message", fmt.Sprintf("castle successfully melted"))
-		w.Header().Set("Content-Type", "application/json; charset=utf-8")
-		fmt.Fprintf(w, string(raw))
+		return err
 	}
+	s.SetTag("action", "castle.melted")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	fmt.Fprintf(w, string(raw))
+	return nil
 }
 
 func meltAuth(k string) bool {
