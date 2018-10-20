@@ -1,4 +1,4 @@
-<img src="../assets/k8sland.png" align="right" width="auto" height="128"/>
+<img src="../assets/lab.png" align="right" width="auto" height="128"/>
 
 <br/>
 <br/>
@@ -6,8 +6,8 @@
 
 # OpenTracing G.O.T Lab
 
-For this lab you are going to decorate a web server by leverage opentracing to
-decorate a request. There are 2 services involved namely castle and knight. The
+In this lab, you are going to decorate a web server using the *OpenTracing* API to
+decorate your requests. There are 2 services involved: *Castle* and *Knight*. The
 Knight will attempt to melt the castle, but if you're a G.O.T fan, you already
 know that only the nightking can melt a castle using his undead dragon.
 
