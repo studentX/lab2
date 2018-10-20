@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name:            castle
-        image:           k8sland/ot-castle-svc-go:0.0.1
+        image:           !!CHANGE_ME!!/ot-castle-svc-go:0.0.1
         imagePullPolicy: IfNotPresent
         args:            ["/app/castle", "-j", "jaeger:6831"]
         resources:

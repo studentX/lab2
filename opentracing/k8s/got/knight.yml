@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name:            knight
-        image:           k8sland/ot-knight-svc-go:0.0.1
+        image:           !!CHANGE_ME!!/ot-knight-svc-go:0.0.1
         imagePullPolicy: IfNotPresent
         args:            ["/app/knight", "-j", "jaeger:6831", "-c", "castle:4000"]
         resources:
