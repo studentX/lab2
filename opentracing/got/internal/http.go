@@ -55,7 +55,6 @@ func Call(ctx context.Context, method, url string, payload io.Reader, res interf
 	}
 
 	if resp.StatusCode != http.StatusOK {
-		s.SetTag("error", true)
 		e, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
 			return SpanError(sx, err)
