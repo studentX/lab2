@@ -11,7 +11,7 @@
 In this lab, we are going to decorate a web server using **OpenTracing** APIs to
 decorate HTTP requests. There are 2 services involved: **Castle** and **Knight**. The
 Knights want to melt Castles, but if you're a G.O.T fan, you already
-know that only the NightKing can melt a Castle using his undead dragon 🐲 😜...
+know that only the NightKing can melt a Castle using his undead 🐉...
 
 <br/>
 
