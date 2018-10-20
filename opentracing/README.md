@@ -27,9 +27,9 @@ know that only the NightKing can melt a Castle using his undead dragon ;)
    1. Adding a structured log on the span using
       1. event=error
       2. message=only the nightking can melt
-1. Edit the provided makefile to use your own docker **registry**
-1. Build and push new docker images using the Makefile (commands below!)
-1. Deploy jaeger, castle and knight service to your local cluster.
+1. Edit the provided Makefile to use your own docker **registry**!
+1. Build and push new docker images using the Makefile (see commands below!)
+1. Deploy Jaeger, Castle and Knight service to your local cluster.
    1. You will need to modify the K8s manifest to use your image names (castle, knight)
 1. Validate that your traces are correctly showing the microservices flow using
    different knights
