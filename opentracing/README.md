@@ -7,6 +7,7 @@
 # OpenTracing G.O.T Lab
 
 <br/>
+
 In this lab, we are going to decorate a web server using the **OpenTracing** API to
 decorate your requests. There are 2 services involved: **Castle** and **Knight**. The
 Knights want to melt a Castle, but if you're a G.O.T fan, you already
