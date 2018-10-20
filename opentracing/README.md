@@ -40,11 +40,11 @@ know that only the NightKing can melt a Castle using his undead dragon ;)
 
 1. Setup Jaeger
 
-  ```shell
-  kubectl apply -f k8s/jaeger.yml
-  # Jaeger UI
-  open http://$(minikube ip):30600/
-  ```
+    ```shell
+    kubectl apply -f k8s/jaeger.yml
+    # Jaeger UI
+    open http://$(minikube ip):30600/
+    ```
 
 2. Build your code and publish your own docker images
 
