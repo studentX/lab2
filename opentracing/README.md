@@ -6,30 +6,30 @@
 
 # OpenTracing G.O.T Lab
 
-In this lab, you are going to decorate a web server using the *OpenTracing* API to
-decorate your requests. There are 2 services involved: *Castle* and *Knight*. The
+In this lab, you are going to decorate a web server using the **OpenTracing** API to
+decorate your requests. There are 2 services involved: **Castle** and **Knight**. The
 Knights want to melt a Castle, but if you're a G.O.T fan, you already
 know that only the NightKing can melt a Castle using his undead dragon ;)
 
-1. Instrument the castle code base to add tracing upon receiving a melt request
-1. If the given night is not the nightking, then the trace should report a failure
-1. If the given night is indeed the nightking then the trace should indicate the
-  castle was melted.
-1. Your castle trace needs to add the following tags to the trace:
-  1. http.method
-  2. http.url
-  3. knight
-1. In the event of a nightking the castle span should log a message indicating
-   the castle was melted.
+1. The Knight service surfaces post requests given */v1/melt* url
+   1. The service then turns around and post */v1/melt* on the Castle service
+      given a Knight name.
+1. Instrument the Castle service by tracing incoming *melt* requests
+  1. Edit your Castle trace and add the following tags to the trace:
+    1. http.method
+    2. http.url
+    3. knight
+1. If the given Knight is *NightKing* add a log to the castle span to indicate
+   `the castle is melted`.
 1. All other knights should produce a span error.
 1. Span errors are indicated by:
    1. Setting a span tag error=true
    2. Adding a structured log on the span using:
     1. event=error
-    2. message=only the nightkind can melt
-1. You will need to modify the provided makefile to use your own docker registry
-1. Build and push your own docker images with your new code
-1. Deploy jaeger, castle and knight service to your local cluster
+    2. message=only the nightking can melt
+1. Edit the provided makefile to use your own docker **registry**
+1. Build and push new docker images using the Makefile (commands below!)
+1. Deploy jaeger, castle and knight service to your local cluster.
    1. You will need to modify the K8s manifest to use your image names (castle, knight)
 1. Validate that your traces are correctly showing the microservices flow using
    different knights
@@ -37,7 +37,6 @@ know that only the NightKing can melt a Castle using his undead dragon ;)
 <br/>
 
 ## Commands
-
 
 1. Setup Jaeger
 
@@ -48,6 +47,8 @@ know that only the NightKing can melt a Castle using his undead dragon ;)
   ```
 
 2. Build your code and publish your own docker images
+
+   > NOTE! You must change the Docker registry to use your own user account!
 
     ```shell
     make push
