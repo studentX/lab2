@@ -28,7 +28,7 @@ kbuild:              ## Builds Knight CLI
 	-a -tags netgo -o execs/${KNIGHT_APP} bin/knight/main.go
 
 kimg: kbuild         ## Build Knight Docker Image
-	@docker build -f bin/castle/Dockerfile --rm -t $(REGISTRY)/$(KNIGHT_IMAGE):$(KNIGHT_VERSION) .
+	@docker build -f bin/knight/Dockerfile --rm -t $(REGISTRY)/$(KNIGHT_IMAGE):$(KNIGHT_VERSION) .
 
 kpush: kimg          ## Push Knight Docker Image
 	@docker push $(REGISTRY)/$(KNIGHT_IMAGE):$(KNIGHT_VERSION)
