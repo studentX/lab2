@@ -16,28 +16,16 @@
 
 ## Commands
 
-### Install Goland v 1.11
-
-Ensure you have a recent [GO installation](https://vmw.gopherland.io/lessons/install)
-on your local machine.
-
-### Install kubebuilder
-
-Please refer to the [CRD](https://vmw2.k8sland.io/lessons/crd_resource) lesson materials to install kubebuilder!
-
-### Initialize kubebuilder
-
-> NOTE: As of this writing Kubebuilder does NOT use go modules and required dep
-> to manage GO package dependencies.
-
-```shell
-kubebuilder init --domain k8sland.io --license apache2 --owner "K8sland Training"
-```
-
 ### Create your custom resource
 
 ```shell
 kubebuilder create api --group workload --version v1alpha1 --kind Painter
+```
+
+### Test your controller
+
+```shell
+make test
 ```
 
 ### Install your Painter CRD
