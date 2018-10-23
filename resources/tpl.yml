@@ -3,15 +3,15 @@
 apiVersion: apps/v1
 kind:       Deployment
 metadata:
-  name: CHANGE_ME!
+  name: iconoflix
 spec:
   replicas: 1
   selector:
     matchLabels:
-      CHANGE_ME!
+      app: iconoflix
   template:
     metadata:
-      CHANGE_ME!
+      app: iconoflix
     spec:
       containers:
       - name:  iconoflix
@@ -25,12 +25,12 @@ spec:
 apiVersion: v1
 kind:       Service
 metadata:
-  name: CHANGE_ME!
+  name: iconoflix
 spec:
-  type:  CHANGE_ME!
+  type:  NodePort
   selector:
-    CHANGE_ME!
+    app: iconoflix
   ports:
     - name:     http
       port:     4000
-      CHANGE_ME!
+      nodePort: 30400

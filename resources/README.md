@@ -14,7 +14,7 @@
 
 ## <img src="../assets/face.png" width="auto" height="32"/> Lab Template
 
-+ [Template](./template/tpl.yml)
++ [Template](./tpl.yml)
 
 <br/>
 
