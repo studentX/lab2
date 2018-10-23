@@ -15,6 +15,8 @@
 ## <img src="../assets/face.png" width="32" height="auto"/> Lab Template
 
 + [Template](./tpl.yml)
++ [Solution](./iconoflix.yml)
++ [Bust](./iconoflix_bust.yml)
 
 <br/>
 
