@@ -10,10 +10,8 @@ spec:
   template:
     metadata:
       labels:
-        app:     nginx
-        costume: ghoul
+        app: nginx
     spec:
-      schedulerName: partysched
       containers:
       - name:            nginx
         image:           nginx

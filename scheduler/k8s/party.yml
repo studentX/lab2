@@ -41,7 +41,7 @@ spec:
       serviceAccountName: partysched
       containers:
         - name:  partysched
-          image: k8sland/go-partysched:0.0.1
+          image: !!CHANGE_ME!!
           imagePullPolicy: IfNotPresent
           resources:
             requests:
