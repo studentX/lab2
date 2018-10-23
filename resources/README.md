@@ -12,7 +12,7 @@
 6. What do you notice?
 7. Delete your application
 
-## <img src="../assets/face.png" class="section"/> Lab Template
+## <img src="../assets/face.png" width="32" height="auto"/> Lab Template
 
 + [Template](./tpl.yml)
 
