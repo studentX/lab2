@@ -18,7 +18,7 @@ spec:
   initContainers:
   - name:    git
     image:   luzhzh/git-client
-    command: ['sh', '-c', 'rm -rf /var/dictionary/words && git clone https://github.com/k8sland/dictionaries1.git /var/dictionary/words']
+    command: ['sh', '-c', 'rm -rf /var/dictionary/words && git clone https://github.com/k8sland/dictionaries.git /var/dictionary/words']
     volumeMounts:
     - name:      dictionary
       mountPath: /var/dictionary
