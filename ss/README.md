@@ -20,7 +20,7 @@
 13. Delete the last pod and ensure it comes back with the same IP!
 14. Delete your application!
 
-## <img src="../assets/face.png" width="auto" height="32"/> Lab Template
+## <img src="../assets/face.png" class="section"/> Lab Template
 
 + [Template](./template/tpl.yml)
 

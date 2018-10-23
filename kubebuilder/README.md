@@ -22,7 +22,7 @@ The official instructions are [Here](https://golang.org/doc/install)
 
     ```shell
     export KB_ARCH=amd64
-    export KB_REV=1.0.4
+    export KB_REV=1.0.5
 
     # Download the release for your architecture
     cd Downloads
@@ -68,13 +68,15 @@ The official instructions are [Here](https://golang.org/doc/install)
     > NOTE! This will take a while...
 
     ```shell
-    kubebuilder init --domain k8sland.io --license apache2 --owner "K8sland Training"
+    mkdir -p $GOPATH/src/github.com/k8sland.io/crds
+    cd $GOPATH/src/github.com/k8sland.io/crds
+    kubebuilder init --domain k8sland.io --license apache2 \
+      --owner "K8sland Training"
     ```
 
 1. Define a sample resource
 
     ```shell
-    cd $GOPATH/src/github.com/k8sland.io/crds
     kubebuilder create api --group workload --version v1alpha1 --kind ContainerSet
     ```
 
