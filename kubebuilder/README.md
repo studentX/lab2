@@ -71,41 +71,6 @@ The official instructions are [Here](https://golang.org/doc/install)
     kubebuilder init --domain k8sland.io --license apache2 --owner "K8sland Training"
     ```
 
-1. Define a sample resource
-
-    ```shell
-    cd $GOPATH/src/github.com/k8sland.io/crds
-    kubebuilder create api --group workload --version v1alpha1 --kind ContainerSet
-    ```
-
-1. Install the CRD schema
-
-    ```shell
-    make install
-    # Verify!
-    kubectl get crd | grep containersets
-    ```
-
-1. Run the sample controller
-
-    ```shell
-    make run
-    ```
-
-1. Watch your local pod and deployment
-
-    ```shell
-    kubectl get po,deploy
-    ```
-
-1. Install the sample CRD
-
-   ```shell
-   kubectl apply -f config/
-   # In your watch window you should see a new containerset-sample-deployment pod
-   # and associated deployment
-   ```
-
 ---
 <img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2018 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
