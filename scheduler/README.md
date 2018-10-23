@@ -15,11 +15,31 @@
 
 ## Commands
 
-```shell
-# Check RBAC Rules for serviceaccount
-ku auth can-i get pods -n defaut --as system:serviceaccount:default:partysched
- ```
+### Run your party scheduler manually
 
+    ```shell
+    go run main.go
+    ```
+
+### Build and deploy a Docker image
+
+  > NOTE! Update the Makefile and setup for your DockerHub registry
+
+    ```shell
+    make push
+    ```
+
+### Deploy your scheduler and pod
+
+    ```shell
+    kubectl apply -f k8s
+    ```
+
+# Check RBAC Rules for serviceaccount
+
+    ```shell
+    ku auth can-i get pods -n defaut --as system:serviceaccount:default:partysched
+    ```
 
 <br/>
 
