@@ -15,7 +15,7 @@ subjects:
   namespace: default
 roleRef:
   kind:     ClusterRole
-  name:     system:kube-scheduler
+  name:     !!CHANGE_ME!!
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: apps/v1
@@ -38,7 +38,7 @@ spec:
         component: scheduler
         tier:      control-plane
     spec:
-      serviceAccountName: partysched
+      serviceAccountName: !!CHANCE_ME!!
       containers:
         - name:  partysched
           image: !!CHANGE_ME!!
