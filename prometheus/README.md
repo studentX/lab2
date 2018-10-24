@@ -1,37 +1,29 @@
 # <img src="../assets/lab.png" width="32" height="auto"/> Prometheus Hangman Lab
 
 > We're going to play a hangman game. The game consist of a couple of
-> services hangman and dictionary and a CLI to submit guesses. The code
-> is already implemented and deployment manifest are in the k8s directory.
-> To play the game, we leverage Prometheus metrics to track good/bad guesses
-> as well as the number of game won. We will also display the metrics in a Grafana
-> dashboard. Sounds cool?
+> services hangman and dictionary and a CLI to submit guesses. The hangman
+> service queries the dictionary service to get a list of words for the guess
+> word. The code is already implemented and deployment manifests are in the k8s
+> directory. To play the game, we are going to leverage Prometheus metrics to
+> track good/bad guess counts as well as tracking win rates. Next, we are going
+> to display the tally metrics in a Grafana dashboard. Sounds cool?
 
 1. Instrument the hangman code base and add 2 prometheus counters to track your
    good and bad guesses.
-2. Next define a prometheus gauge to track your game results ie +1 for wins and -1
-   for loss.
+2. Next define a prometheus gauge to track your game results:
+   ie +1 for wins and -1 for loss.
 3. Before you get to play the game, your will need to tell Prometheus to
    track your hangman service by setting the ServiceMonitor CRD.
 4. Using the provided deployment templates, deploy Prometheus using the awesome
    CoreOS operator, Grafana and the hangman services namely dictionary and hangman.
-5. Launch the Grafana UI and setup your prometheus datasource **Prom** to reference
-   http://prometheus.default.svc.cluster.local:9090
-6. In the Grafana UI, load the custom dashboard from the grafana/dashboard.json file
-7. You can now enjoy the fruits of your labor by firing off the hangman CLI and
-   try out your guessing skills while watching your performance in Grafana...
+5. Launch the Grafana UI.
+6. You can now enjoy the fruits of your labor by firing off the hangman CLI and
+   try out your guessing skills while watching your game performance in Grafana...
 
 <br/>
 
 ---
 ## Commands
-
-### Launch the CLI
-
-```shell
-kubectl run -i --tty --rm hm --image k8sland/go-hangman-cli:0.0.1 \
-  --command -- /app/hangman_cli --hm hangman:5000
-```
 
 ### Deploy Prometheus
 
@@ -56,6 +48,12 @@ ku create cm hm-dash -n monitoring --from-file grafana/dashboard.json
 kubectl apply -f k8s/grafana.yml
 ```
 
+### Play!
+
+```shell
+kubectl run -i --tty --rm hm --image k8sland/go-hangman-cli:0.0.1 \
+  --command -- /app/hangman_cli --hm hangman:5000
+```
 
 <br/>
 
