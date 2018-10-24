@@ -1,6 +1,8 @@
 <img src="../assets/k8sland.png" align="right" width="auto" height="128"/>
 
+<br/>
 
+---
 # <img src="../assets/lab.png" width="32" height="auto"/> Prometheus Hangman Lab
 
 > We're going to play a hangman game. The game consist of a couple of
