@@ -25,6 +25,7 @@
 5. Launch the Grafana UI.
 6. You can now enjoy the fruits of your labor by firing off the hangman CLI and
    try out your guessing skills while watching your game performance in Grafana...
+7. Delete all resources when done!
 
 <br/>
 
