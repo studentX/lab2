@@ -15,16 +15,17 @@
 > to display the tally metrics in a Grafana dashboard. Sounds cool?
 
 1. Instrument the hangman code base and add 2 prometheus counters to track your
-   good and bad guesses.
+   good and bad guesses (game.go).
 2. Next define a prometheus gauge to track your game results:
-   ie +1 for wins and -1 for loss.
+   ie +1 for wins and -1 for loss (tally.go)
 3. Before you get to play the game, your will need to tell Prometheus to
-   track your hangman service by setting the ServiceMonitor CRD.
+   track your hangman service by setting the ServiceMonitor CRD (k8s/prom/crd.yml)
 4. Using the provided deployment templates, deploy Prometheus using the awesome
    CoreOS operator, Grafana and the hangman services namely dictionary and hangman.
 5. Launch the Grafana UI.
 6. You can now enjoy the fruits of your labor by firing off the hangman CLI and
    try out your guessing skills while watching your game performance in Grafana...
+7. Delete all resources when done!
 
 <br/>
 
