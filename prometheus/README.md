@@ -1,11 +1,14 @@
 # <img src="../assets/lab.png" width="32" height="auto"/> Prometheus Hangman Lab
 
-We're going to play a hangman game. The game consist of a couple of
-services hangman and dictionary and a CLI to submit guesses. The code
-is already implemented and deployment manifest are in the k8s directory.
-To play the game, we leverage Prometheus metrics to track good/bad guesses
-as well as the number of game won. We will also display the metrics in a Grafana
-dashboard. Sounds cool?
+curl -X DELETE -u "$user:$pass" https://index.docker.io/v1/repositories/$namespace/$reponame/
+
+
+> We're going to play a hangman game. The game consist of a couple of
+> services hangman and dictionary and a CLI to submit guesses. The code
+> is already implemented and deployment manifest are in the k8s directory.
+> To play the game, we leverage Prometheus metrics to track good/bad guesses
+> as well as the number of game won. We will also display the metrics in a Grafana
+> dashboard. Sounds cool?
 
 1. Instrument the hangman code base and add 2 prometheus counters to track your
    good and bad guesses.
@@ -21,55 +24,41 @@ dashboard. Sounds cool?
 3. You can now enjoy the fruits of your labor by firing off the hangman CLI and
    try out your guessing skills while watching your performance in Grafana...
 
+<br/>
 
+---
 ## Commands
 
+### Launch the CLI
 
+```shell
+kubectl run -i --tty --rm hm --image k8sland/go-hangman-cli:0.0.1 \
+  --command -- /app/hangman_cli --hm hangman:5000
+```
 
+### Deploy Prometheus
 
+```shell
+kubectl apply -f k8s/prom
+```
 
-curl -X DELETE -u "$user:$pass" https://index.docker.io/v1/repositories/$namespace/$reponame/
+### Deploy Hangman
 
-ku run -i --tty --rm hm --image k8sland/go-hangman-cli:0.0.1 --command -- /app/hangman_cli --hm hangman:5000
+```shell
+kubectl apply -f k8s/hangman
+```
 
-> Leverage Init Containers to provision dictionaries for a Dictionary service.
+### Deploy Grafana
 
-The dictionary service will load dictionary data from a given asset directory and
-dictionary name mounted on a volume. Use an init-container to provision the
-volume with a set of dictionaries by cloning a dictionary assets repo.
+```shell
+# Create ConfigMaps for datasource and dashboard
+ku create cm prom-ds -n monitoring --from-file grafana/datasource.yml
+ku create cm prom-dash -n monitoring --from-file grafana/dashboard.yml
+ku create cm hm-dash -n monitoring --from-file grafana/dashboard.json
+# NOTE! Grafana default credentials: admin/admin
+kubectl apply -f k8s/grafana.yml
+```
 
-1. Define a pod using the following Docker image: k8sland/dictionary-svc-go:0.0.2
-2. The dictionary service is launched using the following command:
-   ```shell
-   /app/dictionary -a dictionary_dir -d dictionary_name
-   ```
-3. This service runs on port 4000 and exposes /words endpoint to list out the words
-   contained in the dictionary loaded via *-a/d* options above.
-4. Define an init container to providion a volume to be used by the dictionary
-   service
-5. Your init container will need to clone this repo [Dictionaries](https://github.com/k8sland/dictionaries.git) in order to provision the volume
-6. Change the init container command to cause the pod to fail
-7. What's happening with your dictionary pod?
-
-## Commands
-
-1. Launch your pod
-    ```shell
-    kubectl apply -f dictionary.yml
-    ```
-1. Verify the init container is successful and pod is launched
-    ```shell
-    kubectl get po
-    ```
-1. Verify the volume was provisioned correctly
-    ```shell
-    kubectl exec -it dictionary -- wget -q -O - http://localhost:4000/words
-    ```
-1. Change git url so that it does not resolve
-    ```shell
-    kubectl delete -f dictionary.yml --force --grace-period=0
-    kubectl apply -f dictionary.yml
-    ```
 
 <br/>
 

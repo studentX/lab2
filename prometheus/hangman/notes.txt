@@ -1,5 +1,0 @@
-ku run -i --tty --rm hm --image k8sland/hangman-cli-go:0.0.1 --command -- /app/hangman_cli --url hangman:5000
-ku run -i --tty --rm hm --image k8sland/hangman-cli-go:0.0.1 --command -- /app/hangman_cli --url hangman.default.svc.cluster.local:5000
-
-
-> docker run -it k8sland/hangman-cli-go:0.0.1 /app/hangman_cli --url $(minikube ip):5000

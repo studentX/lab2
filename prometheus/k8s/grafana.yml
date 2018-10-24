@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind:       Deployment
 metadata:
@@ -29,7 +30,23 @@ spec:
         ports:
         - name:          http
           containerPort: 3000
-
+        volumeMounts:
+        - name:      prom-ds
+          mountPath: /etc/grafana/provisioning/datasources
+        - name:      prom-dash
+          mountPath: /etc/grafana/provisioning/dashboards
+        - name:      hm-dash
+          mountPath: /etc/grafana-dash
+      volumes:
+        - name: prom-ds
+          configMap:
+            name: prom-ds
+        - name: prom-dash
+          configMap:
+            name: prom-dash
+        - name: hm-dash
+          configMap:
+            name: hm-dash
 ---
 kind:       Service
 apiVersion: v1
