@@ -1,8 +1,5 @@
 # <img src="../assets/lab.png" width="32" height="auto"/> Prometheus Hangman Lab
 
-curl -X DELETE -u "$user:$pass" https://index.docker.io/v1/repositories/$namespace/$reponame/
-
-
 > We're going to play a hangman game. The game consist of a couple of
 > services hangman and dictionary and a CLI to submit guesses. The code
 > is already implemented and deployment manifest are in the k8s directory.
@@ -12,16 +9,16 @@ curl -X DELETE -u "$user:$pass" https://index.docker.io/v1/repositories/$namespa
 
 1. Instrument the hangman code base and add 2 prometheus counters to track your
    good and bad guesses.
-1. Next define a prometheus gauge to track your game results ie +1 for wins and -1
+2. Next define a prometheus gauge to track your game results ie +1 for wins and -1
    for loss.
-1. Before you get to play the game, your will need to tell Prometheus to
+3. Before you get to play the game, your will need to tell Prometheus to
    track your hangman service by setting the ServiceMonitor CRD.
-2. Using the provided deployment templates, deploy Prometheus using the awesome
+4. Using the provided deployment templates, deploy Prometheus using the awesome
    CoreOS operator, Grafana and the hangman services namely dictionary and hangman.
-1. Launch the Grafana UI and setup your prometheus datasource **Prom** to reference
+5. Launch the Grafana UI and setup your prometheus datasource **Prom** to reference
    http://prometheus.default.svc.cluster.local:9090
-2. In the Grafana UI, load the custom dashboard from the grafana/dashboard.json file
-3. You can now enjoy the fruits of your labor by firing off the hangman CLI and
+6. In the Grafana UI, load the custom dashboard from the grafana/dashboard.json file
+7. You can now enjoy the fruits of your labor by firing off the hangman CLI and
    try out your guessing skills while watching your performance in Grafana...
 
 <br/>
