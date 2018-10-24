@@ -1,4 +1,4 @@
-<img src="../../assets/k8sland.png" align="right" width="auto" height="128"/>
+<img src="../assets/k8sland.png" align="right" width="auto" height="128"/>
 
 
 # <img src="../assets/lab.png" width="32" height="auto"/> Prometheus Hangman Lab
