@@ -1,0 +1,3 @@
+cov.out
+Makefile
+*_test.go
