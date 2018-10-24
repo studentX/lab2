@@ -5,11 +5,7 @@ metadata:
   labels:
     app: hangman
 spec:
-  selector:
-    matchLabels:
-      app: hangman
-  endpoints:
-  - port: http
+  !! CHANGE_ME!! define service tracking selector
 ---
 # Figure out which service monitor needs to be included
 apiVersion: monitoring.coreos.com/v1
@@ -17,9 +13,7 @@ kind:       Prometheus
 metadata:
   name: prometheus
 spec:
-  serviceMonitorSelector:
-    matchLabels:
-      app: hangman
+  !! CHANGE_ME!! define service monitor tracking selector
   resources:
     requests:
       memory: 400Mi
