@@ -1,4 +1,4 @@
-<img src="../../../assets/k8sland.png" align="right" width="auto" height="128"/>
+<img src="../../assets/k8sland.png" align="right" width="auto" height="128"/>
 
 <br/>
 <br/>
@@ -18,5 +18,5 @@ from a dictionary list of words and a CLI to play the game.
 <br/>
 
 ---
-<img src="../../../assets/imhotep_logo.png" width="32" height="auto"/> © 2018 Imhotep Software LLC.
+<img src="../../assets/imhotep_logo.png" width="32" height="auto"/> © 2018 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
