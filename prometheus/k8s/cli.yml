@@ -1,0 +1,12 @@
+apiVersion: v1
+kind:       Pod
+metadata:
+  name: hangman-cli
+  labels:
+    app: hangman-cli
+spec:
+  containers:
+  - name:            hangman-cli
+    image:           k8sland/go-hangman-cli:0.0.1
+    imagePullPolicy: IfNotPresent
+    args:            ["/app/hangman_cli", "-hm", "hangman:5000"]
