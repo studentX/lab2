@@ -38,9 +38,9 @@ CastleBlack but not the NightKing. However no one can `melt CastleBlack like a N
     ```shell
     # Setup etcd
     kubectl apply -n kube-system \
-      -f https://raw.githubusercontent.com/cilium/cilium/1.2.4/examples/kubernetes/addons/etcd/standalone-etcd.yaml
+      -f https://raw.githubusercontent.com/cilium/cilium/1.3.0/examples/kubernetes/addons/etcd/standalone-etcd.yaml
     # Setup cilium
-    kubectl apply -f https://raw.githubusercontent.com/cilium/cilium/1.2.4/examples/kubernetes/1.10/cilium.yaml
+    kubectl apply -f https://raw.githubusercontent.com/cilium/cilium/1.3.0/examples/kubernetes/1.10/cilium.yaml
     ```
 
 ## Commands
@@ -48,7 +48,7 @@ CastleBlack but not the NightKing. However no one can `melt CastleBlack like a N
 1. Deploy the G.O.T services
 
     ```shell
-    kubectl apply -f k8s/castleblack.yml -f k8s/north.yml -f k8s/nightking
+    kubectl apply -f k8s/castle_black.yml -f k8s/north.yml -f k8s/nightking.yml
     ```
 
 1. Deploy your Cilium policy
