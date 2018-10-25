@@ -1,3 +1,7 @@
+<img src="../assets/k8sland.png" align="right" width="128" height="auto"/>
+
+<br/>
+
 # <img src="../assets/lab.png" width="32" height="auto"/> Ingress Controller Lab
 
 > The dev team has been hard at work and came up with a new set of dictionaries
