@@ -9,22 +9,28 @@
 
 1. Update the code in main.go to reject all grim reaper deployments. ie
    check for deployment resource with a label app=grim reaper.
-2. Generate certs and keys for your webhook and make sure to provide the correct
+1. Generate certs and keys for your webhook and make sure to provide the correct
    service name in your certificate encryption
-3. Generate a ca_bundle to validate api-server callback into your webhook.
-4. Set the ca_bundle in k8s/adm.yml to the output of the previous command
-5. Deploy your admission controller
-6. Register your validating admission controller with the api-server
-7. Update the provided fred deployment with the magic label and provision your cluster
-8. Trace the api-server logs and your admission controller logs to ensure all
+1. Generate a ca_bundle to validate api-server callback into your webhook.
+1. Set the ca_bundle in k8s/adm.yml to the output of the previous command
+1. Deploy your admission controller
+1. Register your validating admission controller with the api-server
+1. Update the provided grim deployment with the magic label and provision your cluster
+1. Trace the api-server logs and your admission controller logs to ensure all
    are working nominally.
-9. Verify your deployment was denied for the right reason
-10. Delete your deployment and change or remove the label
-11. Redeploy and make sure your admission controller allows the new deployment
-12. Delete your application!
+1. Verify your deployment was denied for the right reason
+1. Delete your deployment and change/remove the label
+1. Redeploy and make sure your admission controller allows the new deployment
+1. Delete your application!
 
 ---
 ## Commands
+
+### Build your admission controller Docker image
+
+    ```shell
+    make img
+    ```
 
 ### Deploy custom admission controller
 
@@ -56,10 +62,10 @@
     kubectl apply -f k8s/adm.yml
     ```
 
-# Create a new `fred deployment
+# Create a new `Grim Reaper deployment
 
     ```shell
-    kubectl apply -f k8s/fred.yml
+    kubectl apply -f k8s/grim.yml
     ```
 
 
