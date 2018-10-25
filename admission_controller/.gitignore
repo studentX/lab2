@@ -1,4 +1,4 @@
 .envrc
 execs
 certs.go
-caCert1.pem
+caCert.pem
