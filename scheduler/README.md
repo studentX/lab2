@@ -1,3 +1,7 @@
+<img src="../assets/k8sland.png" align="right" width="128" height="auto"/>
+
+<br/>
+
 # <img src="../assets/lab.png" width="32" height="auto"/> Custom Scheduler Lab
 
 > In the spirit of Halloween, write a party scheduler that will only schedule
@@ -5,13 +9,14 @@
 
 1. Define a custom party scheduler aka partysched, that check if a given pod
    has a costume label set to either ghoul or goblin or your choice of costumes...
-2. Make sure your pod gets scheduled if it has a correct costume label
-3. For all other cases ie no label or no correct attire, make sure your scheduler
+1. Make sure your pod gets scheduled if it has a correct costume label
+1. For all other cases ie no label or no correct attire, make sure your scheduler
    selected no nodes and spews out a log.
-4. Setup a partysched deployment with a service account and RBAC rules
-5. Using the given Makefile publish your party scheduler as a Docker container
-6. Deploy your party scheduler in your cluster
-7. Rinse and repeat your checks in a deployed configuration
+1. Setup a partysched deployment with a service account and RBAC rules
+1. Using the given Makefile publish your party scheduler as a Docker container
+1. Deploy your party scheduler in your cluster
+1. Rinse and repeat your checks in a deployed configuration
+1. Delete your application and scheduler!
 
 ## Commands
 
@@ -21,15 +26,21 @@
     go run main.go
     ```
 
+### Provision deployment
+
+    ```shell
+    kubectl apply -f k8s/nginx.yml
+    ```
+
 ### Build and deploy a Docker image
 
   > NOTE! Update the Makefile and setup for your DockerHub registry
 
     ```shell
-    make push
+    make img
     ```
 
-### Deploy your scheduler and pod
+### Deploy your scheduler and nginx deployment
 
     ```shell
     kubectl apply -f k8s
