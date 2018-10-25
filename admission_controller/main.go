@@ -17,7 +17,11 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
-const denyLabel = "Grim-Reaper"
+const (
+	denyLabel = "Grim-Reaper"
+	appName   = "DepAdm"
+	port      = ":443"
+)
 
 type (
 	// Config contains the server (the webhook) cert and key.
@@ -35,13 +39,13 @@ func main() {
 
 	var config Config
 	server := &http.Server{
-		Addr:      ":443",
+		Addr:      port,
 		Handler:   m,
 		TLSConfig: configTLS(config, getClient()),
 	}
 
-	log.Println("AdmCtrl Listening on port 443")
-	server.ListenAndServeTLS("", "")
+	log.Printf("%s Listening on port %s...", appName, port)
+	log.Println(server.ListenAndServeTLS("", ""))
 }
 
 func handlePod(w http.ResponseWriter, r *http.Request) {
@@ -52,7 +56,11 @@ func handlePod(w http.ResponseWriter, r *http.Request) {
 func admitDeployment(ar v1beta1.AdmissionReview) *v1beta1.AdmissionResponse {
 	log.Println("Checking Deployment Admission...")
 
-	depResource := metav1.GroupVersionResource{Group: "apps", Version: "v1", Resource: "deployments"}
+	depResource := metav1.GroupVersionResource{
+		Group:    "apps",
+		Version:  "v1",
+		Resource: "deployments",
+	}
 	if ar.Request.Resource != depResource {
 		err := fmt.Errorf("expect resource to be %s", depResource)
 		log.Println("Boom", err)
