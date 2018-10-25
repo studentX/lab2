@@ -24,3 +24,5 @@ zz_generated.*
 *.swo
 *~
 vendor
+
+.envrc1
