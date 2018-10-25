@@ -4,23 +4,23 @@
 
 # <img src="../assets/lab.png" width="32" height="auto"/> Admission Controller Lab
 
-> Provision your cluster with a dynamic admission controller that only admits
-> deployment whose pod name is fred into the cluster.
+> Provision your cluster with a dynamic admission controller that rejects all
+> deployment with labels app= grim reaper
 
 1. Update main.go to check for the correct deployment name and only admits deployments
    named fred
-1. Generate certs and keys for your webhook and make sure to provide the correct
+2. Generate certs and keys for your webhook and make sure to provide the correct
    service name in your certificate encryption
-1. Generate a ca_bundle to validate api-server callback into your webhook
-1. Deploy your admission controller
-1. Register your validating admission controller with the api-server
-1. Using the provided sample deployment, provision your cluster with the fred deployment
-1. Trace the api-server logs and your admission controller logs to ensure all
+3. Generate a ca_bundle to validate api-server callback into your webhook
+4. Deploy your admission controller
+5. Register your validating admission controller with the api-server
+6. Using the provided sample deployment, provision your cluster with the fred deployment
+7. Trace the api-server logs and your admission controller logs to ensure all
    are working nominally.
-1. Verify your deployment worked
-1. Delete your deployment and change the pod names to blee
-1. Redeploy and make sure your admission controller rejects the new deployment
-1. Delete your application
+8. Verify your deployment worked
+9. Delete your deployment and change the pod names to blee
+10. Redeploy and make sure your admission controller rejects the new deployment
+11. Delete your application
 
 ---
 ## Commands
