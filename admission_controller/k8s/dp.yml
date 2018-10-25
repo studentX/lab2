@@ -10,7 +10,7 @@ kind:       ClusterRole
 metadata:
   name: depadm
 rules:
-- apiGroups: [""]
+- apiGroups: ["apps"]
   resources: ["deployments"]
   verbs:     ["get", "list"]
 ---

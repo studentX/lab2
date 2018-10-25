@@ -79,7 +79,7 @@ func admitDeployment(ar v1beta1.AdmissionReview) *v1beta1.AdmissionResponse {
 	if v, ok := dep.Labels["app"]; ok {
 		if v == denyLabel {
 			reviewResponse.Allowed = false
-			msg = fmt.Sprintf("Negatory Good Buddy... Go away `%s!!", denyLabel)
+			msg = fmt.Sprintf("👻  Seriously `%s? No buzz kill allowed on this cluster!!", denyLabel)
 		}
 	}
 
