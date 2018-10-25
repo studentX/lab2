@@ -43,10 +43,16 @@ by the CRD.
 1. Install the sample CRD
 
    ```shell
-   kubectl apply -f config/
+   kubectl apply -f config/samples
    # In your watch window you should see a new containerset-sample-deployment pod
    # and associated deployment
    ```
+
+1. Delete your containerset and crd
+
+    ```shell
+    kubectl delete -f config/samples -f config/crds
+    ```
 
 
 <br/>
