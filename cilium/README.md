@@ -1,3 +1,8 @@
+<img src="../assets/k8sland.png" align="right" width="128" height="auto"/>
+
+
+<br/>
+
 # <img src="../assets/lab.png" width="32" height="auto"/> G.O.T Cilium Lab
 
 > Let's play Game of Thrones by leveraging Cilium CNI
@@ -15,6 +20,7 @@ CastleBlack but not the NightKing. However no one can `melt CastleBlack like a N
    CastleBlack and a NightKing to melt it (Edit k8s/policies.yml).
 1. Ensure a NightKing can not just `simply *Enter* CastleBlack.
 1. Likewise ensure a North can't `simply *Melt* CastleBack.
+1. Delete your application!
 
 ## Setup
 
@@ -33,14 +39,14 @@ CastleBlack but not the NightKing. However no one can `melt CastleBlack like a N
       --extra-config=kubelet.network-plugin=cni
     ```
 
-1. Install Cilium on your cluster
+2. Install Cilium on your cluster
 
     ```shell
     # Setup etcd
     kubectl apply -n kube-system \
-      -f https://raw.githubusercontent.com/cilium/cilium/1.3.0/examples/kubernetes/addons/etcd/standalone-etcd.yaml
+      -f https://raw.githubusercontent.com/cilium/cilium/1.2.4/examples/kubernetes/addons/etcd/standalone-etcd.yaml
     # Setup cilium
-    kubectl apply -f https://raw.githubusercontent.com/cilium/cilium/1.3.0/examples/kubernetes/1.10/cilium.yaml
+    kubectl apply -f https://raw.githubusercontent.com/cilium/cilium/1.2.4/examples/kubernetes/1.10/cilium.yaml
     ```
 
 ## Commands
