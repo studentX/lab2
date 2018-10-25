@@ -26,8 +26,6 @@ to mutiplex across our the two stacks.
 1. Make sure both instanced are serving the correct dictionaries!
 1. Delete your application
 
-<br/>
-
 ---
 ## Commands
 
