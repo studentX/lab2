@@ -5,24 +5,24 @@
 # <img src="../assets/lab.png" width="32" height="auto"/> Ingress Controller Lab
 
 > The dev team has been hard at work and came up with a new set of dictionaries
-> for the company flagship product *Hangman*. The hangman game is composed of
-> 2 services namely hangman and dictionary. The dictionary service serves a
+> for the company flagship product *Hangman*. The Hangman game is composed of
+> 2 HTTP services: hangman and dictionary. The dictionary service serves a
 > collection of words. The hangman service calls the dictionary to get a list
 > of words, picks a random word and seeds the guessing game with that word.
 
-In this lab we're going to setup and ingress to allow us to play hangman from
-2 separated microservice stacks and leverage a *Traefik* ingress controller to
-mutiplex across our 2 hangman services.
+In this lab we're going to setup and ingress to allow us to play *Hangman* from
+2 separate microservices stacks and leverage a *Traefik* ingress controller to
+mutiplex across our the two stacks.
 
 1. Provision your cluster with a Traefik ingress via a daemonset
-1. Deploy hangman v1 and v2 using the provided manifest
-1. Verify you can access the Traefik UI
-2. Create an ingress resource that allows to switch between the 2 instances of
+2. Deploy hangman v1 and v2 using the provided manifest
+3. Verify you can access the Traefik UI
+4. Create an ingress resource that allows to switch between the 2 instances of
    the hangman service
-3. Leveraging named hosting, setup the ingress to direct traffic to either the
+5. Leveraging named hosting, setup the ingress to direct traffic to either the
    trump version (v1) or the halloween version (v2)
-4. Play the game using hangman v1
-5. Play the game now using hangman v2 and make sure both instanced are serving
+6. Play the game using hangman v1
+7. Play the game now using hangman v2 and make sure both instanced are serving
    the correct dictionaries!
 
 <br/>
