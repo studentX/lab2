@@ -1,3 +1,8 @@
+<img src="../assets/k8sland.png" align="right" width="128" height="auto"/>
+
+<br/>
+
+
 # <img src="../assets/lab.png" width="32" height="auto"/> Istio Lab
 
 > Let's play Hangman! Deploy a Hangman service to an Istio Cluster
@@ -62,94 +67,6 @@
    3. Tail both v1 and v2 logs and make sure all traffic destined to v1 also hits the v2 version.
 
 
-<br/>
-<br/>
-
----
-## <img src="../assets/sol.png" width="32" height="auto"/> Solution
-
-1. Download Istio
-
-    ```shell
-    mkdir ~/istio && cd istio
-    curl -L https://git.io/getLatestIstio | sh -
-    cd istio-1.0.2
-    # NOTE istio comes bundle with it's own cli aka istioctl.
-    export PATH=$PWD/bin:$PATH
-    ```
-
-2. Provision Istio in your minikube cluster
-
-    ```shell
-    cd ~/istio/istio-1.0.2/install/kubernetes
-    kubectl apply -f istio-demo.yaml
-    ```
-
-1. Deploy your Istio gateway and routes
-
-    ```shell
-    ku apply -f istio/gateway.yml -f istio/routes.yml -f istio/subsets.yml
-    ```
-
-1. Deploy DictionaryV1
-
-    ```shell
-    kubectl apply -f k8s/dictionary_v1.yml
-    kubectl get deploy,rs,po
-    ```
-
-1. Deploy the dictionary service
-
-    ```shell
-    kubectl apply -f k8s/dictionary.yml
-    kubectl get svc,ep
-    ```
-
-3. Deploy Hangman V1
-
-    ```shell
-    kubectl apply -f k8s/hangman_v1.yml
-    kubectl get deploy,rs,po,svc
-    ```
-
-4. Play the game!
-
-    ```shell
-    kubectl run -i --tty --rm hm --image k8sland/hangman-cli-go:0.0.1 --command -- /app/hangman_cli --url hangman:5000
-    ```
-
-5. Deploy dictionary V2
-
-    ```shell
-    kubectl apply -f k8s/dictionary_v2.yml
-    kubectl get deploy,rs,po
-    ```
-
-6. Run the picker
-
-    ```shell
-    ./picker.sh
-    ```
-
-1. Deploy dictionary weighted traffic policy
-
-    ```shell
-    kubectl apply -f istio/dictionary-80-20.yml
-    kubectl get virtualservice
-    ```
-
-1. Delete your traffic policy
-
-    ```shell
-    kubectl delete -f istio/dictionary-80-20.yml
-    ```
-
-2. Deploy dictionary mirror traffic policy
-
-    ```shell
-    kubectl apply -f istio/mirror.yml
-    kubectl get virtualservice
-    ```
 
 ---
 <img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2018 Imhotep Software LLC.
