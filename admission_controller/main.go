@@ -17,6 +17,8 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
+const denyLabel = "Grim-Reaper"
+
 type (
 	// Config contains the server (the webhook) cert and key.
 	Config struct {
@@ -67,9 +69,9 @@ func admitDeployment(ar v1beta1.AdmissionReview) *v1beta1.AdmissionResponse {
 	reviewResponse := v1beta1.AdmissionResponse{Allowed: true}
 	var msg string
 	if v, ok := dep.Labels["app"]; ok {
-		if v == "fred" {
+		if v == denyLabel {
 			reviewResponse.Allowed = false
-			msg = "Rejected! no fred's deployment allowed here!"
+			msg = fmt.Sprintf("Negatory Good Buddy... Go away `%s!!", denyLabel)
 		}
 	}
 

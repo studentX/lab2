@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind:       Deployment
 metadata:
-  name: nginx
+  name: fred
   labels:
-    app: blee
+    app: Grim-Reaper
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx
+      app: fred
   template:
     metadata:
       labels:
-        app: nginx
+        app: fred
     spec:
       containers:
       - name:            nginx
