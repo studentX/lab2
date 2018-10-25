@@ -10,20 +10,21 @@
 > collection of words. The hangman service calls the dictionary to get a list
 > of words, picks a random word and seeds the guessing game with that word.
 
-In this lab we're going to setup and ingress to allow us to play *Hangman* from
-2 separate microservices stacks and leverage a *Traefik* ingress controller to
-mutiplex across our the two stacks.
+In this lab we're going to setup an ingress controller to allow us to play
+*Hangman* from two separate microservices stacks and leverage a *Traefik* ingress
+to mutiplex across our the two stacks.
 
 1. Provision your cluster with a Traefik ingress via a daemonset
-2. Deploy hangman v1 and v2 using the provided manifest
-3. Verify you can access the Traefik UI
-4. Create an ingress resource that allows to switch between the 2 instances of
-   the hangman service
-5. Leveraging named hosting, setup the ingress to direct traffic to either the
-   trump version (v1) or the halloween version (v2)
-6. Play the game using hangman v1
-7. Play the game now using hangman v2 and make sure both instanced are serving
-   the correct dictionaries!
+1. Deploy hangman v1 and v2 using the provided manifest
+1. Verify you can access the Traefik UI
+1. Create an ingress resource that allows to switch between the 2 instances of
+   the hangman service. Leverage named hosting, setup the ingress to direct
+   traffic to either the **trump** version (v1) or the **halloween** version (v2)
+1. Verify the Traefik UI displays the correct backend/frontend
+1. Play the game using hangman v1
+1. Play the game now using hangman v2
+1. Make sure both instanced are serving the correct dictionaries!
+1. Delete your application
 
 <br/>
 
