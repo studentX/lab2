@@ -1,0 +1,4 @@
+.envrc
+execs
+certs.go
+caCert.pem
