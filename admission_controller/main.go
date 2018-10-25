@@ -80,6 +80,7 @@ func admitDeployment(ar v1beta1.AdmissionReview) *v1beta1.AdmissionResponse {
 
 	// Check deployment labels for the magic label. If found set Allowed to false.
 	// Also set deny message!
+	// Hint! msg = fmt.Sprintf("👻  Seriously `%s? No buzz kill allowed on this cluster!!", denyLabel)
 	!!YOUR_CODE!!
 
 	if !reviewResponse.Allowed {
