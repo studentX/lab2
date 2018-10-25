@@ -1,3 +1,7 @@
+<img src="../assets/k8sland.png" align="right" width="128" height="auto"/>
+
+<br/>
+
 # <img src="../assets/lab.png" width="32" height="auto"/> Painter CRD Lab
 
 > Leveraging Kubebuilder, define a painter CRD to color all pods in a given namespace.
@@ -13,6 +17,7 @@
 1. Write tests to ensure your controller is operating nominally
 1. In your local cluster, deploy your painter controller and ensure it exhibits the
    correct behaviors
+1. Delete your crds and application!
 
 ## Commands
 
@@ -38,6 +43,17 @@ make install
 
 ```shell
 make run
+```
+
+### Deploy your crd instance
+
+```shell
+kubectl apply -f config/samples/blue.yml
+# Paint all nginx pods blue?
+kubectl apply -f k8s/nginx.yml
+# Verify!
+kubectl get po -l app=nginx --show-labels
+# Change crd to green and watch the label change!
 ```
 
 ### Dockerize your controller
