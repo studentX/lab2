@@ -14,15 +14,15 @@
 1. Download and provision your minikube cluster.
    1. Download Istio
 
-      As of this writing the latest version of istio is 1.0.2.
+        As of this writing the latest version of istio is 1.0.2.
 
-      ```shell
-      mkdir ~/istio && cd istio
-      curl -L https://git.io/getLatestIstio | sh -
-      cd istio-1.0.2
-      # NOTE istio comes bundle with it's own cli aka istioctl.
-      export PATH=$PWD/bin:$PATH
-      ```
+        ```shell
+        mkdir ~/istio && cd istio
+        curl -L https://git.io/getLatestIstio | sh -
+        cd istio-1.0.2
+        # NOTE istio comes bundle with it's own cli aka istioctl.
+        export PATH=$PWD/bin:$PATH
+        ```
 
   1. Install **Istio** on your Minikube cluster
 
