@@ -1,5 +1,5 @@
-kind:       Deployment
 apiVersion: apps/v1
+kind:       Deployment
 metadata:
   name: dictionary-v1
 spec:
@@ -16,9 +16,9 @@ spec:
     spec:
       containers:
       - name:            dictionary
-        image:           k8sland/dictionary-svc-go:0.0.2
+        image:           k8sland/go-dictionary-svc:0.0.1
         imagePullPolicy: IfNotPresent
-        args:            ['/app/dictionary', '-a', '/var/dictionary/words', '-d', 'trump.txt']
+        args:            ['/app/dictionary', '-d', 'trump.txt']
         resources:
           requests:
             cpu:    100m
@@ -29,17 +29,3 @@ spec:
         ports:
         - name:          http
           containerPort: 4000
-        volumeMounts:
-        - name:      dictionary
-          mountPath: /var/dictionary
-      initContainers:
-      - name:    git
-        image:   luzhzh/git-client
-        command: ['sh', '-c', 'rm -rf /var/dictionary/words && git clone https://github.com/k8sland/dictionaries.git /var/dictionary/words']
-        volumeMounts:
-        - name:      dictionary
-          mountPath: /var/dictionary
-      volumes:
-      - name: dictionary
-        hostPath:
-          path: /home/docker/dictionary
