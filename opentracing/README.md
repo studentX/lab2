@@ -72,7 +72,7 @@ knight is the NightKing or a 417 error with *only NightKing can melt* otherwise.
 2. Test your endpoints and traces
 
    ```shell
-   http $(minikube ip):30501/v1/melt knight=fred
+   http $(minikube ip):30501/v1/melt knight=tim
    ```
 
 <br/>
