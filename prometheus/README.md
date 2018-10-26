@@ -55,6 +55,12 @@ ku create cm hm-dash -n monitoring --from-file grafana/dashboard.json
 kubectl apply -f k8s/grafana.yml
 ```
 
+### Open Grafana
+
+  ```shell
+  mik service -n monitoring grafana
+  ```
+
 ### Play!
 
 ```shell
