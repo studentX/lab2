@@ -1,3 +1,7 @@
+<img src="../assets/k8sland.png" align="right" width="128" height="auto"/>
+
+<br/>
+
 # <img src="../assets/lab.png" width="32" height="auto"/> Resources Lab
 
 > Deploy an **Iconoflix** application with resource constraints
