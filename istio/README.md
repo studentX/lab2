@@ -26,10 +26,10 @@
 
   1. Install **Istio** on your Minikube cluster
 
-    ```shell
-    cd ~/istio/istio-1.0.2/install/kubernetes
-    kubectl apply -f istio-demo.yaml
-    ```
+      ```shell
+      cd ~/istio/istio-1.0.2/install/kubernetes
+      kubectl apply -f istio-demo.yaml
+      ```
 
 2. Ensure all the Istio components are up and running in the *istio-system* namespace
 3. Enable Sidecar injection in your default namespace:
