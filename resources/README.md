@@ -1,3 +1,7 @@
+<img src="../assets/k8sland.png" align="right" width="128" height="auto"/>
+
+<br/>
+
 # <img src="../assets/lab.png" width="32" height="auto"/> Resources Lab
 
 > Deploy an **Iconoflix** application with resource constraints
@@ -12,9 +16,11 @@
 6. What do you notice?
 7. Delete your application
 
-## <img src="../assets/face.png" width="auto" height="32"/> Lab Template
+## <img src="../assets/face.png" width="32" height="auto"/> Lab Template
 
 + [Template](./tpl.yml)
++ [Solution](./iconoflix.yml)
++ [Bust](./iconoflix_bust.yml)
 
 <br/>
 
