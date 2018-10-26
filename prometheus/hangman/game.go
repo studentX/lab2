@@ -56,8 +56,9 @@ func (g *Game) validateGuess(guess rune) {
 	if !g.inWord(guess) {
 		promBad.Inc()
 		g.Tally.TurnsLeft--
+	} else {
+		promGood.Inc()
 	}
-	promGood.Inc()
 	g.Tally.Update([]rune(g.Word), g.Guesses)
 }
 
