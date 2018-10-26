@@ -45,7 +45,7 @@ knight is the NightKing or a 417 error with *only NightKing can melt* otherwise.
 
 ## Commands
 
-1. Setup Jaeger
+### Setup Jaeger
 
     ```shell
     kubectl apply -f k8s/jaeger.yml
@@ -53,7 +53,7 @@ knight is the NightKing or a 417 error with *only NightKing can melt* otherwise.
     open http://$(minikube ip):30600/
     ```
 
-2. Build your code and publish your own docker images
+### Build your code and publish your own docker images
 
    > NOTE! You must change the Docker registry to use your own user account!
 
@@ -61,7 +61,7 @@ knight is the NightKing or a 417 error with *only NightKing can melt* otherwise.
     make push
     ```
 
-1. Deploy your services
+### Deploy your services
 
    > NOTE! Edit the manifest and update the Docker image names
 
@@ -69,7 +69,7 @@ knight is the NightKing or a 417 error with *only NightKing can melt* otherwise.
     kubectl deploy -f k8s/got
     ```
 
-2. Test your endpoints and traces
+### Test your endpoints and traces
 
    ```shell
    http $(minikube ip):30501/v1/melt knight=tim
