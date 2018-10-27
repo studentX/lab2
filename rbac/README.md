@@ -4,7 +4,7 @@
 
 # <img src="../assets/lab.png" width="32" height="auto"/> Admission Controller Lab
 
-> ApiProxy Music Rocks! Define RBAC rules and binding for the ApiProxy service.
+> Proxy Music Rocks! Define RBAC rules and binding for the ApiProxy service.
 > An ApiProxy provide for listing pod names in a given namespace by contacting
 > K8s APIServer.
 
