@@ -18,9 +18,45 @@
 
 ## <img src="../assets/face.png" width="32" height="auto"/> Lab Template
 
-+ [Template](./tpl.yml)
-+ [Solution](./iconoflix.yml)
-+ [Bust](./iconoflix_bust.yml)
+```yaml
+---
+# Deployment
+apiVersion: apps/v1
+kind:       Deployment
+metadata:
+  name: iconoflix
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: iconoflix
+  template:
+    metadata:
+      labels:
+        app: iconoflix
+    spec:
+      containers:
+      - name:  iconoflix
+        image: quay.io/imhotepio/iconoflix:mem
+        resources:
+          !!CHANGE_ME!!
+        ports:
+        - containerPort: 4000
+---
+# Service
+apiVersion: v1
+kind:       Service
+metadata:
+  name: iconoflix
+spec:
+  type:  NodePort
+  selector:
+    app: iconoflix
+  ports:
+    - name:     http
+      port:     4000
+      nodePort: 30400
+```
 
 <br/>
 
