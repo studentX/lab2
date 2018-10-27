@@ -78,48 +78,17 @@ spec:
 ---
 ## <img src="../assets/fox.png" width="32" height="auto"/> Commands
 
-### Build your admission controller Docker image
+### Watching endpoints
 
     ```shell
-    make img
+    kubectl get ep --watch
     ```
 
-### Deploy custom admission controller
+### Check probes are working
 
     ```shell
-    kubectl apply -f k8s/dp.yml
+    kubectl logs -f `kubectl get po -l app=iconoflix -o go-template='{{(index .items 0).metadata.name}}'`
     ```
-
-### Generate your certificates
-
-    ```shell
-    ./gen.sh
-    ```
-
-### Verify your certificate against your webhook
-
-    ```shell
-    openssl s_client -connect $(minikube ip):30443/ -CAfile caCert.pem
-    ```
-
-### Base64 encode your certificate
-
-    ```shell
-    cat caCert.pem | base64 | tr -d '\n'
-    ```
-
-# Register with api-server
-
-    ```shell
-    kubectl apply -f k8s/adm.yml
-    ```
-
-# Create a new `Grim Reaper deployment
-
-    ```shell
-    kubectl apply -f k8s/grim.yml
-    ```
-
 
 <br/>
 
