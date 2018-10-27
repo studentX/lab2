@@ -68,7 +68,7 @@ spec:
 <br/>
 
 ---
-## Commands
+## <img src="../assets/face.png" width="32" height="auto"/> Commands
 
 ### Put some load on the application
 
