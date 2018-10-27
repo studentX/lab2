@@ -6,13 +6,12 @@ metadata:
   labels:
     app: inspect
 spec:
-  type: NodePort
+  clusterIP: None
   selector:
     app: inspect
   ports:
   - port:       4000
     targetPort: http
-    nodePort:   30401
 
 ---
 apiVersion: apps/v1
