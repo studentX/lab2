@@ -1,4 +1,4 @@
-<img src="../assets/k8sland.png" align="right" width="128" height="auto"/>
+<img src="assets/k8sland.png" align="right" width="128" height="auto"/>
 
 <br/>
 
