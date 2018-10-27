@@ -4,18 +4,23 @@
 
 # <img src="../assets/lab.png" width="32" height="auto"/> Resources Lab
 
-> Deploy an **Iconoflix** application with resource constraints
+> Experiment with resource constraints for an Iconoflix application
 
-1. Create a deployment and service for Iconoflix
-    1. Image: quay.io/imhotepio/iconoflix:mem
-2. Configure resources for cpu and memory using request and limit
-3. Deploy your application
-4. Ensure everything is up and running!
-5. Change your cpu request more than available and redeploy your application
-   > REMINDER: Node allocations 4 cores / 2Gb mem
-6. What do you notice?
-7. Delete your application
+1. Edit the resource section in the provided manifest and initially swag the
+   Iconoflix container quotas
+1. Deploy the application
+1. Ensure everything is up and running!
+1. Hit the Iconoflix API using the provided burst.sh script and monitor
+   the node and pod resource
+1. Tune your resources based on your findings
+1. Change your cpu request to more than available and redeploy your application
+   > REMINDER: Node allocations 4 cores / 8Gb mem
+1. What do you notice?
+1. Delete your application
 
+<br/>
+
+---
 ## <img src="../assets/face.png" width="32" height="auto"/> Lab Template
 
 ```yaml
@@ -56,6 +61,25 @@ spec:
     - name:     http
       port:     4000
       nodePort: 30400
+```
+
+<br/>
+
+<br/>
+
+---
+## <img src="../assets/fox.png" width="32" height="auto"/> Commands
+
+### Put some load on the application
+
+```shell
+./burst.sh
+```
+
+### Monitor load
+
+```shell
+watch kubectl top po
 ```
 
 <br/>
