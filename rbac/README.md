@@ -9,13 +9,13 @@
 > K8s APIServer.
 
 1. Deploy the given ApiProxy manifest (proxy.yml)
-2. Hit the service url for a given namespace
-3. What's happening?
-4. Now update the provided manifest (rbac.yml) and add Role, Binding and
-   ServiceAccount definitions for the ApiProxy service.
+1. Hit the service url for a given namespace
+1. What's happening?
+1. Update the provided manifest (rbac.yml) and add Role/Binding/ServiceAccount
+   definitions for the ApiProxy service.
    1. Hint ApiProxy needs to list pod names in any given namespace!
-5. Hit the service for a few namespaces and make sure it is working nominally
-6. Delete your application and RBAC rules!
+1. Hit the service for a few namespaces and make sure it is working nominally
+1. Delete your application and RBAC rules!
 
 ---
 ## Commands
