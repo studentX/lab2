@@ -1,42 +1,76 @@
+<img src="../assets/k8sland.png" align="right" width="128" height="auto"/>
+
+<br/>
+
 # <img src="../assets/lab.png" width="32" height="auto"/> StatefulSet Lab
 
 > Deploy an **Inspector** Application using StatefulSets.
 
-1. Create a statefulset and service manifest for Inspector
-    1. Use image: quay.io/imhotepio/inspector:0.1.0
-    2. NOTE: The inspector runs on port 4000
-2. Define your StatefulSet to use 5 replicas
-3. Make sure the service is external accessible via port 30400
-4. Ensure the set is up and running correctly ie 5 instances
-5. Ensure you can query the service
+1. Update the provided StatefulSet + Service manifests use 5 replicas
+1. Deploy your stateful set
+1. Ensure the set is up and running correctly ie 5 instances
+1. Ensure you can query the service
    1. watch http $(minikube ip):30400
-6. Take note of one of the pod IP address
-7. Delete that pod in the set
-8. Ensure the pod is up and the ip/host is preserved
-9. Scale up the cluster by adding one more replica
-10. Ensure all pods are up and running and take note of their IPs
-11. Now scale down to one pod
-12. Ensure there is only one pod running
-13. Delete the last pod and ensure it comes back with the same IP!
-14. Delete your application!
+1. Delete inspector-4
+1. Ensure the pod is up and the host is preserved
+1. Scale up the cluster to 6 replicas
+1.  Ensure all pods are up and running
+1.  Now scale down to one pod
+1. Ensure there is only one pod running
+1. Delete the last pod and ensure it comes back with the same name!
+1. Delete your application!
 
 <br/>
 
 ---
-## Templates
+## <img src="../assets/face.png" width="32" height="auto"/> Templates
 
-+ [Template](./tpl.yml)
-
-<br/>
+```yaml
+---
+apiVersion: v1
+kind:       Service
+metadata:
+  name: inspect
+  labels:
+    CHANGE_ME
+spec:
+  # Indicate headless service
+  !!CHANGE_ME!!
+  selector:
+    CHANGE_ME
+  ports:
+  - port: CHANGE_ME
+    targetPor: CHANGE_ME
 
 ---
-## Commands
-
-### Create the set
-
-```shell
-kubectl apply -f ss.yml
+apiVersion: apps/v1
+kind:       StatefulSet
+metadata:
+  name: inspect
+spec:
+  serviceName: inspect
+  replicas:    CHANGE_ME
+  selector:
+    matchLabels:
+      !!CHANGE_ME!!
+  template:
+    metadata:
+      labels:
+        !!CHANGE_ME!!
+    spec:
+      containers:
+      - name:            inspect
+        image:           quay.io/imhotepio/inspector:0.1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name:          http
+          containerPort: 4000
 ```
+
+<br/>
+
+---
+## <img src="../assets/fox.png" width="32" height="auto"/> Commands
 
 ### Ensure set is running correctly
 
@@ -52,22 +86,9 @@ kubectl get sts inspect
 watch http $(minikube ip):30400
 ```
 
-### Take note of one of the pods IP address
+### Ensure the pod is back up and the host is preserved
 
 ```shell
-kubectl get ep -l app=inspect
-```
-
-### Delete on of the pods with that IP address
-
-```shell
-kubectl delete po inspect-1
-```
-
-### Ensure the pod is back up and the ip/host is preserved
-
-```shell
-kubectl get ep -l app=inspect
 kubectl exec -it inspect-1 -- printenv | grep HOSTNAME
 ```
 
@@ -87,19 +108,6 @@ kubectl get pod,ep
 
 ```shell
 kubectl scale sts inspect --replicas=1
-```
-
-### Delete the last pod and make sure it comes back up with the right IP!
-
-```shell
-kubectl delete po inspect-0
-kubectl get ep
-```
-
-### Delete the statefulset. Completely!
-
-```shell
-kubectl delete -f ss.yml
 ```
 
 <br/>
