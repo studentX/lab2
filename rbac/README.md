@@ -13,7 +13,7 @@
 1. What's happening?
 1. Update the provided manifest (rbac.yml) and add Role/Binding/ServiceAccount
    definitions for the ApiProxy service.
-   1. Hint ApiProxy needs to list pod names in any given namespace!
+   1. Hint: ApiProxy needs to list pod names in any given namespace!
 1. Hit the service for a few namespaces and make sure it is working nominally
 1. Delete your application and RBAC rules!
 
