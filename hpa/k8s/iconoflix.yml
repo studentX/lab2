@@ -8,29 +8,34 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      CHANGE_ME!
+      app: iconoflix
   template:
     metadata:
       labels:
-        CHANGE_ME!
+        app: iconoflix
     spec:
       containers:
       - name:  iconoflix
         image: quay.io/imhotepio/iconoflix:mem
         resources:
-          CHANGE_ME!
+          limits:
+            cpu:    100m
+            memory: 70Mi
+          requests:
+            cpu:    10m
+            memory: 50Mi
         ports:
         - containerPort: 4000
 ---
 # Service
-kind:       Service
 apiVersion: v1
+kind:       Service
 metadata:
   name: iconoflix
 spec:
-  type:  CHANGE_ME!
+  type: NodePort
   selector:
-    CHANGE_ME!
+    app: iconoflix
   ports:
     - port:     4000
-      nodePort: CHANGE_ME!
+      nodePort: 30400
