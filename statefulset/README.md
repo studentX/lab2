@@ -4,21 +4,20 @@
 
 # <img src="../assets/lab.png" width="32" height="auto"/> StatefulSet Lab
 
-> Deploy an **Inspector** Application using StatefulSets.
+> Deploy an **Inspect** Application using StatefulSets.
 
-1. Update the provided StatefulSet + Service manifests use 5 replicas
-1. Deploy your stateful set
+1. Update the provided Inspect StatefulSet + Service manifests: use 5 replicas
+1. Deploy your inspect StatefulSet
 1. Ensure the set is up and running correctly ie 5 instances
-1. Ensure you can query the service
-   1. watch http $(minikube ip):30400
-1. Delete inspector-4
-1. Ensure the pod is up and the host is preserved
-1. Scale up the cluster to 6 replicas
-1.  Ensure all pods are up and running
-1.  Now scale down to one pod
-1. Ensure there is only one pod running
-1. Delete the last pod and ensure it comes back with the same name!
-1. Delete your application!
+1. Ensure you can query any of the pods in the set. See Commands below...
+2. Delete inspector-4
+3. Ensure the pod is back up and the host is preserved
+4. Scale up the cluster to 6 replicas
+5. Ensure all pods are up and running
+6. Now scale down to one pod
+7. Ensure there is only one pod running
+8. Delete the last pod and ensure it comes back with the same name!
+9. Delete your application!
 
 <br/>
 
@@ -83,7 +82,7 @@ kubectl get sts inspect
 ! Note your must access pods individually now
 
 ```shell
-watch http $(minikube ip):30400
+kubectl exec -it inspect-0 -- wget -qO - http://inspect-2.inspect.default.svc:4000/
 ```
 
 ### Ensure the pod is back up and the host is preserved
