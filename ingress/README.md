@@ -12,19 +12,19 @@
 
 In this lab we're going to setup an ingress controller to allow us to play
 *Hangman* from two separate microservices stacks and leverage a *Traefik* ingress
-to mutiplex across our the two stacks.
+to mutiplex across the two stacks.
 
-1. Provision your cluster with a Traefik ingress via a daemonset
-1. Deploy hangman v1 and v2 using the provided manifest
+1. Provision your cluster with a **Traefik** ingress via a DaemonSet
+1. Deploy hangman v1 and v2 using the provided manifests
 1. Verify you can access the Traefik UI
 1. Create an ingress resource that allows to switch between the 2 instances of
    the hangman service. Leverage named hosting, setup the ingress to direct
    traffic to either the **trump** version (v1) or the **halloween** version (v2)
-1. Verify the Traefik UI displays the correct backend/frontend
-1. Play the game using hangman v1
-1. Play the game now using hangman v2
-1. Make sure both instanced are serving the correct dictionaries!
-1. Delete your application
+1. Verify the Traefik UI shows the live backends and frontends
+1. Play the v1 game using Hangman CLI
+1. Next play the v2 game
+1. Make sure both instances are serving words from the correct dictionaries
+1. Delete your application!
 
 ---
 ## Commands
@@ -33,6 +33,12 @@ to mutiplex across our the two stacks.
 
     ```shell
     kubectl apply -f k8s/traefik
+    ```
+
+### Poor man DNS setup!
+
+    ```shell
+    echo "$(minikube ip) traefik-ui.minikube trump.minikube halloween.minikube" | sudo tee -a /etc/hosts
     ```
 
 ### Launch Traefik UI
@@ -45,12 +51,6 @@ to mutiplex across our the two stacks.
 
     ```shell
     kubectl apply -f k8/hangman1 -f k8s/hangman2
-    ```
-
-### Fake a DNS
-
-    ```shell
-    echo "$(minikube ip) trump.minikube halloween.minikube" | sudo tee -a /etc/hosts
     ```
 
 ### Play!
