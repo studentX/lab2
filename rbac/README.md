@@ -2,20 +2,20 @@
 
 <br/>
 
-# <img src="../assets/lab.png" width="32" height="auto"/> Admission Controller Lab
+# <img src="../assets/lab.png" width="32" height="auto"/> RBAC Lab
 
 > Proxy Music Rocks! Define RBAC rules and binding for the ApiProxy service.
 > An ApiProxy provide for listing pod names in a given namespace by contacting
 > K8s APIServer.
 
 1. Deploy the given ApiProxy manifest (proxy.yml)
-1. Hit the service url for a given namespace
-1. What's happening?
-1. Now update the provided manifest (rbac.yml) and add Role, Binding and
+2. Hit the service url for a given namespace
+3. What's happening?
+4. Now update the provided manifest (rbac.yml) and add Role, Binding and
    ServiceAccount definitions for the ApiProxy service.
    1. Hint ApiProxy needs to list pod names in any given namespace!
-1. Hit the service for a few namespaces and make sure it is working nominally
-1. Delete your application and RBAC rules!
+5. Hit the service for a few namespaces and make sure it is working nominally
+6. Delete your application and RBAC rules!
 
 ---
 ## Commands
