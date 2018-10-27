@@ -18,8 +18,8 @@
 1. Deploy your HPA and make sure its reporting utilization
 1. Now load up the application (See commands below)
 1. Watch your hpa and pods and make sure scaling is taking place
-2. Wait for the load to subsume and verify your cluster did scale back down (May take a while...)
-3. Delete the application and HPA!
+1. Wait for the load to subsume and verify your cluster did scale back down (May take a while...)
+1. Delete the application and HPA!
 
 <br/>
 
