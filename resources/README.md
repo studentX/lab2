@@ -70,11 +70,11 @@ spec:
 ---
 ## <img src="../assets/fox.png" width="32" height="auto"/> Commands
 
-### Put some load on the application
+### Simulate load
 
-```shell
-./burst.sh
-```
+    ```shell
+    ./burst.sh
+    ```
 
 ### Monitor load
 
