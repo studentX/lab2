@@ -13,16 +13,15 @@ import (
 type PainterSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
-
-	// CHANGE_ME! Define color property and annotation
-	// +kubebuilder:validation:<CHANGE_ME!>
-	<CHANGE_ME!>
+	// +kubebuilder:validation:Enum=Red,Blue,Green
+	Color string `json:"color,omitempty"`
 }
 
 // PainterStatus defines the observed state of Painter
 type PainterStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+	PaintedPods int32 `json:"paintedPods,omitempty"`
 }
 
 // +genclient

@@ -7,4 +7,22 @@ rules:
 - apiGroups:
   - ""
   resources:
-  # <CHANGE_ME!>
+  - pods
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+  - patch
+- apiGroups:
+  - workload.k8sland.io
+  resources:
+  - painters
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
