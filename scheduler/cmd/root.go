@@ -76,8 +76,10 @@ func listen(cmd *cobra.Command, args []string) {
 	c := make(chan *corev1.Pod)
 	go scheduler(ctx, c)
 
-	// Watch pods in the given namespace
-	!!YOUR_CODE!!
+	w, err := apiServer().CoreV1().Pods(namespace).Watch(opts)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	log.Printf("%s is listening for pods...", app)
 	for e := range w.ResultChan() {
@@ -161,8 +163,10 @@ func checkFit(p *corev1.Pod) (corev1.NodeList, error) {
 		costume string
 		ok bool
 	)
-	// Check if given pod has a costume on it? If Not log and bail out
-	!!YOUR_CODE!!
+	if costume, ok = p.ObjectMeta.Labels["costume"]; !ok {
+		log.Printf("Party pooper detected! No costume on pod %s", p.ObjectMeta.Name)
+		return candidates, nil
+	}
 
 	nn, err := getNodes()
 	if err != nil {
@@ -170,9 +174,12 @@ func checkFit(p *corev1.Pod) (corev1.NodeList, error) {
 	}
 
 	for _, n := range nn.Items {
-		// Check if pod has the correct costume, if so pod can be scheduled on that
-		// current node otherwise log message
-		!!YOUR_CODE!!
+		if trickOrTreat(costume) {
+			log.Printf("Found match!! %s", p.ObjectMeta.Name)
+			candidates.Items = append(candidates.Items, n)
+		} else {
+			log.Printf("Improper attire on pod %s", p.ObjectMeta.Name)
+		}
 	}
 	return candidates, nil
 }
