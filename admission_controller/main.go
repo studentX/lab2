@@ -45,7 +45,7 @@ func main() {
 	}
 
 	log.Printf("%s Listening on port %s...", appName, port)
-	server.ListenAndServeTLS("", "")
+	log.Println(server.ListenAndServeTLS("", ""))
 }
 
 func handlePod(w http.ResponseWriter, r *http.Request) {
@@ -56,11 +56,10 @@ func handlePod(w http.ResponseWriter, r *http.Request) {
 func admitDeployment(ar v1beta1.AdmissionReview) *v1beta1.AdmissionResponse {
 	log.Println("Checking Deployment Admission...")
 
-	// Check if we have the right resource. Hint! apps/v1/deployments
 	depResource := metav1.GroupVersionResource{
-		Group:    !!CHANGE_ME!!,
-		Version:  !!CHANGE_ME!!,
-		Resource: !!CHANGE_ME!!,
+		Group:    "apps",
+		Version:  "v1",
+		Resource: "deployments",
 	}
 	if ar.Request.Resource != depResource {
 		err := fmt.Errorf("expect resource to be %s", depResource)
@@ -77,11 +76,12 @@ func admitDeployment(ar v1beta1.AdmissionReview) *v1beta1.AdmissionResponse {
 
 	reviewResponse := v1beta1.AdmissionResponse{Allowed: true}
 	var msg string
-
-	// Check deployment labels for the magic label. If found set Allowed to false.
-	// Also set deny message!
-	// Hint! msg = fmt.Sprintf("👻  Seriously `%s? No buzz kill allowed on this cluster!!", denyLabel)
-	!!YOUR_CODE!!
+	if v, ok := dep.Labels["app"]; ok {
+		if v == denyLabel {
+			reviewResponse.Allowed = false
+			msg = fmt.Sprintf("👻  Seriously `%s? No buzz kill allowed on this cluster!!", denyLabel)
+		}
+	}
 
 	if !reviewResponse.Allowed {
 		log.Printf("Rejecting Deployment %s", dep.ObjectMeta.Name)
