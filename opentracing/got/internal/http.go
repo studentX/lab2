@@ -77,8 +77,9 @@ func SpanError(ctx context.Context, err error) error {
 
 // WriteErrOut formulate err response and decorte span
 func WriteErrOut(ctx context.Context, w http.ResponseWriter, err error) {
+	code := http.StatusExpectationFailed
+	SpanError(ctx, err)
 	s := opentracing.SpanFromContext(ctx)
-	// Tag this span with an error. Tag error, http.status_code and log event/message
-	!!YOUR_CODE!!
-	http.Error(w, err.Error(), http.StatusExpectationFailed)
+	s.SetTag("http.status_code", code)
+	http.Error(w, err.Error(), code)
 }
