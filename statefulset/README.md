@@ -39,7 +39,7 @@ spec:
     CHANGE_ME
   ports:
   - port: CHANGE_ME
-    targetPor: CHANGE_ME
+    targetPort: CHANGE_ME
 
 ---
 apiVersion: apps/v1
