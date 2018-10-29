@@ -57,7 +57,7 @@
 
 1. Deploy k8s/dictionary_v2 (halloween words)
    1. Ensure the dictionary is up and running correctly
-1.  Edit istio/routes and complete the routes policy
+1. Edit istio/routes and complete the routes policy
 1. Edit istio/subsets and complete the destination rule
 1. Deploy your Istio gateway, routes and subsets manifests
 1. Using the picker.sh script check the current hangman behavior
