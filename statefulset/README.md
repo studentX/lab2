@@ -59,7 +59,7 @@ spec:
     spec:
       containers:
       - name:            inspect
-        image:           quay.io/imhotepio/inspector:0.1.0
+        image:           k8sland/go-inspector:0.0.1
         imagePullPolicy: IfNotPresent
         ports:
         - name:          http
