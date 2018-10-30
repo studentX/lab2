@@ -53,7 +53,7 @@ defining a CRD with a Docker image name and a replica count.
 1. Setup a GO workspace
 
     ```shell
-    md -p $HOME/k8sland/src
+    mkdir -p $HOME/k8sland/src
     export GOPATH=$HOME/k8sland
     export GOBIN=$GOPATH/bin
     export GO111MODULE=off
