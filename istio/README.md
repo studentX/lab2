@@ -44,7 +44,7 @@
 
 1. Deploy k8s/dictionary_v1 (trump words)
    1. Ensure your dictionary v1 is up, running and side-cared! ie Ready=[2/2]
-1. Edit and deploy k8s/dictionary_svc
+1. Edit and deploy k8s/dictionary.yml
    1. The service must watch for pods with label app=dictionary
    2. Make sure the dictionary service is accessible on your node using port 30400
    3. Deploy your dictionary service
