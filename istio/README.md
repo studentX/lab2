@@ -18,7 +18,7 @@
       As of this writing the latest version of istio is 1.0.2.
 
       ```shell
-      mkdir ~/istio && cd istio
+      mkdir ~/istio && cd ~/istio
       curl -L https://git.io/getLatestIstio | sh -
       cd istio-1.0.2
       # NOTE istio comes bundle with it's own cli aka istioctl.
@@ -80,7 +80,6 @@
         hits the v2 version.
 1. Delete the entire application including Istio!
 1. Well done!
-
 
 <br/>
 
