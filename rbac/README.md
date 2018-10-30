@@ -22,9 +22,9 @@
 
 ### Check The Service
 
-    ```shell
-    http $(minikube ip):30404/v1/pods namespace==kube-system
-    ```
+  ```shell
+  http $(minikube ip):30404/v1/pods namespace==kube-system
+  ```
 
 <br/>
 
