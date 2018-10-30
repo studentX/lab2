@@ -73,6 +73,8 @@ knight is the NightKing or a 417 error with *only NightKing can melt* otherwise.
 
    ```shell
    http $(minikube ip):30501/v1/melt knight=tim
+   # Or...
+   curl -XPOST -H "Content-Type: application/json" http://$(minikube ip):30501/v1/melt -d '{"knight":"nightking"}'
    ```
 
 <br/>
