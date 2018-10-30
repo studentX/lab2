@@ -48,9 +48,9 @@ kubectl apply -f k8s/hangman
 
 ```shell
 # Create ConfigMaps for datasource and dashboard
-ku create cm prom-ds -n monitoring --from-file grafana/datasource.yml
-ku create cm prom-dash -n monitoring --from-file grafana/dashboard.yml
-ku create cm hm-dash -n monitoring --from-file grafana/dashboard.json
+kubectl create cm prom-ds -n monitoring --from-file grafana/datasource.yml
+kubectl create cm prom-dash -n monitoring --from-file grafana/dashboard.yml
+kubectl create cm hm-dash -n monitoring --from-file grafana/dashboard.json
 # NOTE! Grafana default credentials: admin/admin
 kubectl apply -f k8s/grafana.yml
 ```
@@ -58,7 +58,7 @@ kubectl apply -f k8s/grafana.yml
 ### Open Grafana
 
   ```shell
-  mik service -n monitoring grafana
+  minikube service -n monitoring grafana
   ```
 
 ### Play!
