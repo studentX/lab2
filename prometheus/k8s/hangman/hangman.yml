@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name:            hangman
-        image:           k8sland/go-hangman-prom-svc:0.0.1
+        image:           k8sland/go-hangman-svc:0.0.1
         imagePullPolicy: IfNotPresent
         args:            ["/app/hangman", "-d", "dictionary:4000"]
         readinessProbe:
