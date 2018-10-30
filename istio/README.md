@@ -20,7 +20,8 @@
       ```shell
       mkdir ~/istio && cd ~/istio
       curl -L https://git.io/getLatestIstio | sh -
-      cd istio-1.0.2
+      # NOTE! Change this based on downloaded version
+      cd istio-1.0.X
       # NOTE istio comes bundle with it's own cli aka istioctl.
       export PATH=$PWD/bin:$PATH
       ```
@@ -28,7 +29,9 @@
   1. Install **Istio** on your Minikube cluster
 
       ```shell
-      cd ~/istio/istio-1.0.2/install/kubernetes
+      cd ~/istio/istio-1.0.X/install/kubernetes
+      # NOTE! This will take a while. Monitor all pods are running
+      # before proceeding!
       kubectl apply -f istio-demo.yaml
       ```
 
