@@ -45,7 +45,7 @@ make install
 make run
 ```
 
-### Deploy your crd instance
+### Deploy your CRD instance
 
 ```shell
 kubectl apply -f config/samples/blue.yml
