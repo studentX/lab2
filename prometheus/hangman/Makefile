@@ -38,7 +38,7 @@ cpush: cimg          ## Push Hangman CLI Docker Image
 
 build: sbuild cbuild ## Build all execs
 
-img: simg cimg       ## Push all images
+img: simg cimg       ## Build all images
 
 push: spush cpush    ## Push all images
 
