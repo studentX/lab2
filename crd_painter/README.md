@@ -23,6 +23,8 @@
 
 ### Create your custom resource
 
+> NOTE!! Run only if you're planning to implement the GO CRD, skip otherwise.
+
 ```shell
 kubebuilder create api --group workload --version v1alpha1 --kind Painter
 ```
@@ -33,19 +35,19 @@ kubebuilder create api --group workload --version v1alpha1 --kind Painter
 make test
 ```
 
-### Install your Painter CRD
+### Deploy your Painter CRD Schema
 
 ```shell
 make install
 ```
 
-### Run your Painter controller
+### Run your Painter controller from the command line
 
 ```shell
 make run
 ```
 
-### Deploy your crd instance
+### Deploy your CRD instance
 
 ```shell
 kubectl apply -f config/samples/blue.yml
@@ -64,9 +66,17 @@ make docker-build IMG=CHANGE_ME_DOCKER_REGISTRY_USER_NAME/painter-manager:0.0.1
 
 ### Deploy your Docker image to a registry (DockerHub)
 
+> NOTE! You must create or use a Docker registry account!
+
 ```shell
 docker login
 make docker-push IMG=CHANGE_ME_DOCKER_REGISTRY_USER_NAME/painter-manager:0.0.1
+```
+
+### Delete all previous deployments!
+
+```shell
+kubectl delete -f config/samples -f k8s/nginx.yml
 ```
 
 ### Deploy your controller
