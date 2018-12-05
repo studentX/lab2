@@ -39,7 +39,7 @@ volume with a set of dictionaries by cloning a dictionary assets repo.
 1. Launch your pod
 
     ```shell
-    kubectl apply -f dictionary.yml
+    kubectl apply -f k8s/dictionary.yml
     ```
 
 2. Verify the init container is successful and pod is launched
@@ -51,13 +51,13 @@ volume with a set of dictionaries by cloning a dictionary assets repo.
 3. Verify the volume was provisioned correctly
 
     ```shell
-    kubectl exec -it dictionary -- wget -q -O - http://localhost:4000/words
+    kubectl exec -it dictionary -- wget -qO - http://localhost:4000/words
     ```
 
 4. Change git url so that it does not resolve
 
     ```shell
-    kubectl delete -f dictionary.yml --force --grace-period=0
+    kubectl delete -f k8s/dictionary.yml --force --grace-period=0
     kubectl apply -f dictionary.yml
     ```
 
