@@ -66,7 +66,7 @@ knight is the NightKing or a 417 error with *only NightKing can melt* otherwise.
    > NOTE! Edit the manifest and update the Docker image names
 
     ```shell
-    kubectl deploy -f k8s/got
+    kubectl apply -f k8s/got
     ```
 
 ### Test your endpoints and traces
