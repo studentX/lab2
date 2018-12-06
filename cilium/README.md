@@ -32,7 +32,7 @@ CastleBlack but not the NightKing. However no one can `melt CastleBlack like a N
     # Delete
     minikube delete
     # Start with new configs
-    minikube start --cpus=4 --memory==8192 \
+    minikube start --cpus=4 --memory=8192 \
       --vm-driver=hyperkit \
       --kubernetes-version=v1.12.1 \
       --network-plugin=cni \
