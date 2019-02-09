@@ -56,8 +56,12 @@ to mutiplex across the two stacks.
 ### Play!
 
 ```shell
+# On OSX...
 bin/hangman -hm trump.minikube
 bin/hangman -hm halloween.minikube
+# Or hit the ingress using http
+http trump.minikube/new_game
+http halloween.minikube/new_game
 ```
 
 
