@@ -20,12 +20,9 @@ spec:
         imagePullPolicy: IfNotPresent
         args:            ["/app/hangman", "-d", "dictionary1:4001"]
         resources:
-          requests:
+          limits:
             cpu:    100m
             memory: 4Mi
-          limits:
-            cpu:    200m
-            memory: 8Mi
         ports:
         - name:          http
           containerPort: 5000
@@ -37,11 +34,11 @@ metadata:
   labels:
     app: hangman1
 spec:
-  # type: ClusterIP
+  type: ClusterIP
   selector:
     app: hangman1
   ports:
     - name:       http
-      # protocol:   TCP
+      protocol:   TCP
       port:       80
       targetPort: http

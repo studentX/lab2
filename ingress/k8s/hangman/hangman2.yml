@@ -20,12 +20,9 @@ spec:
         imagePullPolicy: IfNotPresent
         args:            ["/app/hangman", "-d", "dictionary2:4002"]
         resources:
-          requests:
+          limits:
             cpu:    100m
             memory: 4Mi
-          limits:
-            cpu:    200m
-            memory: 8Mi
         ports:
         - name:          http
           containerPort: 5000

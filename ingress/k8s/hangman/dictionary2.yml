@@ -24,6 +24,10 @@ spec:
         volumeMounts:
         - name:      dictionary
           mountPath: /var/dictionary
+        resources:
+          limits:
+            cpu:    100m
+            memory: 4Mi
       initContainers:
       - name:    git
         image:   luzhzh/git-client
@@ -41,11 +45,10 @@ kind:       Service
 metadata:
   name: dictionary2
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: dictionary2
   ports:
   - name:       http
     port:       4002
-    nodePort:   30402
     targetPort: http
