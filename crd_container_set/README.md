@@ -14,13 +14,21 @@ by the CRD.
 > the right thing in the next lab. For now the default generated code ensures
 > an nginx deployment is created with a single replicas.
 
-1. Define a sample resource
+1. Before you begin, make sure to install kubebuilder per the lesson's instructions!
+
+1. Cd to your Go workspace
+
+    ```shell
+    cd $GOPATH/src/github.com/k8sland.io/crds
+    ```
+
+2. Define a sample resource
 
     ```shell
     kubebuilder create api --group workload --version v1alpha1 --kind ContainerSet
     ```
 
-1. Install the CRD schema
+3. Install the CRD schema
 
     ```shell
     make install
@@ -28,19 +36,19 @@ by the CRD.
     kubectl get crd | grep containersets
     ```
 
-1. Run the sample controller
+4. Run the sample controller
 
     ```shell
     make run
     ```
 
-1. Watch your local pod and deployment
+5. Watch your local pod and deployment
 
     ```shell
     kubectl get po,deploy
     ```
 
-1. Install the sample CRD
+6. Install the sample CRD
 
    ```shell
    kubectl apply -f config/samples
@@ -48,7 +56,7 @@ by the CRD.
    # and associated deployment
    ```
 
-1. Delete your containerset and crd
+7. Delete your containerset and crd
 
     ```shell
     kubectl delete -f config/samples -f config/crds
