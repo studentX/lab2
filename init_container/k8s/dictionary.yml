@@ -15,6 +15,10 @@ spec:
     volumeMounts:
     - name:      CHANGE_ME!
       mountPath: CHANGE_ME!
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100Mi
   initContainers:
   - name:    git
     image:   luzhzh/git-client
@@ -22,6 +26,10 @@ spec:
     volumeMounts:
     - name:      CHANGE_ME!
       mountPath: CHANGE_ME!
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100Mi
   volumes:
   - name: CHANGE_ME!
     hostPath:
