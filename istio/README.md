@@ -15,7 +15,7 @@
 1. Install Istio
 
    1. Download
-      As of this writing the latest version of istio is 1.0.2.
+      As of this writing the latest stable version of istio is 1.0.5.
 
       ```shell
       mkdir ~/istio && cd ~/istio
