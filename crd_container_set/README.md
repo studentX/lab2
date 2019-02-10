@@ -14,7 +14,7 @@ by the CRD.
 > the right thing in the next lab. For now the default generated code ensures
 > an nginx deployment is created with a single replicas.
 
-1. Before you begin make sure to install kubebuilder per the lesson's instructions!
+1. Before you begin, make sure to install kubebuilder per the lesson's instructions!
 
 1. Cd to your Go workspace
 
