@@ -1,3 +1,11 @@
+---
+# Create NS
+apiVersion: v1
+kind:       Namespace
+metadata:
+  name: fred
+---
+# Install CRD
 apiVersion: workload.k8sland.io/v1alpha1
 kind:       Painter
 metadata:
