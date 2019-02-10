@@ -31,7 +31,9 @@ var (
 	Version = ""
 	srv     kubernetes.Interface
 
+	// Allowable party attires
 	attires = []string{"ghoul", "goblin"}
+
 	rootCmd = &cobra.Command{
 		Use:   strings.ToLower(app),
 		Short: "Schedules pods based on costumes",
@@ -87,7 +89,6 @@ func listen(cmd *cobra.Command, args []string) {
 		if p.Spec.SchedulerName != schedName {
 			continue
 		}
-		log.Println("Unscheduled pod detected", p.ObjectMeta.Name)
 		switch e.Type {
 		case watch.Added:
 			c <- p
@@ -108,7 +109,7 @@ func scheduler(ctx context.Context, c <-chan *corev1.Pod) {
 				break
 			}
 			if len(nodes.Items) == 0 {
-				log.Printf("Unable to fit pod %s on any nodes", p.ObjectMeta.Name)
+				log.Printf("Party 💩  pod `%s detected. Access is denied on this cluster!", p.ObjectMeta.Name)
 				break
 			}
 			for _, n := range nodes.Items {
@@ -152,19 +153,19 @@ func schedule(n corev1.Node, p *corev1.Pod) error {
 	if err := bind.Do().Into(&b); err != nil {
 		return err
 	}
-	log.Printf("Ye! scheduled pod %s onto node %s", p.ObjectMeta.Name, n.ObjectMeta.Name)
+	log.Printf("Ye! scheduled 🎊🎉 pod %s onto node %s", p.ObjectMeta.Name, n.ObjectMeta.Name)
 	return nil
 }
 
 func checkFit(p *corev1.Pod) (corev1.NodeList, error) {
 	candidates := corev1.NodeList{}
 
-  var (
+	var (
 		costume string
-		ok bool
+		ok      bool
 	)
 	if costume, ok = p.ObjectMeta.Labels["costume"]; !ok {
-		log.Printf("Party pooper detected! No costume on pod %s", p.ObjectMeta.Name)
+		log.Printf("Party pooper detected! Improper attire `%s on pod %s", costume, p.ObjectMeta.Name)
 		return candidates, nil
 	}
 
@@ -174,17 +175,14 @@ func checkFit(p *corev1.Pod) (corev1.NodeList, error) {
 	}
 
 	for _, n := range nn.Items {
-		if trickOrTreat(costume) {
-			log.Printf("Found match!! %s", p.ObjectMeta.Name)
+		if checkEntry(costume) {
 			candidates.Items = append(candidates.Items, n)
-		} else {
-			log.Printf("Improper attire on pod %s", p.ObjectMeta.Name)
 		}
 	}
 	return candidates, nil
 }
 
-func trickOrTreat(costume string) bool {
+func checkEntry(costume string) bool {
 	for _, c := range attires {
 		if c == costume {
 			return true
