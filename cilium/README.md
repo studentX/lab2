@@ -42,11 +42,11 @@ CastleBlack but not the NightKing. However no one can `melt CastleBlack like a N
 2. Install Cilium on your cluster
 
     ```shell
-    # Setup etcd
+    # Install Cilium etcd
     kubectl apply -n kube-system \
-      -f https://raw.githubusercontent.com/cilium/cilium/1.2.4/examples/kubernetes/addons/etcd/standalone-etcd.yaml
-    # Setup cilium
-    kubectl apply -f https://raw.githubusercontent.com/cilium/cilium/1.2.4/examples/kubernetes/1.10/cilium.yaml
+      -f https://raw.githubusercontent.com/cilium/cilium/1.3.2/examples/kubernetes/addons/etcd/standalone-etcd.yaml
+    # Install Cilium
+    kubectl apply -f https://raw.githubusercontent.com/cilium/cilium/1.3.2/examples/kubernetes/1.12/cilium.yaml
     ```
 
 ## Commands
