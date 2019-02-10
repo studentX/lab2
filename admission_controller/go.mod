@@ -28,8 +28,10 @@ require (
 	golang.org/x/time v0.0.0-20180412165947-fbb02b2291d2 // indirect
 	google.golang.org/appengine v1.2.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
-	gopkg.in/yaml.v2 v2.2.1 // indirect
 	k8s.io/api v0.0.0-20181018013834-843ad2d9b9ae
-	k8s.io/apimachinery v0.0.0-20181015213631-60666be32c5d
+	k8s.io/apimachinery v0.0.0-20190208171202-bf20fabcb825
 	k8s.io/client-go v9.0.0+incompatible
+	k8s.io/klog v0.1.0 // indirect
+	sigs.k8s.io/structured-merge-diff v0.0.0-20190130003954-e5e029740eb8 // indirect
+	sigs.k8s.io/yaml v1.1.0 // indirect
 )

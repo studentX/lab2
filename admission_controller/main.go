@@ -35,7 +35,7 @@ type (
 func main() {
 	r := mux.NewRouter()
 	m := handlers.LoggingHandler(os.Stdout, r)
-	r.Handle("/", http.HandlerFunc(handlePod))
+	r.Handle("/", http.HandlerFunc(handleDeployment))
 
 	var config Config
 	server := &http.Server{
@@ -48,11 +48,11 @@ func main() {
 	log.Println(server.ListenAndServeTLS("", ""))
 }
 
-func handlePod(w http.ResponseWriter, r *http.Request) {
+func handleDeployment(w http.ResponseWriter, r *http.Request) {
 	serve(w, r, admitDeployment)
 }
 
-// Reject fred's deployments
+// Reject Grim-Reaper deployments
 func admitDeployment(ar v1beta1.AdmissionReview) *v1beta1.AdmissionResponse {
 	log.Println("Checking Deployment Admission...")
 
@@ -76,10 +76,10 @@ func admitDeployment(ar v1beta1.AdmissionReview) *v1beta1.AdmissionResponse {
 
 	reviewResponse := v1beta1.AdmissionResponse{Allowed: true}
 	var msg string
-	if v, ok := dep.Labels["app"]; ok {
-		if v == denyLabel {
-			reviewResponse.Allowed = false
-			msg = fmt.Sprintf("👻  Seriously `%s? No buzz kill allowed on this cluster!!", denyLabel)
+	if v, ok := dep.Labels["app"]; ok && v == denyLabel {
+		reviewResponse.Allowed = false
+		reviewResponse.Result = &metav1.Status{
+			Message: fmt.Sprintf("👻  Seriously `%s? No buzz kill allowed on this cluster!!", denyLabel),
 		}
 	}
 
@@ -89,7 +89,6 @@ func admitDeployment(ar v1beta1.AdmissionReview) *v1beta1.AdmissionResponse {
 	} else {
 		log.Printf("Admitting Deployment %s", dep.ObjectMeta.Name)
 	}
-
 	return &reviewResponse
 }
 
