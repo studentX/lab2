@@ -15,7 +15,7 @@
 1. Install Istio
 
    1. Download
-      As of this writing the latest version of istio is 1.0.2.
+      As of this writing the latest stable version of istio is 1.0.5.
 
       ```shell
       mkdir ~/istio && cd ~/istio
@@ -44,7 +44,7 @@
 
 1. Deploy k8s/dictionary_v1 (trump words)
    1. Ensure your dictionary v1 is up, running and side-cared! ie Ready=[2/2]
-1. Edit and deploy k8s/dictionary_svc
+1. Edit and deploy k8s/dictionary.yml
    1. The service must watch for pods with label app=dictionary
    2. Make sure the dictionary service is accessible on your node using port 30400
    3. Deploy your dictionary service
@@ -55,13 +55,13 @@
 
     ```shell
     # NOTE! Press enter once the pod is initialized!
-    kubectl run -i --tty --rm hm --image k8sland/hangman-cli-go:0.0.1 --command -- /app/hangman_cli --url hangman:5000
+    kubectl run -i --tty --generator=run-pod/v1 --rm hm --image k8sland/hangman-cli-go:0.0.1 --command -- /app/hangman_cli --url hangman:5000
     ```
 
 1. Deploy k8s/dictionary_v2 (halloween words)
    1. Ensure the dictionary is up and running correctly
-1. Edit istio/routes and complete the routes policy
-1. Edit istio/subsets and complete the destination rule
+1. Edit istio/routes.yml and complete the routes policy
+1. Edit istio/subsets.yml and complete the destination rule
 1. Deploy your Istio gateway, routes and subsets manifests
 1. Using the picker.sh script check the current hangman behavior
 
