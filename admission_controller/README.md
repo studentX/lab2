@@ -73,16 +73,9 @@
     ```
 
 1. Verify your deployments did not make it!
-    
-    ```shell
-    kubectl get deploy
-    ```
 
 1. Change the deployment label and redeploy
 
-    ```shell
-    kubectl get deploy 
-    ```
 
 <br/>
 
