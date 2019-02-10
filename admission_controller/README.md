@@ -26,47 +26,55 @@
 ---
 ## Commands
 
-### Build your admission controller Docker image
-
-    ```shell
-    make img
-    ```
-
-### Deploy custom admission controller
-
-    ```shell
-    kubectl apply -f k8s/dp.yml
-    ```
-
-### Generate your certificates
+1. Generate your certificates
 
     ```shell
     ./gen.sh
     ```
 
-### Verify your certificate against your webhook
+1. Build your admission controller Docker image
 
     ```shell
-    openssl s_client -connect $(minikube ip):30443/ -CAfile caCert.pem
+    make img
     ```
 
-### Base64 encode your certificate
+1. Deploy custom admission controller
 
     ```shell
-    cat caCert.pem | base64 | tr -d '\n'
+    kubectl apply -f k8s/dp.yml
     ```
 
-# Register with api-server
+1. Base64 encode your certificate
+
+    ```shell
+    # Base64 encode your key
+    cat caCert.pem | base64 | tr -d '\n' | pbcopy
+    # IMPORTANT! Edit k8s/adm.yml and paste in caBundle
+    ```
+
+1. Register with api-server
 
     ```shell
     kubectl apply -f k8s/adm.yml
+    # Verify!
+    kubectl get validatingwebhookconfiguration
     ```
 
-# Create a new `Grim Reaper deployment
+1. Verify your certificate against your webhook
+
+    ```shell
+    openssl s_client -host $(minikube ip) -port 30443 -CAfile caCert.pem
+    ```
+
+1. Create a new `Grim Reaper deployment
 
     ```shell
     kubectl apply -f k8s/grim.yml
     ```
+
+1. Verify your deployments did not make it!
+
+1. Change the deployment label and redeploy
 
 
 <br/>
