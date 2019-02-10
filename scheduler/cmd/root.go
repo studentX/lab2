@@ -161,7 +161,8 @@ func checkFit(p *corev1.Pod) (corev1.NodeList, error) {
 		costume string
 		ok bool
 	)
-	// Check if given pod has a costume on it? If Not log and bail out
+	// Check if given pod has a costume label on it?
+	// If Not log and bail out
 	!!YOUR_CODE!!
 
 	nn, err := getNodes()
@@ -170,7 +171,7 @@ func checkFit(p *corev1.Pod) (corev1.NodeList, error) {
 	}
 
 	for _, n := range nn.Items {
-		// Check if pod has the correct costume, if so pod can be scheduled on that
+		// Check if pod has the correct costume maching the attire const , if so pod can be scheduled on that
 		// current node otherwise log message
 		!!YOUR_CODE!!
 	}

@@ -49,7 +49,7 @@
 # Check RBAC Rules for serviceaccount
 
     ```shell
-    ku auth can-i get pods -n defaut --as system:serviceaccount:default:partysched
+    ku auth can-i get pods --as system:serviceaccount:default:partysched
     ```
 
 <br/>
