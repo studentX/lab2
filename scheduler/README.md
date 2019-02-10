@@ -4,7 +4,7 @@
 
 # <img src="../assets/lab.png" width="32" height="auto"/> Custom Scheduler Lab
 
-> In the spirit of Halloween, write a party scheduler that will only schedule
+> The party pooper scheduler! Write a party scheduler that will only schedule
 > a pod if it has a costume.
 
 1. Define a custom party scheduler aka partysched, that check if a given pod
@@ -49,7 +49,7 @@
 # Check RBAC Rules for serviceaccount
 
     ```shell
-    ku auth can-i get pods -n defaut --as system:serviceaccount:default:partysched
+    ku auth can-i get pods --as system:serviceaccount:default:partysched
     ```
 
 <br/>
