@@ -58,6 +58,7 @@ knight is the NightKing or a 417 error with *only NightKing can melt* otherwise.
    > NOTE! You must change the Docker registry to use your own user account!
 
     ```shell
+    cd got
     make push
     ```
 
