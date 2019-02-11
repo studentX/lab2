@@ -1,5 +1,5 @@
 PACKAGE      := github.com/k8sland/lab2/prom/hangman
-REGISTRY     := k8sland
+REGISTRY     := <!!CHANGE_ME!!>
 
 SVC_VERSION  := 0.0.1
 SVC_IMAGE    := go-hangman-prom-svc
