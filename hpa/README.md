@@ -70,7 +70,7 @@ go get -u github.com/rakyll/hey
 ### Load using Hey!
 
 ```shell
-hey -c 2 -n 1000 -m POST \
+hey -c 2 -n 100 -m POST \
   -H "Content-Type: application/json" \
   -d '{"query":"{movies{name}}"}' \
   http://$(minikube ip):30400/graphql
