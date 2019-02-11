@@ -15,6 +15,17 @@ the [dictionary](https://github.com/k8sland/code2/tree/master/dictionary) servic
 to provide a list of words. The game is composed of a service to pick out a word
 from a dictionary list of words and a CLI to play the game.
 
+---
+<br/>
+
+## Building the application and deploy to a docker registry
+
+NOTE!! Make sure to change the makefile to use your own Docker registry (See REGISTRY)
+
+```shell
+make push
+```
+
 <br/>
 
 ---
