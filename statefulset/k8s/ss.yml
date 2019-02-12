@@ -6,6 +6,7 @@ metadata:
   labels:
     app: inspect
 spec:
+  # Indicate headless service
   clusterIP: <!!SERVICE_TYPE>
   selector:
     !!YOUR_CODE!!
@@ -19,6 +20,7 @@ kind:       StatefulSet
 metadata:
   name: inspect
 spec:
+  # Service type
   !!YOUR_CODE!!
   selector:
     matchLabels:
