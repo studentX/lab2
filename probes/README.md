@@ -19,7 +19,6 @@
 1. What do you notice?
 1. Delete your application
 
-
 <br/>
 
 ---
