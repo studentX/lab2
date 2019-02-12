@@ -6,7 +6,7 @@ kind:       Deployment
 metadata:
   name: iconoflix
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: iconoflix
@@ -24,8 +24,8 @@ spec:
         - containerPort: 4000
 ---
 # Service
+kind: Service
 apiVersion: v1
-kind:       Service
 metadata:
   name: iconoflix
 spec:
@@ -33,6 +33,5 @@ spec:
   selector:
     app: iconoflix
   ports:
-    - name:     http
-      port:     4000
-      nodePort: 30400
+  - port:     4000
+    nodePort: 30400
