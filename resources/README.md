@@ -6,8 +6,8 @@
 
 > Experiment with resource constraints for an Iconoflix application
 
-1. Edit the resource section in the provided manifest and initially swag the
-   Iconoflix container quotas
+1. Edit the resource section in the provided manifest (k8s/iconoflix.yml) and
+   initially swag the Iconoflix container quotas
 1. Deploy the application
 1. Ensure everything is up and running!
 1. Hit the Iconoflix API using the provided burst.sh script and monitor
@@ -18,52 +18,6 @@
 1. What do you notice?
 1. Delete your application
 
-<br/>
-
----
-## <img src="../assets/face.png" width="32" height="auto"/> Lab Template
-
-```yaml
----
-# Deployment
-apiVersion: apps/v1
-kind:       Deployment
-metadata:
-  name: iconoflix
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: iconoflix
-  template:
-    metadata:
-      labels:
-        app: iconoflix
-    spec:
-      containers:
-      - name:  iconoflix
-        image: quay.io/imhotepio/iconoflix:mem
-        resources:
-          !!CHANGE_ME!!
-        ports:
-        - containerPort: 4000
----
-# Service
-apiVersion: v1
-kind:       Service
-metadata:
-  name: iconoflix
-spec:
-  type:  NodePort
-  selector:
-    app: iconoflix
-  ports:
-    - name:     http
-      port:     4000
-      nodePort: 30400
-```
-
-<br/>
 <br/>
 
 ---
