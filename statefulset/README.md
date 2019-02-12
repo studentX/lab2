@@ -19,52 +19,6 @@
 8. Delete the last pod and ensure it comes back with the same name!
 9. Delete your application!
 
-<br/>
-
----
-## <img src="../assets/face.png" width="32" height="auto"/> Templates
-
-```yaml
----
-apiVersion: v1
-kind:       Service
-metadata:
-  name: inspect
-  labels:
-    CHANGE_ME
-spec:
-  # Indicate headless service
-  !!CHANGE_ME!!
-  selector:
-    CHANGE_ME
-  ports:
-  - port: CHANGE_ME
-    targetPort: CHANGE_ME
-
----
-apiVersion: apps/v1
-kind:       StatefulSet
-metadata:
-  name: inspect
-spec:
-  serviceName: inspect
-  replicas:    CHANGE_ME
-  selector:
-    matchLabels:
-      !!CHANGE_ME!!
-  template:
-    metadata:
-      labels:
-        !!CHANGE_ME!!
-    spec:
-      containers:
-      - name:            inspect
-        image:           k8sland/go-inspector:0.0.1
-        imagePullPolicy: IfNotPresent
-        ports:
-        - name:          http
-          containerPort: 4000
-```
 
 <br/>
 

@@ -6,7 +6,7 @@ metadata:
   labels:
     app: inspect
 spec:
-  clusterIP: None
+  clusterIP: <!!SERVICE_TYPE>
   selector:
     !!YOUR_CODE!!
   ports:
