@@ -6,7 +6,7 @@
 
 > Add Readiness/Liveliness probes to an Iconoflix application
 
-1. In the given Iconoflix deployment add a HTTP Readiness probe
+1. In the given Iconoflix deployment (k8s/iconoflix.yml) add a HTTP Readiness probe
    1. Use /check/alive
 1. Monitor your endpoints
    1. kubectl get ep --watch
@@ -18,59 +18,6 @@
 1. Watch the Iconoflix pod logs
 1. What do you notice?
 1. Delete your application
-
-<br/>
-
----
-## <img src="../assets/face.png" width="32" height="auto"/> Template
-
-```yaml
----
-# Deployment
-apiVersion: apps/v1
-kind:       Deployment
-metadata:
-  name: iconoflix
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: iconoflix
-  template:
-    metadata:
-      labels:
-        app: iconoflix
-    spec:
-      containers:
-      - name:            iconoflix
-        image:           quay.io/imhotepio/iconoflix:mem
-        imagePullPolicy: IfNotPresent
-        ports:
-        - name:          api
-          containerPort: 4000
-        resources:
-          limits:
-            cpu:    50m
-            memory: 80Mi
-          requests:
-            cpu:    10m
-            memory: 50Mi
-        # Add your probes here...
-        <<!!CHANGE_ME!!>
----
-# Service
-kind:       Service
-apiVersion: v1
-metadata:
-  name: iconoflix
-spec:
-  type:  NodePort
-  selector:
-    app: iconoflix
-  ports:
-    - port:     4000
-      nodePort: 30400
-```
 
 
 <br/>
