@@ -10,7 +10,7 @@
 1. Deploy your inspect StatefulSet
 1. Ensure the set is up and running correctly ie 5 instances
 1. Ensure you can query any of the pods in the set. See Commands below...
-2. Delete inspector-4
+2. Delete inspect-4
 3. Ensure the pod is back up and the host is preserved
 4. Scale up the cluster to 6 replicas
 5. Ensure all pods are up and running
