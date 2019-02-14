@@ -24,10 +24,6 @@ spec:
         volumeMounts:
         - name:      dictionary
           mountPath: /var/dictionary
-        resources:
-          limits:
-            cpu: 100m
-            memory: 100Mi
       initContainers:
       - name:    git
         image:   luzhzh/git-client
@@ -39,10 +35,6 @@ spec:
       - name: dictionary
         hostPath:
           path: /home/docker/dictionary
-      resources:
-        limits:
-          cpu: 100m
-          memory: 100Mi
 ---
 apiVersion: v1
 kind:       Service
