@@ -18,7 +18,10 @@
    good and bad guesses (see game.go).
 2. Next define a prometheus gauge to track your game results:
    ie +1 for wins and -1 for loss (see tally.go)
-3. Build your new game images and push to DockerHub
+3. Build your new game images and push to DockerHub using the provided makefile.
+   The target will build and push 2 images for the hangman CLI and the service.
+   You will need to modify the Makefile and change the docker registry account to
+   you own!
 4. Before you get to play the game, your will need to tell Prometheus to
    track your hangman service by setting the ServiceMonitor CRD (k8s/prom/crd.yml)
 5. Using the provided deployment templates, deploy Prometheus using the awesome
