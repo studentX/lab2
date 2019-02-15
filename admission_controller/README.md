@@ -8,7 +8,7 @@
 > that rejects all Grim Reaper's deployments!
 
 1. Update the code in main.go to reject all grim reaper deployments. ie
-   check for deployment resource with a label app=grim reaper.
+   check for deployment resource with a label app=Grim-Reaper.
 1. Generate certs and keys for your webhook and make sure to provide the correct
    service name in your certificate encryption
 1. Generate a ca_bundle to validate api-server callback into your webhook.
