@@ -32,6 +32,7 @@ type (
 )
 
 // Define a gauge to track win/lose +1 for wins, -1 for loss
+// Name your gauge hangman_tally_total
 !!YOUR_CODE!!
 var promTally = promauto.NewGauge(prometheus.GaugeOpts{})
 

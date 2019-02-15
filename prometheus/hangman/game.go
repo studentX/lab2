@@ -14,6 +14,7 @@ type Game struct {
 
 var (
 	// Define 2 counters to track good/bad guess counts
+	// Mame your counters hangman_good_guess_count, hangman_bad_guess_count
 	// !!YOUR_CODE!!
 	promGood = promauto.NewCounter(prometheus.CounterOpts{})
 	promBad  = promauto.NewCounter(prometheus.CounterOpts{})
