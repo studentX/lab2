@@ -27,12 +27,12 @@ knight is the NightKing or a 417 error with *only NightKing can melt* otherwise.
     1. knight
 1. If the given Knight is *NightKing* add a log to the castle span to indicate
    `the castle is melted`.
-1. All other knights should produce a span error.
+1. All other knights should produce a span error (internal/http.go).
 1. Span errors are indicated by:
    1. Setting a span tag error=true
    1. Adding a structured log on the span using
       1. event=error
-      1. message=only the nightking can melt
+      1. message=only the Nightking can melt the castle
 1. Edit the provided Makefile to use your own docker **registry**!
 1. Build and push new docker images using the Makefile (see commands below!)
 1. Deploy Jaeger, Castle and Knight services on your local cluster.
