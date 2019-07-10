@@ -32,21 +32,14 @@ CastleBlack but not the NightKing. However no one can `melt CastleBlack like a N
     # Delete
     minikube delete
     # Start with new configs
-    minikube start --cpus=4 --memory=8192 \
-      --vm-driver=hyperkit \
-      --kubernetes-version=v1.12.1 \
-      --network-plugin=cni \
-      --extra-config=kubelet.network-plugin=cni
+    minikube start --cpus=4 --memory=4096 --vm-driver=hyperkit --network-plugin=cni
     ```
 
 2. Install Cilium on your cluster
 
     ```shell
-    # Setup etcd
-    kubectl apply -n kube-system \
-      -f https://raw.githubusercontent.com/cilium/cilium/1.2.4/examples/kubernetes/addons/etcd/standalone-etcd.yaml
-    # Setup cilium
-    kubectl apply -f https://raw.githubusercontent.com/cilium/cilium/1.2.4/examples/kubernetes/1.10/cilium.yaml
+    # Install Cilium
+    kubectl apply -f https://raw.githubusercontent.com/cilium/cilium/1.5.4/examples/kubernetes/1.14/cilium-minikube.yaml
     ```
 
 ## Commands
@@ -57,13 +50,13 @@ CastleBlack but not the NightKing. However no one can `melt CastleBlack like a N
     kubectl apply -f k8s/castle_black.yml -f k8s/north.yml -f k8s/nightking.yml
     ```
 
-1. Deploy your Cilium policy
+2. Deploy your Cilium policy
 
     ```shell
     kubectl apply -f k8s/policies.yml
     ```
 
-1. Validate your policy is setup correctly
+3. Validate your policy is setup correctly
 
     ```shell
     kubectl exec -it -n kube-system \
@@ -71,7 +64,7 @@ CastleBlack but not the NightKing. However no one can `melt CastleBlack like a N
     -- cilium policy get
     ```
 
-1. Check Cilium policy is active
+4. Check Cilium policy is active
 
     ```shell
     kubectl exec -it -n kube-system \
@@ -79,7 +72,7 @@ CastleBlack but not the NightKing. However no one can `melt CastleBlack like a N
     -- cilium endpoint list
     ```
 
-1. Monitor Cilium Requests
+5. Monitor Cilium Requests
 
     ```shell
     kubectl exec -it -n kube-system \
@@ -87,14 +80,14 @@ CastleBlack but not the NightKing. However no one can `melt CastleBlack like a N
     -- cilium monitor
     ```
 
-1. Check NorthMan endpoints
+6. Check NorthMan endpoints
 
    ```shell
    http $(minikube ip):30501/v1/enter # Success
    http $(minikube ip):30501/v1/melt  # Fails!
    ```
 
-1. Check NightKing endpoints
+7. Check NightKing endpoints
 
    ```shell
    http $(minikube ip):30502/v1/enter # Fails!
