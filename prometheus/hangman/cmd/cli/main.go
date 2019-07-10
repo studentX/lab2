@@ -69,7 +69,7 @@ func gameOver() bool {
 }
 
 func urlFor(path string) string {
-	return "http://" + base + "/" + path
+	return "http://" + base + "/api/v1/" + path
 }
 
 func issueGuess(guess rune) {
@@ -116,7 +116,7 @@ func prompt(s bool) rune {
 	if !s {
 		ic = "😡"
 	}
-	fmt.Printf("\n%s %10s [%d/%d]? ", ic, "Your Guess", g.Tally.TurnsLeft, hangman.MaxGuesses)
+	fmt.Printf("\n%s  %10s [%d/%d]? ", ic, "Your Guess", g.Tally.TurnsLeft, hangman.MaxGuesses)
 	char, _, err := reader.ReadRune()
 	if err != nil {
 		panic(err)

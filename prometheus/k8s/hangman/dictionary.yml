@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: dictionary
-        image: k8sland/dictionary-svc-go:0.0.2
+        image: k8sland/go-dictionary-prom-svc:0.0.1
         command: ['/app/dictionary', '-a', '/var/dictionary/words', '-d', 'trump.txt']
         ports:
         - name: http
@@ -24,6 +24,22 @@ spec:
         volumeMounts:
         - name:      dictionary
           mountPath: /var/dictionary
+        resources:
+          limits:
+            cpu: 200m
+            memory: 100Mi
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+          initialDelaySeconds: 5
+          periodSeconds:       10
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+          initialDelaySeconds: 5
+          periodSeconds:       10
       initContainers:
       - name:    git
         image:   luzhzh/git-client
@@ -31,6 +47,10 @@ spec:
         volumeMounts:
         - name:      dictionary
           mountPath: /var/dictionary
+        resources:
+          limits:
+            cpu: 100m
+            memory: 50Mi
       volumes:
       - name: dictionary
         hostPath:

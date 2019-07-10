@@ -7,6 +7,7 @@
 > The party pooper scheduler! Write a party scheduler that will only schedule
 > a pod if it has a costume.
 
+1. Make sure to enable GO Modules: GO111MODULE=on
 1. Define a custom party scheduler aka partysched, that check if a given pod
    has a costume label set to either ghoul or goblin or your choice of costumes...
 1. Make sure your pod gets scheduled if it has a correct costume label

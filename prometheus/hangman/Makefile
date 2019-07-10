@@ -1,13 +1,13 @@
 PACKAGE      := github.com/k8sland/lab2/prom/hangman
 REGISTRY     := k8sland
 
-SVC_VERSION  := 0.0.1
+SVC_VERSION  := 0.0.3
 SVC_IMAGE    := go-hangman-prom-svc
 SVC_APP      := hangman
 SVC_PACKAGE  := ${PACKAGE}/${S_APP}
 SVC_IMG_NAME := ${REGISTRY}/${SVC_IMAGE}:${SVC_VERSION}
-CLI_VERSION  := 0.0.1
-CLI_IMAGE    := go-hangman-cli
+CLI_VERSION  := 0.0.2
+CLI_IMAGE    := go-hangman-prom-cli
 CLI_APP      := hangman_cli
 CLI_PACKAGE  := ${PACKAGE}/${CLI_APP}
 CLI_IMG_NAME := ${REGISTRY}/${CLI_IMAGE}:${CLI_VERSION}

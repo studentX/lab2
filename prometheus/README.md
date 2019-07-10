@@ -76,7 +76,7 @@ kubectl apply -f k8s/grafana.yml
 
 ```shell
 kubectl run -i --tty --rm hm \
-  --image k8sland/go-hangman-cli:0.0.1 \
+  --image k8sland/go-hangman-prom-cli:0.0.2 \
   --generator=run-pod/v1 \
   --command -- /app/hangman_cli --hm hangman:5000
 ```

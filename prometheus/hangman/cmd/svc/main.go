@@ -34,9 +34,9 @@ func main() {
 	m := handlers.LoggingHandler(os.Stdout, r)
 
 	r.Handle("/metrics", promhttp.Handler()).Methods("GET")
-	r.Handle("/new_game", http.HandlerFunc(newGameHandler)).Methods("GET")
-	r.Handle("/guess", http.HandlerFunc(guessHandler)).Methods("POST")
-	r.Handle("/healthz", http.HandlerFunc(healthHandler)).Methods("GET")
+	r.Handle("/api/v1/new_game", http.HandlerFunc(newGameHandler)).Methods("GET")
+	r.Handle("/api/v1/guess", http.HandlerFunc(guessHandler)).Methods("POST")
+	r.Handle("/api/v1/healthz", http.HandlerFunc(healthHandler)).Methods("GET")
 
 	log.Printf("Handman listening on port %s...\n", port)
 	log.Panic(http.ListenAndServe(port, m))
