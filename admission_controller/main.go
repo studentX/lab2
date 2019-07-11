@@ -7,7 +7,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"strings"
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
@@ -75,20 +74,16 @@ func admitDeployment(ar v1beta1.AdmissionReview) *v1beta1.AdmissionResponse {
 	}
 
 	reviewResponse := v1beta1.AdmissionResponse{Allowed: true}
-	var msg string
 	if v, ok := dep.Labels["app"]; ok && v == denyLabel {
 		reviewResponse.Allowed = false
+		log.Printf("Rejecting Deployment %s", dep.ObjectMeta.Name)
 		reviewResponse.Result = &metav1.Status{
 			Message: fmt.Sprintf("👻  Seriously `%s? No buzz kill allowed on this cluster!!", denyLabel),
 		}
-	}
-
-	if !reviewResponse.Allowed {
-		log.Printf("Rejecting Deployment %s", dep.ObjectMeta.Name)
-		reviewResponse.Result = &metav1.Status{Message: strings.TrimSpace(msg)}
 	} else {
 		log.Printf("Admitting Deployment %s", dep.ObjectMeta.Name)
 	}
+
 	return &reviewResponse
 }
 

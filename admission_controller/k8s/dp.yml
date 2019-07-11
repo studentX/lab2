@@ -44,7 +44,7 @@ spec:
       serviceAccount: depadm
       containers:
       - name:            depadm
-        image:           k8sland/go-depadm:0.0.1
+        image:           k8sland/go-depadm:0.0.2
         imagePullPolicy: IfNotPresent
         ports:
         - name:          http
