@@ -16,16 +16,13 @@ spec:
     spec:
       containers:
       - name:            hangman2
-        image:           k8sland/go-hangman-svc:0.0.1
+        image:           k8sland/go-hangman-svc:0.0.2
         imagePullPolicy: IfNotPresent
         args:            ["/app/hangman", "-d", "dictionary2:4002"]
         resources:
-          requests:
-            cpu:    100m
-            memory: 4Mi
           limits:
-            cpu:    200m
-            memory: 8Mi
+            cpu:    100m
+            memory: 15Mi
         ports:
         - name:          http
           containerPort: 5000

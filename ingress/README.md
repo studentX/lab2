@@ -47,17 +47,27 @@ to mutiplex across the two stacks.
     open http://traefik-ui.minikube/dashboard/
     ```
 
+### Configure the ingress
+
+    ```shell
+    kubectl apply -f k8s/ingress.yml
+    ```
+
 ### Deploy Hangman v1, v2
 
     ```shell
-    kubectl apply -f k8/hangman1 -f k8s/hangman2
+    kubectl apply -f k8/hangman
     ```
 
 ### Play!
 
 ```shell
+# On OSX...
 bin/hangman -hm trump.minikube
 bin/hangman -hm halloween.minikube
+# Or hit the ingress using http
+http trump.minikube/new_game
+http halloween.minikube/new_game
 ```
 
 

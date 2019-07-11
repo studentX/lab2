@@ -16,14 +16,18 @@ spec:
     spec:
       containers:
       - name: dictionary2
-        image: k8sland/dictionary-svc-go:0.0.2
+        image: k8sland/go-dictionary-svc:0.0.2
         command: ['/app/dictionary', '-a', '/var/dictionary/words', '-d', 'trick_or_treat.txt']
         ports:
-        - name: http
+        - name:          http
           containerPort: 4000
         volumeMounts:
         - name:      dictionary
           mountPath: /var/dictionary
+        resources:
+          limits:
+            cpu:    100m
+            memory: 15Mi
       initContainers:
       - name:    git
         image:   luzhzh/git-client
@@ -41,11 +45,10 @@ kind:       Service
 metadata:
   name: dictionary2
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: dictionary2
   ports:
   - name:       http
     port:       4002
-    nodePort:   30402
     targetPort: http
