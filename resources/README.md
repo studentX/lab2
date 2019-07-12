@@ -26,10 +26,12 @@
 ### Simulate load
 
     ```shell
+    hey -c 1 -n 100 http://$(minikube ip):30400/graphql?query={movies{name}}
+    # Or...
     ./burst.sh
     ```
 
-### Monitor load
+### Monitor Resources...
 
 ```shell
 watch kubectl top po
