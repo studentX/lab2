@@ -7,16 +7,16 @@
 > The party pooper scheduler! Write a party scheduler that will only schedule
 > a pod if it has a costume.
 
-1. Define a custom party scheduler aka partysched, that check if a given pod
-   has a costume label set to either ghoul or goblin or your choice of costumes...
-1. Make sure your pod gets scheduled if it has a correct costume label
-1. For all other cases ie no label or incorrect attire, make sure your scheduler
+1. Define a custom party scheduler aka partysched, that checks if a given pod
+   has a costume label set to either ghoul or goblin and matches node costumes...
+2. Make sure your pod gets scheduled on a node with the same costume as to pod's costume label
+3. For all other cases ie no label or incorrect attire, make sure your scheduler
    selected no nodes and spews out a log.
-1. Setup a partysched deployment with a service account and RBAC rules
-1. Using the given Makefile publish your party scheduler as a Docker container
-1. Deploy your party scheduler in your cluster
-1. Rinse and repeat your checks in a deployed configuration
-1. Delete your application and scheduler!
+4. Setup a partysched deployment with a service account and RBAC rules
+5. Using the given Makefile publish your party scheduler as a Docker container
+6. Deploy your party scheduler in your cluster
+7. Rinse and repeat your checks in a deployed configuration
+8. Delete your application and scheduler!
 
 ## Commands
 
@@ -49,11 +49,13 @@
 # Check RBAC Rules for serviceaccount
 
     ```shell
-    ku auth can-i get nodes --namespace default --as system:serviceaccount:default:partysched
+    kubectl auth can-i get nodes \
+      --namespace default \
+      --as system:serviceaccount:default:partysched
     ```
 
 <br/>
 
 ---
-<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2018 Imhotep Software LLC.
+<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2019 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
