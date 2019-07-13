@@ -70,10 +70,10 @@ go get -u github.com/rakyll/hey
 ### Load using Hey!
 
 ```shell
-hey -c 2 -n 100 -m POST \
+hey -c 1 -n 10000 -m POST \
   -H "Content-Type: application/json" \
   -d '{"query":"{movies{name}}"}' \
-  http://$(minikube ip):30400/graphql
+  http://$(minikube ip):30401/graphql
 ```
 
 ### Or.. Load using script
@@ -84,5 +84,5 @@ hey -c 2 -n 100 -m POST \
 
 
 ---
-<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2018 Imhotep Software LLC.
+<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2019 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
