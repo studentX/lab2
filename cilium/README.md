@@ -12,7 +12,7 @@ In this game, we will be dealing with North men and the NightKing. A North can e
 CastleBlack but not the NightKing. However no one can `melt CastleBlack like a NightKing can!
 
 1. For this lab, you will need to configure minikube for CNI and provision Cilium
-   per the commands below...
+   per the commands below.
 1. Using the provided K8s manifests deploy into your cluster 3 services. Namely
    castleblack, north and nightking.
 1. Each service provide endpoints to enter or melt CastleBlack via /v1/enter, /v1/melt
