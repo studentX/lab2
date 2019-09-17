@@ -40,10 +40,10 @@
     make img
     ```
 
-### Deploy your scheduler and nginx deployment
+### Deploy your scheduler
 
     ```shell
-    kubectl apply -f k8s
+    kubectl apply -f k8s/rbac.yml -f k8s/party.yml
     ```
 
 # Check RBAC Rules for serviceaccount
