@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind:       Deployment
+kind: Deployment
 metadata:
   name: grim
   labels:
@@ -15,14 +15,14 @@ spec:
         app: grim
     spec:
       containers:
-      - name:            nginx
-        image:           nginx
-        imagePullPolicy: IfNotPresent
-        ports:
-        - name:          http
-          protocol:      TCP
-          containerPort: 80
-        resources:
-          limits:
-            cpu: 100m
-            memory: 100Mi
+        - name: nginx
+          image: nginx
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              protocol: TCP
+              containerPort: 80
+          resources:
+            limits:
+              cpu: 100m
+              memory: 100Mi
