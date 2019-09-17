@@ -74,7 +74,8 @@ func (s *Scheduler) loop(ctx context.Context) {
 func (s *Scheduler) schedule(po *v1.Pod) {
 	nodes, err := s.rank(po)
 	if err != nil {
-		log.Printf("Boom", err)
+		log.Println("Boom!", err)
+		s.notify(err.Error(), "FailSchedule", "Warning", po)
 		return
 	}
 	if len(nodes) == 0 {
@@ -84,7 +85,7 @@ func (s *Scheduler) schedule(po *v1.Pod) {
 	}
 
 	if err := s.bind(nodes[0], po); err != nil {
-		log.Println("Boom", err)
+		log.Println("Boom!", err)
 		return
 	}
 	s.notify("Party pod scheduled", "Scheduled", "Normal", po)
@@ -208,7 +209,7 @@ func (s *Scheduler) notify(msg, reason, kind string, p *v1.Pod) {
 	})
 
 	if err != nil {
-		log.Println("Boom event", err)
+		log.Println("Boom event failed", err)
 	}
 }
 
@@ -220,16 +221,21 @@ func (s *Scheduler) rank(p *v1.Pod) ([]*v1.Node, error) {
 	)
 
 	if attire, ok = p.Labels["costume"]; !ok {
-		return candidates, fmt.Errorf("Party pooper detected! No costume `%s on pod %s", attire, p.Name)
+		return candidates, fmt.Errorf("Party pooper detected! No costume on pod %s", p.Name)
+	} else {
+		if !checkAttire(attire) {
+			return candidates, fmt.Errorf("Party pooper! Lame costume detected `%s on pod %s", attire, p.Name)
+		}
 	}
+
 	nn, err := s.nodes.List(labels.Everything())
 	if err != nil {
 		return candidates, err
 	}
 	for _, n := range nn {
-		if n.Labels["costume"] == attire {
-			candidates = append(candidates, n)
-		}
+		// if n.Labels["costume"] == attire {
+		candidates = append(candidates, n)
+		// }
 	}
 
 	return candidates, nil
