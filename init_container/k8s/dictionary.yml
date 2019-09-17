@@ -1,36 +1,44 @@
 apiVersion: v1
-kind:       Pod
+kind: Pod
 metadata:
   name: dictionary
   labels:
     app: dictionary
 spec:
   containers:
-  - name: dictionary
-    image: k8sland/dictionary-svc-go:0.0.2
-    command: ['/app/dictionary', '-a', '/var/dictionary/words', '-d', 'trick_or_treat.txt']
-    ports:
-    - name: http
-      containerPort: 4000
-    volumeMounts:
-    - name:      dictionary
-      mountPath: /var/dictionary
-    resources:
-      limits:
-        cpu: 100m
-        memory: 100Mi
+    - name: dictionary
+      image: k8sland/go-dictionary-svc:0.0.3
+      command:
+        - /app/dictionary
+        - -a
+        - /var/dictionary/words
+        - -d
+        - trick_or_treat.txt
+      ports:
+        - name: http
+          containerPort: 4000
+      volumeMounts:
+        - name: dictionary
+          mountPath: /var/dictionary
+      resources:
+        limits:
+          cpu: 100m
+          memory: 100Mi
   initContainers:
-  - name:    git
-    image:   luzhzh/git-client
-    command: ['sh', '-c', 'rm -rf /var/dictionary/words && git clone https://github.com/k8sland/dictionaries.git /var/dictionary/words']
-    volumeMounts:
-    - name:      dictionary
-      mountPath: /var/dictionary
-    resources:
-      limits:
-        cpu: 100m
-        memory: 100Mi
+    - name: git
+      image: luzhzh/git-client
+      command:
+        - sh
+        - -c
+        - rm -rf /var/dictionary/words && git clone https://github.com/k8sland/dictionaries.git /var/dictionary/words
+      volumeMounts:
+        - name: dictionary
+          mountPath: /var/dictionary
+      resources:
+        limits:
+          cpu: 100m
+          memory: 100Mi
   volumes:
-  - name: dictionary
-    hostPath:
-      path: /home/docker/dictionary
+    - name: dictionary
+      hostPath:
+        path: /home/docker/dictionary
