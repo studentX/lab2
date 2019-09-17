@@ -33,13 +33,15 @@ CastleBlack but not the NightKing. However no one can `melt CastleBlack like a N
     minikube delete
     # Start with new configs
     minikube start --cpus=4 --memory=4096 --vm-driver=hyperkit --network-plugin=cni
+    # Mount pbf volume
+    minikube ssh -- sudo mount bpffs -t bpf /sys/fs/bpf
     ```
 
 2. Install Cilium on your cluster
 
     ```shell
     # Install Cilium
-    kubectl apply -f https://raw.githubusercontent.com/cilium/cilium/1.5.4/examples/kubernetes/1.14/cilium-minikube.yaml
+    kubectl create -f https://raw.githubusercontent.com/cilium/cilium/1.6.1/install/kubernetes/quick-install.yaml
     ```
 
 ## Commands
