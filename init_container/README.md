@@ -12,7 +12,7 @@ dictionary name mounted on a volume. Use an init-container to provision the
 volume with a set of dictionaries by cloning a dictionary assets repo.
 
 1. Define a pod using the following Docker image:
-   k8sland/dictionary-svc-go:0.0.2
+   k8sland/go-dictionary-svc:0.0.3
 1. The dictionary service takes in an asset directory containing word dictionaries
    and a dictionary filename ie trick_or_treat.txt.
    The service uses the following command:
@@ -64,5 +64,5 @@ volume with a set of dictionaries by cloning a dictionary assets repo.
 <br/>
 
 ---
-<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2018 Imhotep Software LLC.
+<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2019 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
