@@ -56,7 +56,8 @@
     ```shell
     # NOTE! Press enter once the pod is initialized!
     kubectl run -it --generator=run-pod/v1 \
-      --rm hm --image k8sland/go-hangman-cli:0.0.2 \ --command -- /app/hangman_cli --hm hangman:5000
+      --rm hm --image k8sland/go-hangman-cli:0.0.2 \
+      --command -- /app/hangman_cli --hm hangman:5000
     ```
 
 1. Deploy k8s/dictionary_v2 (halloween words)
