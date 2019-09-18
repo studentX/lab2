@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind:       Deployment
+kind: Deployment
 metadata:
   name: dictionary-v2
 spec:
@@ -15,17 +15,17 @@ spec:
         rev: v2
     spec:
       containers:
-      - name:            dictionary
-        image:           k8sland/go-dictionary-svc:0.0.1
-        imagePullPolicy: IfNotPresent
-        args:            ['/app/dictionary', '-d', 'trick_or_treat.txt']
-        resources:
-          requests:
-            cpu:    100m
-            memory: 4Mi
-          limits:
-            cpu:    200m
-            memory: 8Mi
-        ports:
-        - name:          http
-          containerPort: 4000
+        - name: dictionary
+          image: k8sland/go-dictionary-svc:0.0.3
+          imagePullPolicy: IfNotPresent
+          args: ["/app/dictionary", "-d", "trick_or_treat.txt"]
+          resources:
+            requests:
+              cpu: 100m
+              memory: 10Mi
+            limits:
+              cpu: 200m
+              memory: 50Mi
+          ports:
+            - name: http
+              containerPort: 4000
