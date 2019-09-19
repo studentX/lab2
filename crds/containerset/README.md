@@ -2,7 +2,7 @@
 
 <br/>
 
-# <img src="../../assets/lab.png" width="32" height="auto"/> CRD Controller Lab
+# <img src="../../assets/lab.png" width="32" height="auto"/> ContainerSet CRD Lab
 
 > Using KubeBuilder, create a ContainerSet CRD
 
