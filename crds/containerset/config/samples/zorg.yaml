@@ -2,6 +2,4 @@ apiVersion: workload.k8sland.io/v1alpha1
 kind: ContainerSet
 metadata:
   name: zorg
-spec:
-  replicas: 1
-  image: nginx:1.17
+  !! YOUR_CODE !!
