@@ -21,7 +21,7 @@ import (
 )
 
 // ReplicaCount tracks the number of replicas.
-!! YOUR_CODE !! Setup the min max replicas ie 1-5 included for valid replica counts
+!! YOUR_CODE !! Using kubebuilder annotations setup the min max replicas ie 1-5 included for valid replica counts
 type ReplicaCount int32
 
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
@@ -46,7 +46,7 @@ type ContainerSetStatus struct {
 // ContainerSet is the Schema for the containersets API
 // +kubebuilder:printcolumn:name="Replicas",type=integer,JSONPath=`.spec.replicas`
 // +kubebuilder:printcolumn:name="Image",type=string,JSONPath=`.spec.image`
-!! YOUR_CODE !! Setup kubebuilder annotion for the css ContainerSet short name.
+!! YOUR_CODE !! Setup kubebuilder annotation for the css ContainerSet short name.
 type ContainerSet struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
