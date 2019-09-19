@@ -53,6 +53,7 @@ by the CRD.
    kubectl apply -f config/samples/zorg.yaml
    # Verify the crd instance exist and is correct
    kubectl get containerset
+   kubectl get zorg -oyaml
    # In your watch window you should see a new zorg deployment and one zorg pod
    ```
 
@@ -78,7 +79,7 @@ by the CRD.
 12. Deploy your controller as a container
     1. NOTE! If you don't want to create a DockerHub account just skip the docker-push make target below!
     2. If you don't have an account yet, create a [DockerHub account](https://hub.docker.com/)
-    3. Build your CRD Docker image and push it on DockerHub
+    3. Build your CRD Docker image and push it to DockerHub
 
     ```shell
     docker login -u YOUR_DOCKERHUB_USER -p YOUR_DOCKERHUB_PASSWD # Authenticate with DockerHub so you can push your image
@@ -91,11 +92,13 @@ by the CRD.
     make deploy IMG=YOUR_DOCKERHUB_USER/cs:0.0.1
     ```
 
-14. Rinse and repeat by deploying your Zorg CRD
+14. Rinse and repeat by deploying and verifying your Zorg CRD is working as expected.
 
     ```shell
     kubectl apply -f config/samples/zorg.yaml
     ```
+
+15. Well Done!!
 
 <br/>
 
