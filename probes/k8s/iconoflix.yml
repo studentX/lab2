@@ -1,7 +1,7 @@
 ---
 # Deployment
 apiVersion: apps/v1
-kind:       Deployment
+kind: Deployment
 metadata:
   name: iconoflix
 spec:
@@ -15,41 +15,41 @@ spec:
         app: iconoflix
     spec:
       containers:
-      - name:            iconoflix
-        image:           quay.io/imhotepio/iconoflix:mem
-        imagePullPolicy: IfNotPresent
-        ports:
-        - name:          api
-          containerPort: 4000
-        resources:
-          limits:
-            cpu:    100m
-            memory: 80Mi
-          requests:
-            cpu:    50m
-            memory: 50Mi
-        livenessProbe:
-          httpGet:
-            path: /check/alive
-            port: api
-          initialDelaySeconds: 5
-          periodSeconds:       10
-        readinessProbe:
-          httpGet:
-            path: /check/health
-            port: api
-          initialDelaySeconds: 5
-          periodSeconds:       5
+        - name: iconoflix
+          image: quay.io/imhotepio/iconoflix:mem
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: api
+              containerPort: 4000
+          resources:
+            limits:
+              cpu: 100m
+              memory: 80Mi
+            requests:
+              cpu: 50m
+              memory: 50Mi
+          livenessProbe:
+            httpGet:
+              path: /check/health
+              port: api
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /check/alive
+              port: api
+            initialDelaySeconds: 5
+            periodSeconds: 5
 ---
 # Service
-kind:       Service
+kind: Service
 apiVersion: v1
 metadata:
   name: iconoflix
 spec:
-  type:  NodePort
+  type: NodePort
   selector:
     app: iconoflix
   ports:
-    - port:     4000
+    - port: 4000
       nodePort: 30400
