@@ -7,14 +7,14 @@
 > Add Readiness/Liveliness probes to an Iconoflix application
 
 1. In the given Iconoflix deployment (k8s/iconoflix.yml) add a HTTP Readiness probe
-   1. Use /check/alive
+   1. Use /check/health
 1. Monitor your endpoints
    1. kubectl get ep --watch
 1. What do you see?
 1. Now redeploy your Iconoflix pod but with a Readiness delay to 20s
 1. What do you notice in your Iconoflix endpoint?
 1. Next define a HTTP Liveliness probe on the Iconoflix container
-   1. /check/health
+   1. /check/alive
 1. Watch the Iconoflix pod logs
 1. What do you notice?
 1. Delete your application
@@ -39,5 +39,5 @@
 <br/>
 
 ---
-<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2018 Imhotep Software LLC.
+<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2019 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
