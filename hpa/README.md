@@ -6,14 +6,14 @@
 
 > Setup an HPA for your Iconoflix application
 
-1. NOTE! You must enable heapster and metrics-server
+1. NOTE! You must enable|install [Metrics Server](https://github.com/kubernetes-incubator/metrics-server)
 1. Using the provided template, deploy the Iconoflix application
 1. Manually scale the application to 2 instances
 1. Verify deployment, pods and endpoints
 1. Tail the logs for the 2 instances
 1. Hit the **Iconoflix** service endpoint and observe the requests logs
 1. What do you notice?
-1. Edit the provided HPA template
+1. Edit the provided k8s/hpa.yml template
   1. Autoscale to up to 5 instances once the cpu load reaches 30%
 1. Deploy your HPA and make sure its reporting utilization
 1. Now load up the application (See commands below)
@@ -24,40 +24,11 @@
 <br/>
 
 ---
-## <img src="../assets/fox.png" width="32" height="auto"/> Template
-
-
-```yaml
-apiVersion: autoscaling/v2beta2
-kind:       HorizontalPodAutoscaler
-metadata:
-  name: iconoflix
-spec:
-  scaleTargetRef:
-    apiVersion: !!CHANGE_ME!!
-    kind:       !!CHANGE_ME!!
-    name:       !!CHANGE_ME!!
-  minReplicas: 1
-  maxReplicas: 5
-  metrics:
-  - type: !!CHANGE_ME!!
-    resource:
-      name: !!CHANGE_ME!!
-      target:
-        type:               !!CHANGE_ME!!
-        averageUtilization: !!CHANGE_ME!!
-```
-
-
-<br/>
-
----
 ## <img src="../assets/fox.png" width="32" height="auto"/> Commands
 
-### Minikube Enable Heapster + Metrics server
+### Minikube Metrics server
 
     ```shell
-    minikube addons enable heapster
     minikube addons enable metrics-server
     ```
 

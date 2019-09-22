@@ -1,0 +1,18 @@
+apiVersion: autoscaling/v2beta2
+kind:       HorizontalPodAutoscaler
+metadata:
+  name: iconoflix
+spec:
+  scaleTargetRef:
+    apiVersion: !!CHANGE_ME!!
+    kind:       !!CHANGE_ME!!
+    name:       !!CHANGE_ME!!
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: !!CHANGE_ME!!
+    resource:
+      name: !!CHANGE_ME!!
+      target:
+        type:               !!CHANGE_ME!!
+        averageUtilization: !!CHANGE_ME!!
