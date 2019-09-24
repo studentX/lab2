@@ -31,13 +31,13 @@ spec:
           livenessProbe:
             httpGet:
               path: /check/health
-              port: api
+              port: 4000
             initialDelaySeconds: 5
             periodSeconds: 10
           readinessProbe:
             httpGet:
               path: /check/alive
-              port: api
+              port: 4000
             initialDelaySeconds: 5
             periodSeconds: 5
 ---
