@@ -20,7 +20,7 @@ knight is the NightKing or a 417 error with *only NightKing can melt* otherwise.
 
 <br/>
 
-1. Instrument the Castle service by tracing incoming *melt* requests
+1. Instrument the Castle service by tracing incoming *melt* requests (SKIP IF NO GO CHOPS!!)
   1. Edit your Castle trace and add the following tags to the trace:
     1. http.method
     1. http.url
@@ -37,7 +37,7 @@ knight is the NightKing or a 417 error with *only NightKing can melt* otherwise.
 1. Build and push new docker images using the Makefile (see commands below!)
 1. Deploy Jaeger, Castle and Knight services on your local cluster.
    1. You will need to modify the K8s manifest to use your image names (castle, knight)
-1.  Validate that your traces are correctly tacking the workload by using
+1. Validate that your traces are correctly tracking the workload by using
    different knights.
 1. Delete the entire application!
 
