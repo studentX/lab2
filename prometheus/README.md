@@ -76,7 +76,7 @@ kubectl apply -f k8s/grafana.yml
 
 ```shell
 kubectl run -i --tty --rm hm \
-  --image k8sland/go-hangman-cli:0.0.1 \
+  --image k8sland/go-hangman-prom-cli:0.0.2 \
   --generator=run-pod/v1 \
   --command -- /app/hangman_cli --hm hangman:5000
 ```
@@ -90,5 +90,5 @@ make down
 <br/>
 
 ---
-<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2018 Imhotep Software LLC.
+<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2019 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
