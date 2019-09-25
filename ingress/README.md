@@ -31,44 +31,44 @@ to mutiplex across the two stacks.
 
 ### Deploy Traefik Ingress + RBAC
 
-    ```shell
-    kubectl apply -f k8s/traefik
-    ```
+      ```shell
+      kubectl apply -f k8s/traefik
+      ```
 
 ### Poor man DNS setup!
 
-    ```shell
-    echo "$(minikube ip) traefik-ui.minikube trump.minikube halloween.minikube" | sudo tee -a /etc/hosts
-    ```
+      ```shell
+      echo "$(minikube ip) traefik-ui.minikube trump.minikube halloween.minikube" | sudo tee -a /etc/hosts
+      ```
 
 ### Launch Traefik UI
 
-    ```shell
-    open http://traefik-ui.minikube/dashboard/
-    ```
+      ```shell
+      open http://traefik-ui.minikube/dashboard/
+      ```
 
 ### Configure the ingress
 
-    ```shell
-    kubectl apply -f k8s/ingress.yml
-    ```
+      ```shell
+      kubectl apply -f k8s/ingress.yml
+      ```
 
 ### Deploy Hangman v1, v2
 
-    ```shell
-    kubectl apply -f k8/hangman
-    ```
+      ```shell
+      kubectl apply -f k8/hangman
+      ```
 
 ### Play!
 
-```shell
-# On OSX...
-bin/hangman -hm trump.minikube
-bin/hangman -hm halloween.minikube
-# Or hit the ingress using http
-http trump.minikube/new_game
-http halloween.minikube/new_game
-```
+      ```shell
+      # On OSX...
+      bin/hangman -hm trump.minikube
+      bin/hangman -hm halloween.minikube
+      # Or hit the ingress using http
+      http trump.minikube/new_game
+      http halloween.minikube/new_game
+      ```
 
 
 <br/>
