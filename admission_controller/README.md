@@ -7,6 +7,8 @@
 > Trick or Treat? Provision your cluster with a dynamic admission controller
 > that rejects all Grim Reaper's deployments!
 
+NOTE: Skip step 1 if no GO chops!
+
 1. Update the code in main.go to reject all grim reaper deployments. ie
    check for deployment resource with a label app=Grim-Reaper.
 1. Generate certs and keys for your webhook and make sure to provide the correct
