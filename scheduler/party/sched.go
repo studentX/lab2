@@ -232,10 +232,11 @@ func (s *Scheduler) rank(p *v1.Pod) ([]*v1.Node, error) {
 	if err != nil {
 		return candidates, err
 	}
+	if len(nn) == 0 {
+		return candidates, fmt.Errorf("No nodes found on cluster!")
+	}
 	for _, n := range nn {
-		// if n.Labels["costume"] == attire {
 		candidates = append(candidates, n)
-		// }
 	}
 
 	return candidates, nil
