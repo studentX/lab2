@@ -10,8 +10,8 @@
    initially swag the Iconoflix container quotas
 1. Deploy the application
 1. Ensure everything is up and running!
-1. Hit the Iconoflix API using the provided burst.sh script and monitor
-   the node and pod resource
+1. Pressure the Iconoflix API using the provided hey command and monitor
+   the node and pod resources
 1. Tune your resources based on your findings
 1. Change your cpu request to more than available and redeploy your application
    > REMINDER: Node allocations 4 cores / 8Gb mem
@@ -26,16 +26,14 @@
 ### Simulate load
 
     ```shell
-    hey -c 1 -n 100 http://$(minikube ip):30400/graphql?query={movies{name}}
-    # Or...
-    ./burst.sh
+    hey -c 1 -n 10000 http://$(minikube ip):30400/graphql?query={movies{name}}
     ```
 
-### Monitor Resources...
+### Monitor Resources
 
-```shell
-watch kubectl top po
-```
+      ```shell
+      watch kubectl top po
+      ```
 
 <br/>
 
