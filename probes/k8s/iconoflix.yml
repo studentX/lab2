@@ -22,24 +22,24 @@ spec:
             - name: api
               containerPort: 4000
           resources:
-            limits:
-              cpu: 100m
-              memory: 80Mi
             requests:
-              cpu: 50m
+              cpu: 200m
               memory: 50Mi
+            limits:
+              cpu: 400m
+              memory: 80Mi
           livenessProbe:
             httpGet:
               path: /check/health
-              port: 4000
+              port: api
             initialDelaySeconds: 5
             periodSeconds: 10
           readinessProbe:
             httpGet:
               path: /check/alive
-              port: 4000
-            initialDelaySeconds: 5
-            periodSeconds: 5
+              port: api
+            initialDelaySeconds: 20
+            periodSeconds: 30
 ---
 # Service
 kind: Service
