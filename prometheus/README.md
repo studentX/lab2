@@ -14,6 +14,8 @@
 > track good/bad guess counts as well as tracking win rates. Next, we are going
 > to display the tally metrics in a Grafana dashboard. Sounds cool?
 
+NOTE: Skip the first 3 steps if no GO chops!
+
 1. Instrument the hangman code base and add 2 prometheus counters to track your
    good and bad guesses (see game.go).
 2. Next define a prometheus gauge to track your game results:
