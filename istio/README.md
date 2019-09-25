@@ -73,7 +73,7 @@
     ```
 
 1. Edit istio/dictionary-80-20 to route traffic 80% to v2 and 20% to v1
-    1. Make sure to apply weighted routing when traffic is origination from hangman.
+    1. Make sure to apply weighted routing when traffic is originating from hangman.
     2. Provision your new policy
     3. Ensure the VirtualService was created correctly
     4. Check the picker and make sure it produces more v2 words than v1's
