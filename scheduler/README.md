@@ -7,8 +7,10 @@
 > The party pooper scheduler! Write a party scheduler that will only schedule
 > a pod if it has a costume.
 
+NOTE: Skip to step 1 if no GO Chops!
+
 1. Define a custom party scheduler aka partysched, that checks if a given pod
-   has a costume label set to either ghoul or goblin and matches node costumes...
+   has a costume label set to either `ghoul` or `goblin` and matches node costumes...
 1. Use the following docker image: k8sland/go-partysched:0.0.2
 1. Setup a partysched deployment with a service account and RBAC rules
 1. Deploy your custom scheduler and pod
@@ -33,7 +35,7 @@
 # Check RBAC Rules for serviceaccount
 
     ```shell
-    kubectl auth can-i get nodes \
+    kubectl auth can-i list nodes \
       --namespace default \
       --as system:serviceaccount:default:partysched
     ```
