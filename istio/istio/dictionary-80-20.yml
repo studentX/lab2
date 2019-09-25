@@ -1,20 +1,20 @@
 apiVersion: networking.istio.io/v1alpha3
-kind:       VirtualService
+kind: VirtualService
 metadata:
   name: dictionary
 spec:
   hosts:
-  - dictionary
+    - dictionary
   http:
-  - match:
-    - sourceLabels:
-        app: hangman
-    route:
-    - destination:
-        host:   dictionary
-        subset: v1
-      weight: 20
-    - destination:
-        host:   dictionary
-        subset: v2
-      weight: 80
+    - match:
+        - sourceLabels:
+            app: hangman
+      route:
+        - destination:
+            host: dictionary
+            subset: v1
+          weight: 20
+        - destination:
+            host: dictionary
+            subset: v2
+          weight: 80
