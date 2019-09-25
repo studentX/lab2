@@ -81,8 +81,7 @@
     1. Ensure the picker is working correctly ie shows 50% words from v1 and v2
 1. Next edit istio/mirror to mirror all traffic coming from v1 to v2
     1. Deploy your new policy
-    2. Tail both v1 and v2 logs and make sure all traffic destined to v1 also
-        hits the v2 version.
+    2. Tail both v1 and v2 logs and make sure all traffic destined to v1 also hits the v2 version.
 1. Delete the entire application including Istio!
 1. Well done!
 
