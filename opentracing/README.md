@@ -8,6 +8,8 @@
 
 <br/>
 
+> G.O.T Reloaded!
+
 In this lab, we are going to decorate a web server using **OpenTracing**.
 There are 2 services involved: **Castle** and **Knight**. The
 Knights want to melt Castles, but if you're a G.O.T fan, you already
@@ -19,6 +21,8 @@ The Castle service returns either a 200 with a castle melted message if the
 knight is the NightKing or a 417 error with *only NightKing can melt* otherwise.
 
 <br/>
+
+NOTE: Skip the first 6 steps if no GO chops!
 
 1. Instrument the Castle service by tracing incoming *melt* requests (SKIP IF NO GO CHOPS!!)
   1. Edit your Castle trace and add the following tags to the trace:
@@ -72,11 +76,11 @@ knight is the NightKing or a 417 error with *only NightKing can melt* otherwise.
 
 ### Test your endpoints and traces
 
-   ```shell
-   http $(minikube ip):30501/v1/melt knight=tim
-   # Or...
-   curl -XPOST -H "Content-Type: application/json" http://$(minikube ip):30501/v1/melt -d '{"knight":"nightking"}'
-   ```
+      ```shell
+      http $(minikube ip):30501/v1/melt knight=tim
+      # Or...
+      curl -XPOST -H "Content-Type: application/json" http://$(minikube ip):30501/v1/melt -d '{"knight":"nightking"}'
+      ```
 
 <br/>
 
