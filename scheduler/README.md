@@ -35,7 +35,7 @@ NOTE: Skip to step 1 if no GO Chops!
 # Check RBAC Rules for serviceaccount
 
     ```shell
-    kubectl auth can-i list pods -n default \
+    kubectl auth can-i get pods -n default \
       --as system:serviceaccount:default:partysched
     ```
 
