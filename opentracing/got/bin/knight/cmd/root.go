@@ -106,7 +106,7 @@ func writeResponse(ctx context.Context, w http.ResponseWriter, r internal.Respon
 	}
 	s.SetTag("http.status_code", http.StatusOK)
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	fmt.Fprintf(w, raw.String())
+	fmt.Fprint(w, raw.String())
 }
 
 func urlFor(path string) string {

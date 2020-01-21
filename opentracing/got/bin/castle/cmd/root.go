@@ -83,15 +83,13 @@ func meltHandler(w http.ResponseWriter, r *http.Request) {
 	s.SetTag("knight", q.Knight)
 
 	log.Printf("Got melt request from %s", q.Knight)
-
-	if meltAuth(q.Knight) {
-		if err := writeResponse(sx, w); err == nil {
-			// Add span log to indicate castle is melted
-			!!YOUR_CODE!!
-		}
-	} else {
+	if !meltAuth(q.Knight) {
 		internal.WriteErrOut(sx, w, fmt.Errorf("only the NightKing can melt"))
 		return
+	}
+	if err := writeResponse(sx, w); err == nil {
+		// Add span log to indicate castle is melted
+		!!YOUR_CODE!!
 	}
 }
 
