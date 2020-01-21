@@ -62,7 +62,7 @@ func guessHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	fmt.Fprintf(w, string(raw))
+	fmt.Fprint(w, string(raw))
 }
 
 func healthHandler(w http.ResponseWriter, r *http.Request) {
@@ -79,7 +79,7 @@ func healthHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	fmt.Fprintf(w, string(raw))
+	fmt.Fprint(w, string(raw))
 }
 
 func newGameHandler(w http.ResponseWriter, r *http.Request) {
@@ -91,7 +91,7 @@ func newGameHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	fmt.Fprintf(w, string(buff))
+	fmt.Fprint(w, string(buff))
 }
 
 func urlFor(u, p string) string {

@@ -57,7 +57,7 @@ func main() {
 
 func gameOver() bool {
 	if g.Tally.Status == hangman.Won {
-		fmt.Printf("\n👏  Noace!! You've just won\n\n")
+		fmt.Print("\n👏  Noace!! You've just won\n\n")
 		return true
 	}
 

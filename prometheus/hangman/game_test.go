@@ -30,7 +30,7 @@ func TestGuessGood(t *testing.T) {
 func TestLoss(t *testing.T) {
 	g := NewGame("hello")
 
-	for _, l := range []rune("abcdfgi") {
+	for _, l := range "abcdfgi" {
 		g.Guess(l)
 	}
 
@@ -43,7 +43,7 @@ func TestLoss(t *testing.T) {
 func TestWin(t *testing.T) {
 	g := NewGame("hello")
 
-	for _, l := range []rune("helo") {
+	for _, l := range "helo" {
 		g.Guess(l)
 	}
 
@@ -56,7 +56,7 @@ func TestWin(t *testing.T) {
 func TestAlreadyGuessed(t *testing.T) {
 	g := NewGame("hello")
 
-	for _, l := range []rune("hh") {
+	for _, l := range "hh" {
 		g.Guess(l)
 	}
 
@@ -69,7 +69,7 @@ func TestAlreadyGuessed(t *testing.T) {
 func TestAlreadyWon(t *testing.T) {
 	g := NewGame("hello")
 
-	for _, l := range []rune("helox") {
+	for _, l := range "helox" {
 		g.Guess(l)
 	}
 
@@ -82,7 +82,7 @@ func TestAlreadyWon(t *testing.T) {
 func TestAlreadyLost(t *testing.T) {
 	g := NewGame("hello")
 
-	for _, l := range []rune("abcdfgij") {
+	for _, l := range "abcdfgij" {
 		g.Guess(l)
 	}
 
