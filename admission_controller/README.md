@@ -26,6 +26,7 @@ NOTE: Skip step 1 if no GO chops!
 1. Delete your application!
 
 ---
+
 ## Commands
 
 1. Generate your certificates
@@ -49,6 +50,8 @@ NOTE: Skip step 1 if no GO chops!
 1. Base64 encode your certificate
 
     ```shell
+    # If not already installed and OSX?
+    brew install pbcopy
     # Base64 encode your key
     cat caCert.pem | base64 | tr -d '\n' | pbcopy
     # IMPORTANT! Edit k8s/adm.yml and paste in caBundle
@@ -77,7 +80,6 @@ NOTE: Skip step 1 if no GO chops!
 1. Verify your deployments did not make it!
 
 1. Change the deployment label and redeploy
-
 
 <br/>
 
