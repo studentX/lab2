@@ -6,16 +6,16 @@ webhooks:
 - name: !!CHANGE_ME!!
   rules:
   - apiGroups:
-    - "apps"
+    - !!CHANGE_ME!!
     apiVersions:
-    - v1
+    - !!CHANGE_ME!!
     operations:
-    - CREATE
+    - !!CHANGE_ME!!
     resources:
-    - deployments
-  failurePolicy: Fail
+    - !!CHANGE_ME!!
+  failurePolicy: !!CHANGE_ME!!
   clientConfig:
     service:
-      name:      depadm
-      namespace: default
+      name:      !!CHANGE_ME!!
+      namespace: !!CHANGE_ME!!
     caBundle: !!CHANGE_ME!!

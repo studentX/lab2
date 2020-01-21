@@ -41,13 +41,13 @@ spec:
       labels:
         app:   depadm
     spec:
-      serviceAccount: depadm
+      serviceAccount: !!CHANGE_ME!!
       containers:
       - name:            depadm
         image:           k8sland/go-depadm:0.0.1
         imagePullPolicy: IfNotPresent
         ports:
-        - name:          http
+        - name:          https
           protocol:      TCP
           containerPort: !!CHANGE_ME!!
 ---
@@ -62,5 +62,6 @@ spec:
   ports:
     - name:       https
       protocol:   TCP
+      nodePort:   !!CHANGE_ME!!
       port:       !!CHANGE_ME!!
-      targetPort: http
+      targetPort: https

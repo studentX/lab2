@@ -7,6 +7,8 @@
 > Trick or Treat? Provision your cluster with a dynamic admission controller
 > that rejects all Grim Reaper's deployments!
 
+NOTE: Skip step 1 if no GO chops!
+
 1. Update the code in main.go to reject all grim reaper deployments. ie
    check for deployment resource with a label app=Grim-Reaper.
 1. Generate certs and keys for your webhook and make sure to provide the correct
@@ -48,6 +50,8 @@
 1. Base64 encode your certificate
 
     ```shell
+    # If not already installed and OSX?
+    brew install pbcopy
     # Base64 encode your key
     cat caCert.pem | base64 | tr -d '\n' | pbcopy
     # IMPORTANT! Edit k8s/adm.yml and paste in caBundle
