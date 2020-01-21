@@ -3,11 +3,10 @@
 <br/>
 <br/>
 
-
 # <img src="../assets/lab.png" width="32" height="auto"/> Prometheus Hangman Lab
 
-> We're going to play a hangman game. The game consist of a couple of
-> services hangman and dictionary and a CLI to submit guesses. The hangman
+> We're going to play a hangman game ;) The game consists of a couple of
+> services namely hangman and dictionary and a CLI to submit guesses. The hangman
 > service queries the dictionary service to get a list of words for the guess
 > word. The code is already implemented and deployment manifests are in the k8s
 > directory. To play the game, we are going to leverage Prometheus metrics to
@@ -36,6 +35,7 @@ NOTE: Skip the first 3 steps if no GO chops!
 <br/>
 
 ---
+
 ## Commands
 
 ### Build and Push your Docker images
@@ -92,5 +92,5 @@ make down
 <br/>
 
 ---
-<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2019 Imhotep Software LLC.
+<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2020 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
