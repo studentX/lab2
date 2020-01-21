@@ -83,14 +83,13 @@ func meltHandler(w http.ResponseWriter, r *http.Request) {
 	s.SetTag("knight", q.Knight)
 
 	log.Printf("Got melt request from %s", q.Knight)
-
-	if meltAuth(q.Knight) {
-		if err := writeResponse(sx, w); err == nil {
-			s.LogKV("message", fmt.Sprintf("castle successfully melted"))
-		}
-	} else {
+	if !meltAuth(q.Knight) {
 		internal.WriteErrOut(sx, w, fmt.Errorf("only the NightKing can melt"))
 		return
+	}
+
+	if err := writeResponse(sx, w); err == nil {
+		s.LogKV("message", fmt.Sprintf("castle successfully melted"))
 	}
 }
 
@@ -127,7 +126,7 @@ func writeResponse(ctx context.Context, w http.ResponseWriter) error {
 	}
 	s.SetTag("action", "castle.melted")
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	fmt.Fprintf(w, string(raw))
+	fmt.Fprint(w, string(raw))
 	return nil
 }
 

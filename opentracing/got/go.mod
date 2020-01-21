@@ -19,3 +19,5 @@ require (
 	go.uber.org/atomic v1.3.2 // indirect
 	golang.org/x/net v0.0.0-20181017193950-04a2e542c03f // indirect
 )
+
+go 1.13
