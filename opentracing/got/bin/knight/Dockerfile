@@ -1,4 +1,4 @@
-# © 2019 Imhotep Software LLC. All materials licensed under Apache v2.0
+# © 2020 Imhotep Software LLC. All materials licensed under Apache v2.0
 # ----
 # Build image
 FROM   scratch
