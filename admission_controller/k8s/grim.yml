@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: grim
   labels:
-    app: Grim-Reaper1
+    app: Grim-Reaper
 spec:
   replicas: 1
   selector:
