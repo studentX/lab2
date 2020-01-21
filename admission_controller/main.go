@@ -56,12 +56,13 @@ func handleDeployment(w http.ResponseWriter, r *http.Request) {
 func admitDeployment(ar v1beta1.AdmissionReview) *v1beta1.AdmissionResponse {
 	log.Println("Checking Deployment Admission...")
 
+	// YOUR_CODE populate this GVR fields.
 	depResource := metav1.GroupVersionResource{
 		Group:    !!CHANGE_ME!!,
 		Version:  !!CHANGE_ME!!,
 		Resource: !!CHANGE_ME!!,
 	}
-}	if ar.Request.Resource != depResource {
+	if ar.Request.Resource != depResource {
 		err := fmt.Errorf("expect resource to be %s", depResource)
 		log.Println("Boom", err)
 		return toAdmissionResponse(err)
