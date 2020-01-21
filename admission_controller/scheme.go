@@ -15,6 +15,10 @@ func init() {
 }
 
 func addToScheme(scheme *runtime.Scheme) {
-	corev1.AddToScheme(scheme)
-	admissionregistrationv1beta1.AddToScheme(scheme)
+	if err := corev1.AddToScheme(scheme); err != nil {
+		panic(err)
+	}
+	if err := admissionregistrationv1beta1.AddToScheme(scheme); err != nil {
+		panic(err)
+	}
 }
