@@ -24,6 +24,7 @@
 1. Delete your application!
 
 ---
+
 ## Commands
 
 1. Generate your certificates
@@ -76,9 +77,8 @@
 
 1. Change the deployment label and redeploy
 
-
 <br/>
 
 ---
-<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2019 Imhotep Software LLC.
+<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2020 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
