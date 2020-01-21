@@ -25,7 +25,7 @@ func main() {
 
 	go func() {
 		<-sigs
-		fmt.Printf("\n\n 🙅‍♀️ No way!! Seriously??\n\n")
+		fmt.Print("\n\n 🙅‍♀️ No way!! Seriously??\n\n")
 		os.Exit(0)
 	}()
 
@@ -57,7 +57,7 @@ func main() {
 
 func gameOver() bool {
 	if g.Tally.Status == hangman.Won {
-		fmt.Printf("\n👏  Noace!! You've just won\n\n")
+		fmt.Print("\n👏  Noace!! You've just won\n\n")
 		return true
 	}
 
