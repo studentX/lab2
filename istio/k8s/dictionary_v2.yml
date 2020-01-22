@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dictionary-v2
+  namespace: istio
 spec:
   replicas: 1
   selector:

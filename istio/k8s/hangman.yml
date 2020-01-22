@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hangman
+  namespace: istio
   labels:
     app: hangman
 spec:
@@ -35,6 +36,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: hangman
+  namespace: istio
   labels:
     app: hangman
 spec:

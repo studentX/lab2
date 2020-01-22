@@ -1,16 +1,17 @@
 apiVersion: networking.istio.io/v1alpha3
-kind:       VirtualService
+kind: VirtualService
 metadata:
   name: mirror
+  namespace: istio
 spec:
   hosts:
     - dictionary
   http:
-  - route:
-    - destination:
-        host:   dictionary
-        subset: v1
-      weight: 100
-    mirror:
-      host:   dictionary
-      subset: v2
+    - route:
+        - destination:
+            host: dictionary
+            subset: v1
+          weight: 100
+      mirror:
+        host: dictionary
+        subset: v2
