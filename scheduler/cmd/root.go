@@ -3,7 +3,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"log"
 	"os"
 	"os/signal"
 	"strings"
@@ -45,18 +44,14 @@ func listen(cmd *cobra.Command, args []string) {
 
 	go setupSignal(cancel)
 
-	party.NewScheduler().Run(ctx)
+	if err := party.NewScheduler().Run(ctx); err != nil {
+		panic(err)
+	}
 }
 
 func setupSignal(cancel context.CancelFunc) {
 	signalChan := make(chan os.Signal, 1)
 	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM)
-	for {
-		select {
-		case <-signalChan:
-			log.Printf("Shutdown signal received, exiting...")
-			cancel()
-			os.Exit(0)
-		}
-	}
+	<-signalChan
+	cancel()
 }

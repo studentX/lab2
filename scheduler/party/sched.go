@@ -55,12 +55,12 @@ func (s *Scheduler) Run(ctx context.Context) error {
 }
 
 func (s *Scheduler) loop(ctx context.Context) {
-	log.Println("Party scheduler started....")
+	log.Println("🎉 Party scheduler started....")
 	for {
 		select {
 		case <-ctx.Done():
 			close(s.stopChan)
-			log.Println("Party scheduler exited....")
+			log.Println("😿😢🙁 Party scheduler exiting...")
 			return
 		case p, ok := <-s.podChan:
 			if !ok {
@@ -235,9 +235,7 @@ func (s *Scheduler) rank(p *v1.Pod) ([]*v1.Node, error) {
 	if len(nn) == 0 {
 		return candidates, fmt.Errorf("No nodes found on cluster!")
 	}
-	for _, n := range nn {
-		candidates = append(candidates, n)
-	}
+	candidates = append(candidates, nn...)
 
 	return candidates, nil
 }
