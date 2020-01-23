@@ -67,9 +67,9 @@
     make deploy IMG=CHANGE_ME_IMAGE_NAME:CHANGE_ME_IMAGE_REV
     ```
 
-12. Check your fred's controller logs to make sure all is cool.
-
-13. Rinse repeat installing the crd and instance. Do it in cluster this time!!
+12. Check your fred's controller logs to make sure all is cool!
+13. Rinse repeat creating/updating the crd and make sure your controller is picking up the changes!
+14. 🎉 Congrats! you've just built and run your first in cluster CRD! 🎉
 
 ---
 <img src="../../assets/imhotep_logo.png" width="32" height="auto"/> © 2020 Imhotep Software LLC.
