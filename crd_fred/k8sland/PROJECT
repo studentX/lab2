@@ -1,0 +1,3 @@
+domain: k8sland.io
+repo: github.com/k8sland/crds/fred
+version: "2"
