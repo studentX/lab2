@@ -79,6 +79,11 @@
     1. Deploy your new policy
     2. Tail both v1 and v2 logs and make sure all traffic destined to v1 also hits the v2 version.
 16. Delete the entire application including Istio!
+
+    ```shell
+    istioctl manifest generate --set profile=demo | kubectl delete -f -
+    ```
+
 17. Well done!
 
 <br/>
