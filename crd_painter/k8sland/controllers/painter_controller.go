@@ -39,27 +39,7 @@ type PainterReconciler struct {
 
 // +kubebuilder:rbac:groups=clusterdepot.k8sland.io,resources=painters,verbs=get;list;watch;create;update;patch;delete
 // +kubebuilder:rbac:groups=clusterdepot.k8sland.io,resources=painters/status,verbs=get;update;patch
-// +kubebuilder:rbac:groups=core,resources=pods,verbs=list;watch;update
-
-func (r *PainterReconciler) registerOrRunFinalizer(ctx context.Context, p clusterdepotv1alpha1.Painter) (bool, error) {
-	if p.DeletionTimestamp.IsZero() {
-		if !strContains(p.ObjectMeta.Finalizers, painterFinalizer) {
-			p.ObjectMeta.Finalizers = append(p.ObjectMeta.Finalizers, painterFinalizer)
-			return true, r.Update(ctx, &p)
-		}
-		return false, nil
-	}
-
-	if strContains(p.ObjectMeta.Finalizers, painterFinalizer) {
-		if _, err := r.paintPods(ctx, p.Namespace, nil); err != nil {
-			return false, err
-		}
-		p.ObjectMeta.Finalizers = strRemove(p.ObjectMeta.Finalizers, painterFinalizer)
-		return true, r.Update(ctx, &p)
-	}
-
-	return false, nil
-}
+!!YOUR_CODE!! Add your rbac policies for your controller
 
 // Reconcile
 func (r *PainterReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
@@ -90,6 +70,26 @@ func (r *PainterReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 	return ctrl.Result{}, r.updateStatus(ctx, p, painted)
 }
 
+func (r *PainterReconciler) registerOrRunFinalizer(ctx context.Context, p clusterdepotv1alpha1.Painter) (bool, error) {
+	if p.DeletionTimestamp.IsZero() {
+		if !strContains(p.ObjectMeta.Finalizers, painterFinalizer) {
+			p.ObjectMeta.Finalizers = append(p.ObjectMeta.Finalizers, painterFinalizer)
+			return true, r.Update(ctx, &p)
+		}
+		return false, nil
+	}
+
+	if strContains(p.ObjectMeta.Finalizers, painterFinalizer) {
+		if _, err := r.paintPods(ctx, p.Namespace, nil); err != nil {
+			return false, err
+		}
+		p.ObjectMeta.Finalizers = strRemove(p.ObjectMeta.Finalizers, painterFinalizer)
+		return true, r.Update(ctx, &p)
+	}
+
+	return false, nil
+}
+
 func (r *PainterReconciler) paintPods(ctx context.Context, ns string, color *string) (int32, error) {
 	var pp v1.PodList
 	err := r.List(ctx, &pp, client.InNamespace(ns))
@@ -102,14 +102,10 @@ func (r *PainterReconciler) paintPods(ctx context.Context, ns string, color *str
 		painted++
 		if color == nil {
 			r.Log.Info("Unpainting pod", "namespace", p.Namespace, "name", p.Name)
-			delete(p.Labels, "color")
+			!!YOUR_CODE!! Unpaint the pod
 		} else {
-			c, ok := p.Labels["color"]
-			if ok && c == *color {
-				continue
-			}
+			!!YOUR_CODE!! Paint the pod iff it does is not already painted with the correct color!
 			r.Log.Info("Painting pod", "color", *color, "namespace", p.Namespace, "name", p.Name)
-			p.Labels["color"] = *color
 		}
 
 		if err := r.Update(ctx, &p); err != nil {
@@ -127,7 +123,7 @@ func (r *PainterReconciler) updateStatus(ctx context.Context, p clusterdepotv1al
 	}
 
 	r.Log.Info("p-UPDATE", "painted", count)
-	p.Status.PaintedPods = count
+	!!YOUR_CODE!! Update the CRD status to reflect the number of painted pods
 	return r.Status().Update(ctx, &p)
 }
 
@@ -150,11 +146,16 @@ func strContains(slice []string, s string) bool {
 }
 
 func strRemove(slice []string, s string) (result []string) {
-	for _, item := range slice {
+	victim := -1
+	for i, item := range slice {
 		if item == s {
-			continue
+			victim = i
+			break
 		}
-		result = append(result, item)
 	}
-	return
+
+	if victim == -1 {
+		return slice
+	}
+	return append(slice[:victim], slice[victim+1:]...)
 }

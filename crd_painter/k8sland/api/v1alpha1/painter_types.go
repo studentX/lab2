@@ -22,17 +22,17 @@ import (
 
 // PainterSpec defines the desired state of Painter
 type PainterSpec struct {
-	// +kubebuilder:validation:Enum=Red;Blue;Green
-	Color string `json:"color,omitempty"`
+	!!YOUR_CODE!! Add an annotation to ensure the color can only be Red, Blue, Green
+	!!YOUR_CODE!! Add color field
 }
 
 // PainterStatus defines the observed state of Painter
 type PainterStatus struct {
-	PaintedPods int32 `json:"paintedPods,omitempty"`
+	!!YOUR_CODE!! Track painted pods count
 }
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:scope=Namespaced,shortName=pt
+!!YOUR_CODE!! Add an annotation to specify namespaced and shortname
 // +kubebuilder:subresource:status
 
 // Painter is the Schema for the painters API
