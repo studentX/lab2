@@ -2,7 +2,7 @@
 
 <br/>
 
-# <img src="../assets/lab.png" width="32" height="auto"/> Fred CRD Lab
+# <img src="../../assets/lab.png" width="32" height="auto"/> Fred CRD Lab
 
 > Using KubeBuilder, create a sample Fred CRD
 > NOTE! We will use the generated code here without modifications. We will do
