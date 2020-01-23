@@ -1,0 +1,7 @@
+apiVersion: blee.k8sland.io/v1alpha1
+kind: Fred
+metadata:
+  name: fred-sample
+spec:
+  # Add fields here
+  foo: bar
