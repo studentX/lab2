@@ -1,7 +1,0 @@
-domain: k8sland.io
-repo: github.com/k8sland/crds
-resources:
-- group: paint
-  kind: ClusterDepot
-  version: v1alpha1
-version: "2"
