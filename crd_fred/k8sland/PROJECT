@@ -1,0 +1,7 @@
+domain: k8sland.io
+repo: github.com/k8sland/crds/fred
+resources:
+- group: blee
+  kind: Fred
+  version: v1alpha1
+version: "2"
