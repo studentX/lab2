@@ -1,0 +1,7 @@
+domain: k8sland.io
+repo: github.com/k8sland/crds/painter
+resources:
+- group: clusterdepot
+  kind: Painter
+  version: v1alpha1
+version: "2"
