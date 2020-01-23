@@ -4,7 +4,7 @@
 
 # <img src="../../assets/lab.png" width="32" height="auto"/> ClusterDepot CRD Lab
 
-> Build a ClusterDepot CRD -- `Where Sudoers Get More Done!`
+> Build a ClusterDepot CRD -- `How Sudoers Get More Done!`
 
 Leveraging Kubebuilder, define a painter CRD to color all pods in that CRD's namespace.
 
