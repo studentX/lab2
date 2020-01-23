@@ -1,0 +1,6 @@
+apiVersion: paint.k8sland.io/v1alpha1
+kind: ClusterDepot
+metadata:
+  name: clusterdepot-sample
+spec:
+  color: Red
