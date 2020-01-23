@@ -6,7 +6,7 @@
 
 > Build a ClusterDepot CRD -- `Where Sudoers Get More Done!`
 
-> Leveraging Kubebuilder, define a painter CRD to color all pods in that CRD namespace.
+Leveraging Kubebuilder, define a painter CRD to color all pods in that CRD namespace.
 
 1. *Coloring a pod* is defined as setting a color label on a pod equaling
    the CRD specific color
