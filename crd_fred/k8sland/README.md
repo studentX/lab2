@@ -1,8 +1,8 @@
-<img src="../assets/k8sland.png" align="right" width="128" height="auto"/>
+<img src="../../assets/k8sland.png" align="right" width="128" height="auto"/>
 
 <br/>
 
-# <img src="../assets/lab.png" width="32" height="auto"/> Fred CRD Lab
+# <img src="../../assets/lab.png" width="32" height="auto"/> Fred CRD Lab
 
 > Using KubeBuilder, create a sample Fred CRD
 > NOTE! We will use the generated code here without modifications. We will do
@@ -11,8 +11,8 @@
 1. Define a Fred resource
 
     ```shell
-    git clone https://github.com/k8sland/lab2/tree/master $HOME/k8sland_level2_labs
-    cd $HOME/k8sland_level2_labs/crd_fred
+    git clone https://github.com/k8sland/lab2 $HOME/k8sland_labs2
+    cd $HOME/k8sland_labs2/crd_fred/k8sland
     kubebuilder create api --group blee --version v1alpha1 --kind Fred
     ```
 
@@ -67,10 +67,10 @@
     make deploy IMG=CHANGE_ME_IMAGE_NAME:CHANGE_ME_IMAGE_REV
     ```
 
-12. Check your fred's controller logs to make sure all is cool.
-
-13. Rinse repeat installing the crd and instance. Do it in cluster this time!!
+12. Check your fred's controller logs to make sure all is cool!
+13. Rinse repeat creating/updating the crd and make sure your controller is picking up the changes!
+14. 🎉 Congrats! you've just built and run your first in cluster CRD! 🎉
 
 ---
-<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2018 Imhotep Software LLC.
+<img src="../../assets/imhotep_logo.png" width="32" height="auto"/> © 2020 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
