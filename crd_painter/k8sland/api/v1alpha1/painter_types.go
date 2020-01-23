@@ -22,7 +22,7 @@ import (
 
 // PainterSpec defines the desired state of Painter
 type PainterSpec struct {
-	// +kubebuilder:validation:Enum=Red;Blue;Green
+	!!YOUR_CODE!! Add an annotation to ensure the color can only be Red, Blue, Green
 	Color string `json:"color,omitempty"`
 }
 
@@ -32,7 +32,7 @@ type PainterStatus struct {
 }
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:scope=Namespaced,shortName=pt
+!!YOUR_CODE!! Add an annotation to specify namespaced and shortname
 // +kubebuilder:subresource:status
 
 // Painter is the Schema for the painters API

@@ -39,27 +39,7 @@ type PainterReconciler struct {
 
 // +kubebuilder:rbac:groups=clusterdepot.k8sland.io,resources=painters,verbs=get;list;watch;create;update;patch;delete
 // +kubebuilder:rbac:groups=clusterdepot.k8sland.io,resources=painters/status,verbs=get;update;patch
-// +kubebuilder:rbac:groups=core,resources=pods,verbs=list;watch;update
-
-func (r *PainterReconciler) registerOrRunFinalizer(ctx context.Context, p clusterdepotv1alpha1.Painter) (bool, error) {
-	if p.DeletionTimestamp.IsZero() {
-		if !strContains(p.ObjectMeta.Finalizers, painterFinalizer) {
-			p.ObjectMeta.Finalizers = append(p.ObjectMeta.Finalizers, painterFinalizer)
-			return true, r.Update(ctx, &p)
-		}
-		return false, nil
-	}
-
-	if strContains(p.ObjectMeta.Finalizers, painterFinalizer) {
-		if _, err := r.paintPods(ctx, p.Namespace, nil); err != nil {
-			return false, err
-		}
-		p.ObjectMeta.Finalizers = strRemove(p.ObjectMeta.Finalizers, painterFinalizer)
-		return true, r.Update(ctx, &p)
-	}
-
-	return false, nil
-}
+!!YOUR_CODE!! Add your rbac policies for your controller
 
 // Reconcile
 func (r *PainterReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
@@ -88,6 +68,26 @@ func (r *PainterReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 	}
 
 	return ctrl.Result{}, r.updateStatus(ctx, p, painted)
+}
+
+func (r *PainterReconciler) registerOrRunFinalizer(ctx context.Context, p clusterdepotv1alpha1.Painter) (bool, error) {
+	if p.DeletionTimestamp.IsZero() {
+		if !strContains(p.ObjectMeta.Finalizers, painterFinalizer) {
+			p.ObjectMeta.Finalizers = append(p.ObjectMeta.Finalizers, painterFinalizer)
+			return true, r.Update(ctx, &p)
+		}
+		return false, nil
+	}
+
+	if strContains(p.ObjectMeta.Finalizers, painterFinalizer) {
+		if _, err := r.paintPods(ctx, p.Namespace, nil); err != nil {
+			return false, err
+		}
+		p.ObjectMeta.Finalizers = strRemove(p.ObjectMeta.Finalizers, painterFinalizer)
+		return true, r.Update(ctx, &p)
+	}
+
+	return false, nil
 }
 
 func (r *PainterReconciler) paintPods(ctx context.Context, ns string, color *string) (int32, error) {
