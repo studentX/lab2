@@ -11,8 +11,8 @@
 1. Define a Fred resource
 
     ```shell
-    git clone https://github.com/k8sland/lab2/tree/master $HOME/k8sland_level2_labs
-    cd $HOME/k8sland_level2_labs/crd_fred
+    git clone https://github.com/k8sland/lab2 $HOME/k8sland_labs2
+    cd $HOME/k8sland_labs2/crd_fred/k8sland
     kubebuilder create api --group blee --version v1alpha1 --kind Fred
     ```
 
