@@ -1,0 +1,6 @@
+apiVersion: clusterdepot.k8sland.io/v1alpha1
+kind: Painter
+metadata:
+  name: boring
+spec:
+  color: Green
