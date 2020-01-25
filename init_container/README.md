@@ -1,6 +1,5 @@
 <img src="../assets/k8sland.png" align="right" width="128" height="auto"/>
 
-
 <br/>
 
 # <img src="../assets/lab.png" width="32" height="auto"/> Init Container Lab
@@ -34,20 +33,11 @@ volume with a set of dictionaries by cloning a dictionary assets repo.
 <br/>
 
 ---
+
 ## Commands
 
 1. Launch your pod
-
-    ```shell
-    kubectl apply -f k8s/dictionary.yml
-    ```
-
 2. Verify the init container is successful and pod is launched
-
-    ```shell
-    kubectl get po
-    ```
-
 3. Verify the volume was provisioned correctly
 
     ```shell
@@ -56,13 +46,9 @@ volume with a set of dictionaries by cloning a dictionary assets repo.
 
 4. Change git url so that it does not resolve
 
-    ```shell
-    kubectl delete -f k8s/dictionary.yml --force --grace-period=0
-    kubectl apply -f dictionary.yml
-    ```
-
 <br/>
 
 ---
+
 <img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2020 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
