@@ -24,7 +24,7 @@ NOTE: Skip the first 3 steps if no GO chops!
    you own!
 4. Before you get to play the game, your will need to tell Prometheus to
    track your hangman service by setting the ServiceMonitor CRD (k8s/prom/crd.yml)
-5. Using the provided deployment templates, deploy Prometheus using the awesome
+5. Using the provided deployment templates (k8s directory), deploy Prometheus using the awesome
    CoreOS operator, Grafana and the hangman services namely dictionary and hangman.
 6. Launch the Grafana UI.
 7. You can now enjoy the fruits of your hard labor by firing off the hangman CLI and
@@ -45,7 +45,7 @@ NOTE: Skip the first 3 steps if no GO chops!
   make push
 ```
 
-### Deploy Prometheus
+### Deploy Prometheus Operator
 
 ```shell
 kubectl apply -f k8s/prom
