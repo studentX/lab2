@@ -4,11 +4,13 @@
 
 # <img src="../assets/lab.png" width="32" height="auto"/> Custom Scheduler Lab
 
-> The party pooper scheduler! Write a party scheduler that will only schedule
-> a pod if it has a costume.
+> The party pooper💩scheduler!
+> Write a party scheduler that will only schedule a pod if it has a costume.
 
-1. Define a custom party scheduler aka partysched, that checks if a given pod
-   has a costume label set to either ghoul or goblin and matches node costumes...
+NOTE: [NO GO CHOPS!] Skip to step #3
+
+1. Implement a custom party scheduler aka partysched, that checks if a given pod
+   has a costume label set to either ghoul or goblin
 2. Make sure your pod gets scheduled on a node with the same costume as to pod's costume label
 3. For all other cases ie no label or incorrect attire, make sure your scheduler
    selected no nodes and spews out a log.

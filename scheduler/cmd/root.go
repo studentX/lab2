@@ -100,16 +100,14 @@ func scheduler(ctx context.Context, c <-chan *corev1.Pod) {
 	for {
 		select {
 		case p := <-c:
-			var (
-				nodes corev1.NodeList
-				err   error
-			)
-			if nodes, err = checkFit(p); err != nil {
+			nodes, err := checkFit(p)
+			if err != nil {
 				log.Println(err)
 				break
 			}
+
 			if len(nodes.Items) == 0 {
-				log.Printf("Party 💩  pod `%s detected. Access is denied on this cluster!", p.ObjectMeta.Name)
+				log.Printf("Party 💩 pod `%s detected. Access is denied on this cluster!", p.ObjectMeta.Name)
 				break
 			}
 			for _, n := range nodes.Items {
@@ -154,17 +152,15 @@ func schedule(n corev1.Node, p *corev1.Pod) error {
 		return err
 	}
 	log.Printf("Ye! scheduled 🎊🎉 pod %s onto node %s", p.ObjectMeta.Name, n.ObjectMeta.Name)
+
 	return nil
 }
 
 func checkFit(p *corev1.Pod) (corev1.NodeList, error) {
 	candidates := corev1.NodeList{}
 
-	var (
-		costume string
-		ok      bool
-	)
-	if costume, ok = p.ObjectMeta.Labels["costume"]; !ok {
+	costume, ok := p.ObjectMeta.Labels["costume"]
+	if !ok {
 		log.Printf("Party pooper detected! Improper attire `%s on pod %s", costume, p.ObjectMeta.Name)
 		return candidates, nil
 	}
@@ -175,19 +171,24 @@ func checkFit(p *corev1.Pod) (corev1.NodeList, error) {
 	}
 
 	for _, n := range nn.Items {
-		if checkEntry(costume) {
+		if !properAttire(costume) {
+			continue
+		}
+		if _, ok := n.Labels[costume]; ok {
 			candidates.Items = append(candidates.Items, n)
 		}
 	}
+
 	return candidates, nil
 }
 
-func checkEntry(costume string) bool {
+func properAttire(costume string) bool {
 	for _, c := range attires {
 		if c == costume {
 			return true
 		}
 	}
+
 	return false
 }
 
