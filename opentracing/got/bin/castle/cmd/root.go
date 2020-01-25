@@ -88,7 +88,7 @@ func meltHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if err := writeResponse(sx, w); err == nil {
-		// Add span log to indicate castle is melted
+		// Add span log to indicate castle is melted use key message=castle successfully melted!
 		!!YOUR_CODE!!
 	}
 }
