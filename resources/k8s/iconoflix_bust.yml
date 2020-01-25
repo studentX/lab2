@@ -1,12 +1,11 @@
-
 ---
 # Deployment
 apiVersion: apps/v1
-kind:       Deployment
+kind: Deployment
 metadata:
   name: iconoflix
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: iconoflix
@@ -16,17 +15,17 @@ spec:
         app: iconoflix
     spec:
       containers:
-      - name:  iconoflix
-        image: quay.io/imhotepio/iconoflix:mem
-        resources:
-          requests:
-            cpu:    4
-            memory: 20Mi
-          limits:
-            cpu:    5
-            memory: 50Mi
-        ports:
-        - containerPort: 4000
+        - name: iconoflix
+          image: quay.io/imhotepio/iconoflix:mem
+          resources:
+            requests:
+              cpu: 4
+              memory: 20Mi
+            limits:
+              cpu: 5
+              memory: 50Mi
+          ports:
+            - containerPort: 4000
 ---
 # Service
 kind: Service
@@ -34,9 +33,9 @@ apiVersion: v1
 metadata:
   name: iconoflix
 spec:
-  type:  NodePort
+  type: NodePort
   selector:
     app: iconoflix
   ports:
-  - port:     4000
-    nodePort: 30400
+    - port: 4000
+      nodePort: 30400

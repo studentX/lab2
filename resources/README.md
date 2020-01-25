@@ -4,7 +4,7 @@
 
 # <img src="../assets/lab.png" width="32" height="auto"/> Resources Lab
 
-> Experiment with resource constraints for an Iconoflix application
+> Experiment with resources constraints for an Iconoflix application
 
 1. Edit the resource section in the provided manifest (k8s/iconoflix.yml) and
    initially swag the Iconoflix container quotas
@@ -21,22 +21,22 @@
 <br/>
 
 ---
+
 ## <img src="../assets/fox.png" width="32" height="auto"/> Commands
 
 ### Simulate load
 
+    Install [Hey](https://github.com/rakyll/hey)
+
     ```shell
     hey -c 1 -n 10000 http://$(minikube ip):30400/graphql?query={movies{name}}
+    # Or...
+    ./bursh.sh
     ```
-
-### Monitor Resources
-
-      ```shell
-      watch kubectl top po
-      ```
 
 <br/>
 
 ---
+
 <img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2020 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
