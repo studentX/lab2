@@ -23,13 +23,13 @@ knight is the NightKing or a 417 error with *only NightKing can melt* otherwise.
 > [IF NO GO CHOPS!] Goto step #7
 
 1. Instrument the Castle service by tracing incoming *melt* requests
-   1. Edit your Castle trace and add the following tags to the trace:
+   1. Edit your Castle trace (got/bin/castle/cmd.go) and add the following tags to the trace:
       1. http.method
       2. http.url
       3. knight
 2. If the given Knight is *NightKing* add a log to the castle span to indicate
    `the castle is melted`.
-3. All other knights should produce a span error (internal/http.go).
+3. All other knights should produce a span error (got/internal/http.go).
 4. Span errors are indicated by:
    1. Setting a span tag error=true
    2. Adding a structured log on the span using
