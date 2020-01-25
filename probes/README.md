@@ -4,7 +4,7 @@
 
 # <img src="../assets/lab.png" width="32" height="auto"/> Probes Lab
 
-> Add Liveness/Readiness probes to an Iconoflix application
+> Add Readiness/Liveness probes to an Iconoflix application
 
 1. In the given Iconoflix deployment add an HTTP Readiness probe
    1. Use /check/health
