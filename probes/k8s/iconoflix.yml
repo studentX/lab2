@@ -30,13 +30,13 @@ spec:
               memory: 80Mi
           livenessProbe:
             httpGet:
-              path: /check/health
+              path: /check/alive
               port: api
-            initialDelaySeconds: 5
+            initialDelaySeconds: 10
             periodSeconds: 10
           readinessProbe:
             httpGet:
-              path: /check/alive
+              path: /check/health
               port: api
             initialDelaySeconds: 20
             periodSeconds: 30
