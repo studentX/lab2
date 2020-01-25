@@ -8,7 +8,7 @@
 
 <br/>
 
-In this lab, we are going to decorate a web server using **OpenTracing**.
+In this lab, we are going to decorate a web server using the [OpenTracing](https://opentracing.io/) APIs.
 There are 2 services involved: **Castle** and **Knight**. The
 Knights want to melt Castles, but if you're a G.O.T fan, you already
 know that only the NightKing can melt a Castle using his undead 🐉...
@@ -20,7 +20,9 @@ knight is the NightKing or a 417 error with *only NightKing can melt* otherwise.
 
 <br/>
 
-1. Instrument the Castle service by tracing incoming *melt* requests (SKIP IF NO GO CHOPS!!)
+> [IF NO GO CHOPS!] Goto step #7
+
+1. Instrument the Castle service by tracing incoming *melt* requests
    1. Edit your Castle trace and add the following tags to the trace:
       1. http.method
       2. http.url
@@ -53,7 +55,7 @@ knight is the NightKing or a 417 error with *only NightKing can melt* otherwise.
     open http://$(minikube ip):30600/
     ```
 
-### Build your code and publish your own docker images
+### [GO CODE] Build your code and publish your own docker images
 
    > NOTE! You must change the Docker registry to use your own user account!
 
@@ -81,5 +83,6 @@ knight is the NightKing or a 417 error with *only NightKing can melt* otherwise.
 <br/>
 
 ---
+
 <img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2020 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
