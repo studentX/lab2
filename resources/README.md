@@ -4,14 +4,14 @@
 
 # <img src="../assets/lab.png" width="32" height="auto"/> Resources Lab
 
-> Experiment with resource constraints for an Iconoflix application
+> Experiment with resources constraints for an Iconoflix application
 
 1. Edit the resource section in the provided manifest (k8s/iconoflix.yml) and
    initially swag the Iconoflix container quotas
 1. Deploy the application
 1. Ensure everything is up and running!
-1. Hit the Iconoflix API using the provided burst.sh script and monitor
-   the node and pod resource
+1. Pressure the Iconoflix API using the provided hey command and monitor
+   the node and pod resources
 1. Tune your resources based on your findings
 1. Change your cpu request to more than available and redeploy your application
    > REMINDER: Node allocations 4 cores / 8Gb mem
@@ -21,24 +21,22 @@
 <br/>
 
 ---
+
 ## <img src="../assets/fox.png" width="32" height="auto"/> Commands
 
 ### Simulate load
 
+    Install [Hey](https://github.com/rakyll/hey)
+
     ```shell
-    hey -c 1 -n 100 http://$(minikube ip):30400/graphql?query={movies{name}}
+    hey -c 1 -n 10000 http://$(minikube ip):30400/graphql?query={movies{name}}
     # Or...
-    ./burst.sh
+    ./bursh.sh
     ```
-
-### Monitor Resources...
-
-```shell
-watch kubectl top po
-```
 
 <br/>
 
 ---
+
 <img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2020 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
