@@ -13,21 +13,14 @@ type Game struct {
 }
 
 var (
+	// TODO! Define 2 counters to track good/bad guess counts
+	// Name your counters hangman_good_guess_count, hangman_bad_guess_count
+	// Use label app=hangman for both counters and label guess=good|bad
 	promGood = promauto.NewCounter(prometheus.CounterOpts{
-		Name: "hangman_good_guess_count",
-		Help: "Counts number of good guesses",
-		ConstLabels: map[string]string{
-			"app":   "hangman",
-			"guess": "good",
-		},
+		!!YOUR_CODE!!
 	})
-	promBad = promauto.NewCounter(prometheus.CounterOpts{
-		Name: "hangman_bad_guess_count",
-		Help: "Counts number of bad guesses",
-		ConstLabels: map[string]string{
-			"app":   "hangman",
-			"guess": "bad",
-		},
+	promBad  = promauto.NewCounter(prometheus.CounterOpts{
+		!!YOUR_CODE!!
 	})
 )
 
@@ -54,10 +47,10 @@ func (g *Game) validateGuess(guess rune) {
 	g.Guesses = append(g.Guesses, guess)
 
 	if !g.inWord(guess) {
-		promBad.Inc()
+		!!YOUR_CODE!! Increment bads
 		g.Tally.TurnsLeft--
 	} else {
-		promGood.Inc()
+		!!YOUR_CODE!!
 	}
 	g.Tally.Update([]rune(g.Word), g.Guesses)
 }

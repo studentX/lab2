@@ -31,12 +31,10 @@ type (
 	}
 )
 
+// TODO! Define a gauge to track win/lose +1 for wins, -1 for loss
+// Name your gauge hangman_tally_total and use a label app=hangman
 var promTally = promauto.NewGauge(prometheus.GaugeOpts{
-	Name: "hangman_tally_total",
-	Help: "The total number of game won or lost",
-	ConstLabels: map[string]string{
-		"app": "hangman",
-	},
+	!!YOUR_CODE!!
 })
 
 // NewTally initializes a tally
@@ -48,11 +46,11 @@ func NewTally(word []rune) *Tally {
 func (t *Tally) Update(word, guesses []rune) {
 	t.Letters = updateLetters(word, guesses)
 	if !t.guessesLeft() {
-		promTally.Inc()
+		!!YOUR_CODE!! Inc tally
 		t.Status = Won
 	}
 	if t.TurnsLeft == 0 {
-		promTally.Dec()
+		!!YOUR_CODE!! Dec tally
 		t.Status = Lost
 	}
 }
