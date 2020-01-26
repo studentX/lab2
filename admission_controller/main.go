@@ -76,12 +76,9 @@ func admitDeployment(ar v1beta1.AdmissionReview) *v1beta1.AdmissionResponse {
 
 	reviewResponse := v1beta1.AdmissionResponse{Allowed: true}
 	var msg string
-	if v, ok := dep.Labels["app"]; ok {
-		if v == denyLabel {
-			reviewResponse.Allowed = false
-			msg = fmt.Sprintf("👻  Seriously `%s? No buzz kill allowed on this cluster!!", denyLabel)
-		}
-	}
+	// Check if the deployment has the correct label. If not issue the provided message
+	!!YOUR_CODE!!
+	msg = fmt.Sprintf("👻  Seriously `%s? No buzz kill allowed on this cluster!!", denyLabel)
 
 	if !reviewResponse.Allowed {
 		log.Printf("Rejecting Deployment %s", dep.ObjectMeta.Name)
