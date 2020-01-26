@@ -11,19 +11,21 @@ NOTE: Skip step 1 if no GO chops!
 
 1. Update the code in main.go to reject all grim reaper deployments. ie
    check for deployment resource with a label app=Grim-Reaper.
-1. Generate certs and keys for your webhook and make sure to provide the correct
+2. Generate certs and keys for your webhook and make sure to provide the correct
    service name in your certificate encryption
-1. Generate a ca_bundle to validate api-server callback into your webhook.
-1. Set the ca_bundle in k8s/adm.yml to the output of the previous command
-1. Deploy your admission controller
-1. Register your validating admission controller with the api-server
-1. Update the provided grim deployment with the magic label and provision your cluster
-1. Trace the api-server logs and your admission controller logs to ensure all
+3. Generate a ca_bundle to validate api-server callback into your webhook.
+4. Set the ca_bundle in k8s/adm.yml to the output of the previous command
+5. Build your docker image using the make command below.
+   1. NOTE you must change the REGISTRY in the provided Makefile to your own docker registry.
+6. Deploy your admission controller
+7. Register your validating admission controller with the api-server
+8. Update the provided grim deployment with the magic label and provision your cluster
+9. Trace the api-server logs and your admission controller logs to ensure all
    are working nominally.
-1. Verify your deployment was denied for the right reason
-1. Delete your deployment and change/remove the label
-1. Redeploy and make sure your admission controller allows the new deployment
-1. Delete your application!
+10. Verify your deployment was denied for the right reason
+11. Delete your deployment and change/remove the label
+12. Redeploy and make sure your admission controller allows the new deployment
+13. Delete your application!
 
 ---
 
@@ -36,6 +38,8 @@ NOTE: Skip step 1 if no GO chops!
     ```
 
 1. Build your admission controller Docker image
+
+    NOTE: You must change the Makefile REGISTRY!
 
     ```shell
     make img
