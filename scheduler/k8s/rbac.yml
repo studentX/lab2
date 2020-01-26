@@ -11,8 +11,8 @@ metadata:
   name: partysched
 subjects:
 - kind:      ServiceAccount
-  name:      partysched
-  namespace: default
+  name:      !!CHANGE_ME!!
+  namespace: !!CHANGE_ME!!
 roleRef:
   kind:     ClusterRole
   name:     !!CHANGE_ME!!

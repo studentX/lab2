@@ -20,7 +20,10 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 )
 
-const partySched = "partysched"
+const (
+	partySched = "partysched"
+	costumeKey = "costume"
+)
 
 // Allowable party attires
 var attires = []string{"ghoul", "goblin"}
@@ -79,8 +82,8 @@ func (s *Scheduler) schedule(po *v1.Pod) {
 		return
 	}
 	if len(nodes) == 0 {
-		log.Printf("💩  Party Pooper detected `%s. Access is denied on this cluster!", po.Name)
-		s.notify(fmt.Sprintf("Party pooper detected `%s", po.Name), "FailSchedule", "Warning", po)
+		log.Printf("💩 Party Pooper detected `%s. Access is denied on this cluster!", po.Name)
+		s.notify(fmt.Sprintf("💩 Party pooper detected `%s", po.Name), "FailSchedule", "Warning", po)
 		return
 	}
 
@@ -220,12 +223,12 @@ func (s *Scheduler) rank(p *v1.Pod) ([]*v1.Node, error) {
 		ok         bool
 	)
 
-	// TODO!! Check party attire:
-	// 1. Does the pod have a costume label?
-	//    if not return `Party pooper detected! No costume on pod xxx`
-	// 2. Does the pod attire mach the allowed attires?
-	//    if not return `Party pooper! Lame costume detected `XXX on pod YYY`
-	!!YOUR_CODE!!
+	if attire, ok = p.Labels[costumeKey]; !ok {
+		return candidates, fmt.Errorf("Party pooper detected! No costume on pod %s", p.Name)
+	}
+	if !hasProperAttire(attire) {
+		return candidates, fmt.Errorf("Party pooper! Lame costume detected `%s on pod %s", attire, p.Name)
+	}
 
 	nn, err := s.nodes.List(labels.Everything())
 	if err != nil {
@@ -234,7 +237,12 @@ func (s *Scheduler) rank(p *v1.Pod) ([]*v1.Node, error) {
 	if len(nn) == 0 {
 		return candidates, fmt.Errorf("No nodes found on cluster!")
 	}
-	candidates = append(candidates, nn...)
+
+	for _, n := range nn {
+		if k, ok := n.Labels[costumeKey]; ok && k == attire {
+			candidates = append(candidates, nn...)
+		}
+	}
 
 	return candidates, nil
 }
@@ -245,7 +253,7 @@ func isPartyPod(po *v1.Pod) bool {
 	return po.Spec.NodeName == "" && po.Spec.SchedulerName == partySched
 }
 
-func checkAttire(costume string) bool {
+func hasProperAttire(costume string) bool {
 	for _, c := range attires {
 		if c == costume {
 			return true
