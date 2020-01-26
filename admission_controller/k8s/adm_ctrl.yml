@@ -57,11 +57,11 @@ apiVersion: v1
 metadata:
   name: depadm
 spec:
+  type: ClusterIP
   selector:
     app: depadm
   ports:
     - name:       https
       protocol:   TCP
-      nodePort:   !!CHANGE_ME!!
       port:       !!CHANGE_ME!!
       targetPort: https

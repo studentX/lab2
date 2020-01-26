@@ -2,7 +2,7 @@ PACKAGE    := github.com/k8sland/lab2/admission
 VERSION    := 0.0.1
 IMAGE      := go-depadm
 APP        := depadm
-REGISTRY   := k8sland
+REGISTRY   := !!CHANGE_ME!!
 IMAGE_NAME := ${REGISTRY}/${IMAGE}:${VERSION}
 
 default: help
