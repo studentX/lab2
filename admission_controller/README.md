@@ -52,6 +52,7 @@ NOTE: Skip step 1 if no GO chops!
     # IMPORTANT! Edit k8s/adm.yml and paste in caBundle
     ```
 
+1. Update the validating admission webhook caBundle with your key
 1. Deploy and validate your validating admission webhook
 1. Verify your certificate against your webhook
 
