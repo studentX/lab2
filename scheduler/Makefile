@@ -1,5 +1,5 @@
 PACKAGE    := github.com/k8sland/lab2/scheduler
-VERSION    := 0.0.2
+VERSION    := 0.0.3
 IMAGE      := go-partysched
 APP        := partysched
 REGISTRY   := k8sland
