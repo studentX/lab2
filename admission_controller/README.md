@@ -42,11 +42,6 @@ NOTE: Skip step 1 if no GO chops!
     ```
 
 1. Deploy custom admission controller
-
-    ```shell
-    kubectl apply -f k8s/dp.yml
-    ```
-
 1. Base64 encode your certificate
 
     ```shell
@@ -57,32 +52,20 @@ NOTE: Skip step 1 if no GO chops!
     # IMPORTANT! Edit k8s/adm.yml and paste in caBundle
     ```
 
-1. Register with api-server
-
-    ```shell
-    kubectl apply -f k8s/adm.yml
-    # Verify!
-    kubectl get validatingwebhookconfiguration
-    ```
-
+1. Deploy and validate your validating admission webhook
 1. Verify your certificate against your webhook
 
     ```shell
     openssl s_client -host $(minikube ip) -port 30443 -CAfile caCert.pem
     ```
 
-1. Create a new `Grim Reaper deployment
-
-    ```shell
-    kubectl apply -f k8s/grim.yml
-    ```
-
-1. Verify your deployments did not make it!
-
-1. Change the deployment label and redeploy
+1. Provision your `Grim Reaper deployment
+1. Verify your deployment did not make it!
+1. Change your deployment to make it pass and redeploy
 
 <br/>
 
 ---
+
 <img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2020 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
