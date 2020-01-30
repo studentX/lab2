@@ -4,16 +4,16 @@
 
 # <img src="../assets/lab.png" width="32" height="auto"/> Probes Lab
 
-> Add Readiness/Liveness probes to an Iconoflix application
+> Add Liveness/Readiness probes to an Iconoflix application
 
-1. In the given Iconoflix deployment add an HTTP Readiness probe
-   1. Use /check/health
+1. In the given Iconoflix deployment add an HTTP Liveness probe
+   1. Use /check/alive
 2. Monitor your endpoints
    1. kubectl get ep --watch
 3. What do you see?
-4. Now redeploy your Iconoflix pod but with a Readiness delay to 20s
+4. Now redeploy your Iconoflix pod but with a Liveness delay to 20s
 5. What do you notice in your Iconoflix endpoint?
-6. Next define a HTTP Liveness probe on the Iconoflix container
+6. Next define a HTTP Readiness probe on the Iconoflix container
    1. /check/health
 7. Watch the Iconoflix pod logs
 8. What do you notice?
