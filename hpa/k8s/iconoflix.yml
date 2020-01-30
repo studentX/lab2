@@ -19,10 +19,10 @@ spec:
         image: quay.io/imhotepio/iconoflix:mem
         resources:
           limits:
-            cpu:    100m
+            cpu:    200m
             memory: 70Mi
           requests:
-            cpu:    10m
+            cpu:    100m
             memory: 50Mi
         ports:
         - containerPort: 4000
