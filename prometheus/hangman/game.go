@@ -50,7 +50,7 @@ func (g *Game) validateGuess(guess rune) {
 		!!YOUR_CODE!! Increment bads
 		g.Tally.TurnsLeft--
 	} else {
-		!!YOUR_CODE!!
+		!!YOUR_CODE!! Increment goods
 	}
 	g.Tally.Update([]rune(g.Word), g.Guesses)
 }
