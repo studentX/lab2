@@ -5,8 +5,9 @@
 
 # <img src="../assets/lab.png" width="32" height="auto"/> Prometheus Hangman Lab
 
-> We're going to play a hangman game 🎉🎊🥳 The game consists of a couple of
-> services namely hangman and dictionary and a CLI to submit guesses. The hangman
+> We're going to play a hangman game 🏄🏻‍♀️🤙🏄🏼‍♂️
+
+> The game consists of a couple of services namely hangman and dictionary and a CLI to submit guesses. The hangman
 > service queries the dictionary service to get a list of words for the guess
 > word. To play the game, we are going to leverage Prometheus metrics to
 > track good/bad guess counts as well as tracking win rates. Next, we are going
