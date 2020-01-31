@@ -104,7 +104,7 @@ func (r *PainterReconciler) paintPods(ctx context.Context, ns string, color *str
 			r.Log.Info("Unpainting pod", "namespace", p.Namespace, "name", p.Name)
 			!!YOUR_CODE!! Unpaint the pod
 		} else {
-			!!YOUR_CODE!! Paint the pod iff it does is not already painted with the correct color!
+			!!YOUR_CODE!! Paint the pod iff it is not already painted with the correct color!
 			r.Log.Info("Painting pod", "color", *color, "namespace", p.Namespace, "name", p.Name)
 		}
 
